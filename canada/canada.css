@@ -1,0 +1,41 @@
+/* Language toggle */
+
+  color: var(--accent, #ff5820);
+  border-color: var(--accent, #ff5820);
+  box-shadow: 0 2px 8px rgba(255,88,32,0.09);
+}
+
+@media (max-width: 768px) {
+
+}
+/* Remove gray box divider and use alternate coloring for sections 05 and above */
+
+
+/* Alternate coloring for every even .svc-section (starting from 06, 08, etc.) */
+
+
+/* Apply background only to the inner container for alternate sections */
+.svc-section-alt {
+  background: transparent !important;
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  border-radius: 0;
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  box-shadow: none !important;
+  border: none !important;
+}
+/* Remove section divider/strip between sections on Canada services page */
+.svc-section,
+.svc-section-alt {
+  box-shadow: none !important;
+  border: none !important;
+}
+/* ── Canada-specific overrides ── */
+
+/* Language switcher styles removed */
+
+/* Keep region-picker flush next to the lang toggle — no extra auto margin */
+.region-picker {
+  margin-left: 0.6rem;
+}

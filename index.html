@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Engineering Consultancy | Asvakas Engineering</title>
+    <meta name="description" content="Structural, forensic, and construction engineering consultancy for analysis, connection design, retrofit strategy, and code-compliant project support." />
+
+      <!-- SEO: Structured Data for Google Sitelinks and Business Info -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EngineeringService",
+        "name": "Asvakas Engineering",
+        "url": "https://www.asvakas.com",
+        "logo": "https://www.asvakas.com/logo.png",
+        "description": "Civil & Structural Engineering Consultants serving Canada and the US. Precision design, inspections, and project delivery.",
+        "areaServed": [
+          { "@type": "Country", "name": "Canada" },
+          { "@type": "Country", "name": "United States" }
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/company/asvakas"
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+1-XXX-XXX-XXXX",
+            "contactType": "customer service",
+            "areaServed": "CA"
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+1-XXX-XXX-YYYY",
+            "contactType": "customer service",
+            "areaServed": "US"
+          }
+        ]
+      }
+      </script>
+      <script type="application/ld+json">
+      {
+       "@context": "https://schema.org",
+       "@type": "WebSite",
+       "name": "Asvakas Engineering",
+       "url": "https://www.asvakas.com/",
+       "potentialAction": {
+         "@type": "SearchAction",
+         "target": "https://www.asvakas.com/search?q={search_term_string}",
+         "query-input": "required name=search_term_string"
+       }
+      }
+      </script>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      // Region-based redirect: send Canadian visitors to canada/index.html
+      (function() {
+        // Only run if not already in /canada/
+        if (window.location.pathname.toLowerCase().indexOf('/canada') === -1) {
+          // Use a free IP geolocation API (ipapi.co)
+          fetch('https://ipapi.co/country/').then(function(resp) { return resp.text(); }).then(function(country) {
+            if (country.trim() === 'CA') {
+              window.location.href = window.location.origin + '/canada/index.html';
+            }
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body class="home-page">
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a href="#top" class="brand">Asvakas<span class="brand-eng">ENG</span></a>
+        <nav class="main-nav" id="mainNav">
+          <a href="index.html" class="active">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="engineering-systems.html">Engineering Systems</a>
+          <a href="projects.html">Projects</a>
+          <a href="resources.html">Resources</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="region-picker" id="regionPicker">
+          <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
+            <span class="rp-flag">🇺🇸</span>
+            <span class="rp-label">USA</span>
+            <span class="rp-arrow">▾</span>
+          </button>
+          <ul class="rp-dropdown" role="listbox">
+            <li class="rp-option" data-region="usa" role="option">🇺🇸 USA</li>
+            <li class="rp-option" data-region="canada" role="option">🇨🇦 Canada</li>
+          </ul>
+        </div>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-slides">
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1800&q=80')"></div>
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=80')"></div>
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1800&q=80')"></div>
+          <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1800&q=80')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+          <p class="hero-tag fade-up" data-region-tag>Engineering Consultancy</p>
+          <h1 class="fade-up hero-rotating-h1" style="--delay:0.13s" aria-live="polite">
+            <span class="hero-line-static">Structural Consulting for Complex Projects.</span>
+            <span class="hero-line-rotate" id="heroRotate">Connection Design. Retrofit Strategy. Construction Support.</span>
+          </h1>
+          <p class="fade-up" style="--delay:0.26s" data-region-sub>Asvakas provides structural consulting, forensic investigation, construction-phase engineering support, connection design, anchorage analysis, retrofit strategy, and code-compliant technical documentation.</p>
+          <div class="hero-actions fade-up" style="--delay:0.38s">
+            <a class="btn btn-solid" href="contact.html">Request Consultation</a>
+            <a class="btn btn-outline" href="engineering-systems.html">Discuss Your Project</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="container about-inner">
+          <div class="slide-left">
+            <span class="section-label">About Asvakas</span>
+            <h2>Technical engineering leadership built for design teams, owners, and contractors.</h2>
+            <p>Asvakas operates as an engineering consultancy focused on structural systems, forensic assessment, construction coordination, and technically demanding building work.</p>
+            <a class="btn btn-outline" href="about.html">Get to Know Us</a>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card fade-up" style="--delay:0.05s"><strong data-target="20" data-suffix="+">20+</strong><span>Years Experience</span></div>
+            <div class="stat-card fade-up" style="--delay:0.15s"><strong data-target="150" data-suffix="+">150+</strong><span>Projects Completed</span></div>
+            <div class="stat-card fade-up" style="--delay:0.25s"><strong>4.8/5</strong><span>Client Satisfaction</span></div>
+            <div class="stat-card fade-up" style="--delay:0.35s"><strong data-target="98" data-suffix="%">98%</strong><span>Success Rate</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-section" id="services">
+        <div class="container svc-header">
+          <span class="section-label-pill fade-up">Engineering Expertise</span>
+          <h2 class="fade-up" style="--delay:0.1s">Technical Consulting Built Around the Way Projects Actually Move</h2>
+          <p class="services-subtitle fade-up" style="--delay:0.2s">Asvakas provides structural consulting, forensic investigation, construction-phase engineering support, connection design, anchorage analysis, retrofit strategy, and code-compliant technical documentation.</p>
+        </div>
+
+        <div class="container svc-category">
+          <p class="svc-cat-label fade-up">Core Engineering Services</p>
+          <div class="services-grid">
+            <article class="service-card fade-up" style="--delay:0.05s">
+              <span class="svc-num">01</span>
+              <h3>Structural Engineering</h3>
+              <p>Structural analysis, framing systems, load path evaluation, and design coordination for new and existing buildings.</p>
+              <img class="svc-img" src="images/2-structural-design.png" alt="Structural engineering" />
+              <a class="btn btn-outline" href="structural-engineering.html">View Service</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.15s">
+              <span class="svc-num">02</span>
+              <h3>Forensic Engineering</h3>
+              <p>Failure investigation, damage assessment, defect review, and technical reporting for claims, disputes, and remediation planning.</p>
+              <img class="svc-img" src="images/13-forensic-structural-invest.png" alt="Forensic engineering" />
+              <a class="btn btn-outline" href="forensic-engineering.html">View Service</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.25s">
+              <span class="svc-num">03</span>
+              <h3>Construction Engineering</h3>
+              <p>Shop drawing review, field issue resolution, coordination with design teams, and buildability-focused engineering during construction.</p>
+              <img class="svc-img" src="images/18-construction-administration.png" alt="Construction engineering" />
+              <a class="btn btn-outline" href="construction-engineering.html">View Service</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="container svc-category">
+          <p class="svc-cat-label fade-up">Engineering Systems</p>
+          <div class="services-grid">
+            <article class="service-card fade-up" style="--delay:0.05s">
+              <span class="svc-num">04</span>
+              <h3>Structural Connection Design</h3>
+              <p>Connection analysis, detailing support, and constructable load transfer design across steel, wood, and concrete interfaces.</p>
+              <img class="svc-img" src="images/11-anchorage-connection.png" alt="Structural connection design" />
+              <a class="btn btn-outline" href="structural-connection-design.html">Explore</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.15s">
+              <span class="svc-num">05</span>
+              <h3>Anchorage &amp; Fastening Design</h3>
+              <p>Anchorage engineering for post-installed, cast-in, retrofit, and edge-sensitive conditions requiring coordinated documentation.</p>
+              <img class="svc-img" src="images/11-anchorage-connection.png" alt="Anchorage and fastening design" />
+              <a class="btn btn-outline" href="anchorage-and-fastening-design.html">Explore</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.25s">
+              <span class="svc-num">06</span>
+              <h3>Lateral Load Resisting Systems</h3>
+              <p>Engineering support for shear walls, braced systems, diaphragms, and stability review under wind and seismic demands.</p>
+              <img class="svc-img" src="images/7-erection-plan.png" alt="Lateral load resisting systems" />
+              <a class="btn btn-outline" href="lateral-load-resisting-systems.html">Explore</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="container svc-category">
+          <p class="svc-cat-label fade-up">Repair, Compliance, and Project Support</p>
+          <div class="services-grid">
+            <article class="service-card fade-up" style="--delay:0.05s">
+              <span class="svc-num">07</span>
+              <h3>Structural Repair &amp; Retrofit</h3>
+              <p>Existing building strengthening, repair strategy, rehabilitation planning, and upgrade concepts for deficient structures.</p>
+              <img class="svc-img" src="images/1-structural-renovation.png" alt="Structural repair and retrofit" />
+              <a class="btn btn-outline" href="structural-repair-and-retrofit.html">Explore</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.15s">
+              <span class="svc-num">08</span>
+              <h3>Code Compliance &amp; Engineering Reports</h3>
+              <p>Structural code review, permit support, technical letters, and engineering reports for due diligence and filings.</p>
+              <img class="svc-img" src="images/14-failure-analysis.png" alt="Code compliance and engineering reports" />
+              <a class="btn btn-outline" href="code-compliance-and-engineering-reports.html">Explore</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.25s">
+              <span class="svc-num">09</span>
+              <h3>Construction Engineering Support</h3>
+              <p>Responsive technical support for RFIs, submittals, site coordination, and installation questions during active construction.</p>
+              <img class="svc-img" src="images/3-supervision-consultancy1.png" alt="Construction engineering support" />
+              <a class="btn btn-outline" href="construction-engineering-support.html">Explore</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="container svc-category">
+          <p class="svc-cat-label fade-up">Explore the Full Architecture</p>
+          <div class="services-grid">
+            <article class="service-card fade-up" style="--delay:0.05s">
+              <span class="svc-num">10</span>
+              <h3>Engineering Systems Hub</h3>
+              <p>See how connection design, steel systems, timber engineering, retrofit, and construction support work together across project delivery.</p>
+              <img class="svc-img" src="images/7-erection-plan.png" alt="Engineering systems hub" />
+              <a class="btn btn-outline" href="engineering-systems.html">Open Hub</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.15s">
+              <span class="svc-num">11</span>
+              <h3>Services Hub</h3>
+              <p>Browse the full consulting architecture across structural, forensic, construction, systems, reporting, and project support services.</p>
+              <img class="svc-img" src="images/3-supervision-consultancy1.png" alt="Services hub" />
+              <a class="btn btn-outline" href="services.html">Open Hub</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.25s">
+              <span class="svc-num">12</span>
+              <h3>Technical Resources</h3>
+              <p>Use the new resources section to navigate structural engineering guides, connection topics, retrofit content, and compliance articles.</p>
+              <img class="svc-img" src="images/14-failure-analysis.png" alt="Technical resources" />
+              <a class="btn btn-outline" href="resources.html">Open Resources</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section why-section">
+        <div class="container why-inner">
+          <div class="why-left slide-left">
+            <span class="section-label-pill">Why Asvakas</span>
+            <h2 class="why-heading">Why Asvakas?</h2>
+            <a class="btn btn-outline" href="contact.html">Contact Our Engineering Team &rarr;</a>
+          </div>
+          <div class="why-right">
+            <p class="why-tagline fade-up">Trusted by owners, architects, contractors, and developers who need technically rigorous analysis, better coordination, and documentation that holds up under review.</p>
+            <div class="why-grid">
+              <div class="why-card fade-up" style="--delay:0.05s">
+                <div class="why-icon">
+                  <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
+                </div>
+                <h4>Proven Engineering Quality</h4>
+                <p>Our team brings technical depth in structural systems, connection behavior, retrofit planning, and construction support.</p>
+              </div>
+              <div class="why-card fade-up" style="--delay:0.15s">
+                <div class="why-icon">
+                  <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h4>On-Time Delivery</h4>
+                <p>We help teams resolve critical engineering issues without slowing procurement, field execution, or permit progress.</p>
+              </div>
+              <div class="why-card fade-up" style="--delay:0.1s">
+                <div class="why-icon">
+                  <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                </div>
+                <h4>Safety First Approach</h4>
+                <p>We focus on safe load transfer, code compliance, structural stability, and risk reduction across the full project lifecycle.</p>
+              </div>
+              <div class="why-card fade-up" style="--delay:0.2s">
+                <div class="why-icon">
+                  <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                </div>
+                <h4>Modern Engineering Solutions</h4>
+                <p>We align analysis, detailing, coordination, and reporting so the engineering intent is clear from design through construction.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="projects-section" id="projects">
+        <div class="container">
+          <div class="projects-header">
+            <h2 class="fade-up">Featured Projects</h2>
+            <p class="projects-subtext fade-up" style="--delay:0.12s">A closer look at our craftsmanship, showcasing quality in every project.</p>
+          </div>
+          <div class="project-slider-wrap slide-up">
+            <div class="slide-image-wrap">
+              <img class="slide-img" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80" alt="Restoration of The Grand Oak Mansion historic building" />
+              <p class="slide-caption">A meticulous restoration of a historic mansion, preserving its classic architecture while integrating modern amenities for a luxurious living experience.</p>
+            </div>
+            <div class="slide-info-panel">
+              <div class="slide-info-top">
+                <span class="slide-tag">Renovation</span>
+                <h3 class="slide-title">The Grand Oak<br>Mansion</h3>
+                <p class="slide-year">2025</p>
+                <p class="slide-client">Miller Estate</p>
+              </div>
+              <div class="slide-nav">
+                <button class="slide-nav-btn active" data-slide="0" aria-label="Project 1">
+                  <span class="slide-bar"></span>
+                  <span class="slide-num">01</span>
+                </button>
+                <button class="slide-nav-btn" data-slide="1" aria-label="Project 2">
+                  <span class="slide-bar"></span>
+                  <span class="slide-num">02</span>
+                </button>
+                <button class="slide-nav-btn" data-slide="2" aria-label="Project 3">
+                  <span class="slide-bar"></span>
+                  <span class="slide-num">03</span>
+                </button>
+                <button class="slide-nav-btn" data-slide="3" aria-label="Project 4">
+                  <span class="slide-bar"></span>
+                  <span class="slide-num">04</span>
+                </button>
+                <button class="slide-nav-btn" data-slide="4" aria-label="Project 5">
+                  <span class="slide-bar"></span>
+                  <span class="slide-num">05</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section process-section" id="process">
+        <div class="container">
+          <div class="process-layout">
+            <div class="process-intro">
+              <span class="section-label-pill">How We Work</span>
+              <h2>Our Work Process</h2>
+              <p>A proven process to bring your ideas to life turns concepts into reality through strategic planning and execution.</p>
+            </div>
+            <div class="process-steps">
+              <article class="process-step">
+                <p class="process-step-count"><strong>01</strong><span>/03</span><i aria-hidden="true">→</i></p>
+                <h3>Consultation & Planning</h3>
+                <p>Understanding your needs, budget, and vision ensures your project aligns with your goals while staying within practical limits.</p>
+              </article>
+              <article class="process-step">
+                <p class="process-step-count"><strong>02</strong><span>/03</span><i aria-hidden="true">→</i></p>
+                <h3>Design & Architecture</h3>
+                <p>Visualizing the project with practical design and structural precision aligns aesthetics, function, and code compliance.</p>
+              </article>
+              <article class="process-step">
+                <p class="process-step-count"><strong>03</strong><span>/03</span><i aria-hidden="true">→</i></p>
+                <h3>Construction & Management</h3>
+                <p>From site coordination to quality control, we guide execution with consistency so the final build meets every requirement.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonial-section" id="testimonials">
+        <div class="container">
+          <div class="testimonial-head">
+            <div class="testimonial-head-copy fade-up">
+              <span class="section-label-pill">Testimonials</span>
+              <h2>What Our Clients Say</h2>
+              <p class="testimonial-subtext">Hear from teams who built with us and how we translated complex engineering requirements into results.</p>
+            </div>
+            <div class="testimonial-controls" aria-label="Testimonial controls">
+              <button class="testimonial-btn testimonial-prev" type="button" aria-label="Previous testimonial">&#8592;</button>
+              <button class="testimonial-btn testimonial-next" type="button" aria-label="Next testimonial">&#8594;</button>
+            </div>
+          </div>
+
+          <div class="testimonial-slider">
+            <div class="testimonial-track">
+              <article class="testimonial-card">
+                <p class="testimonial-quote-mark" aria-hidden="true">“</p>
+                <p class="testimonial-quote">Asvakas exceeded all expectations. Their team turned a difficult compliance scope into a smooth, well-managed delivery.</p>
+                <p class="testimonial-body">From initial inspection to final sign-off, communication was clear and every milestone was handled with precision.</p>
+                <p class="testimonial-author"><strong>Emily Santos</strong><span>Residential Client</span></p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-quote-mark" aria-hidden="true">“</p>
+                <p class="testimonial-quote">From consultation to handover, their engineers were responsive, practical, and deeply knowledgeable.</p>
+                <p class="testimonial-body">They coordinated our office renovation with contractors and inspectors while keeping timeline risks under control.</p>
+                <p class="testimonial-author"><strong>Mark Li</strong><span>Commercial Developer</span></p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-quote-mark" aria-hidden="true">“</p>
+                <p class="testimonial-quote">Their temporary works strategy saved us from major delays during excavation and underpinning.</p>
+                <p class="testimonial-body">The documentation was clean, permit-ready, and easy for our site team to execute without confusion.</p>
+                <p class="testimonial-author"><strong>Sophia Rivera</strong><span>General Contractor</span></p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-quote-mark" aria-hidden="true">“</p>
+                <p class="testimonial-quote">We finally found an engineering partner that balances technical depth with real-world constructability.</p>
+                <p class="testimonial-body">Their team anticipated issues early and helped us make smarter decisions before costs escalated.</p>
+                <p class="testimonial-author"><strong>Daniel Brooks</strong><span>Property Manager</span></p>
+              </article>
+
+              <article class="testimonial-card">
+                <p class="testimonial-quote-mark" aria-hidden="true">“</p>
+                <p class="testimonial-quote">Inspection reporting and follow-up recommendations were clear, actionable, and built for compliance.</p>
+                <p class="testimonial-body">Asvakas gave us confidence that our facility upgrades were safe, code-aligned, and future-ready.</p>
+                <p class="testimonial-author"><strong>Priya Nair</strong><span>Facilities Director</span></p>
+              </article>
+            </div>
+          </div>
+
+          <div class="testimonial-dots" aria-label="Testimonial pagination"></div>
+        </div>
+      </section>
+
+      <section id="blog" class="section blog-section">
+        <div class="container">
+          <div class="blog-header">
+            <span class="section-label-pill fade-up">Blog</span>
+            <h2 class="fade-up" style="--delay:0.1s">Insights &amp; Updates</h2>
+            <p class="fade-up" style="--delay:0.2s">Explore trends, tips, and practical insights in structural engineering and construction execution.</p>
+          </div>
+
+          <div class="blog-layout">
+            <article class="blog-featured slide-left">
+              <img src="images/22-home-featured.png" alt="Modern architectural building facade, Asvakas project" />
+              <div class="blog-meta-row">
+                <span class="blog-pill">Client Guide</span>
+                <time datetime="2025-09-16">September 16, 2025</time>
+              </div>
+              <h3>Choosing the Right Contractor for Your Project</h3>
+              <p class="blog-author">Albert Sandy <span class="blog-dot" aria-hidden="true"></span> 10 minutes reading</p>
+            </article>
+
+            <div class="blog-list">
+              <article class="blog-item slide-right" style="--delay:0.1s">
+                <div class="blog-meta-row">
+                  <span class="blog-pill">Construction Tips</span>
+                  <time datetime="2025-09-16">September 16, 2025</time>
+                </div>
+                <h3>How to Plan Your Commercial Build Effectively and Efficiently</h3>
+                <p class="blog-author">Albert Sandy <span class="blog-dot" aria-hidden="true"></span> 5 minutes reading</p>
+              </article>
+
+              <article class="blog-item slide-right" style="--delay:0.22s">
+                <div class="blog-meta-row">
+                  <span class="blog-pill">Green Building</span>
+                  <time datetime="2025-09-16">September 16, 2025</time>
+                </div>
+                <h3>Why Sustainable and Efficient Building Matters in 2025</h3>
+                <p class="blog-author">Jordy Alba <span class="blog-dot" aria-hidden="true"></span> 7 minutes reading</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-body">
+        <div class="container footer-top">
+          <div class="footer-brand-col">
+            <a href="#top" class="footer-brand">
+              <span class="footer-brand-icon"></span>
+              Asvakas Inc
+            </a>
+            <h4 class="footer-sub-heading">Subscribe for Updates</h4>
+            <p class="footer-sub-text">Get engineering insights, NYC compliance updates, and industry news delivered to your inbox.</p>
+            <form class="footer-subscribe" onsubmit="return false;">
+              <input type="email" placeholder="Enter your email address" aria-label="Email" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+          <div class="footer-links-wrap">
+            <div class="footer-col">
+              <h5>Company</h5>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="engineering-systems.html">Engineering Systems</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5>Social Media</h5>
+              <ul>
+                <li><a href="https://www.linkedin.com/company/asvakas" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
+                <li><a href="https://twitter.com/" target="_blank" rel="noopener">Twitter/X</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h5>Support</h5>
+              <ul>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="blog/index.html">Blog</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="help.html">Help Center</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <span>© 2026 Asvakas Inc. All Rights Reserved.</span>
+          <a href="privacy-policy.html">Privacy Policy &amp; Terms of Use</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      const animObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            animObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      document.querySelectorAll('.fade-up, .slide-left, .slide-right, .slide-up').forEach(el => animObserver.observe(el));
+
+      /* ── Hero background slideshow ── */
+      (function () {
+        const slides = document.querySelectorAll('.hero-slide');
+        let current = Math.floor(Math.random() * slides.length);
+        slides[current].classList.add('active');
+        setInterval(() => {
+          slides[current].classList.remove('active');
+          current = (current + 1) % slides.length;
+          slides[current].classList.add('active');
+        }, 12000);
+      })();
+    </script>
+    <script src="region.js"></script>
+    <script>
+      (function () {
+        var phrases = [
+          'Connection Design for Complex Load Paths.',
+          'Anchorage Analysis for Existing and New Work.',
+          'Forensic Investigation and Technical Reporting.',
+          'Construction Engineering Support in the Field.',
+          'Retrofit Strategy for Existing Structures.',
+          'Code-Compliant Engineering Documentation.'
+        ];
+        var el = document.getElementById('heroRotate');
+        if (!el) return;
+        var idx = 0;
+        function next() {
+          el.classList.add('fade-out');
+          setTimeout(function () {
+            idx = (idx + 1) % phrases.length;
+            el.textContent = phrases[idx];
+            el.classList.remove('fade-out');
+            el.classList.add('fade-in');
+            setTimeout(function () { el.classList.remove('fade-in'); }, 600);
+          }, 560);
+        }
+        setInterval(next, 5500);
+      })();
+    </script>
+  </body>
+</html>
