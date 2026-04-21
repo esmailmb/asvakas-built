@@ -46,113 +46,60 @@
       <div class="container header-inner">
         <a href="/#top" class="brand">Asvakas<span class="brand-eng">ENG</span></a>
         <nav class="main-nav" id="mainNav">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/services">Services</a>
-          <a href="/projects">Projects</a>
-          <a href="/blog/" class="active">Blog</a>
-          <a href="/contact" class="nav-cta">Contact</a>
+          <a href="/">Home</a><a href="/about">About</a><a href="/services">Services</a><a href="/engineering-systems">Engineering Systems</a><a href="/projects">Projects</a><a href="/resources" class="active">Resources</a><a href="/contact">Contact</a>
         </nav>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+        <div class="region-picker" id="regionPicker"><button class="rp-btn" aria-haspopup="listbox" aria-expanded="false"><span class="rp-flag">🇺🇸</span><span class="rp-label">USA</span><span class="rp-arrow">▾</span></button><ul class="rp-dropdown" role="listbox"><li class="rp-option" data-region="usa" role="option">🇺🇸 USA</li><li class="rp-option" data-region="canada" role="option">🇨🇦 Canada</li></ul></div>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
       </div>
     </header>
-
     <main>
-      <article class="blog-article">
-        <header class="article-hero" style="background-image:url('https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1800&q=80')">
-          <div class="article-hero-overlay"></div>
-          <div class="container article-hero-inner">
-            <div class="article-meta">
-              <a href="/blog/" class="back-link">← Blog</a>
-              <span class="article-cat">Inspections</span>
-            </div>
-            <h1>NYC Elevator Permit Filing Guide:<br>DOB NOW, Code References, and Structural Coordination</h1>
-            <p class="article-sub">The official NYC resources matter, but so does understanding how the building-side structural scope fits the filing team.</p>
+      <section class="page-hero"><div class="container page-hero-inner"><div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><a href="/blog/">Blog</a><span class="breadcrumb-sep">›</span><span>NYC Elevator Permit Filing Guide</span></div><span class="page-hero-pill">Inspections</span><h1>NYC Elevator Permit Filing Guide: DOB NOW, Code References, and Structural Coordination</h1><p>The official NYC resources matter, but so does understanding how the building-side structural scope fits the filing team.</p></div></section>
+      <div class="container article-layout">
+        <article class="article-body">
+          <div class="article-meta-row"><span class="blog-cat-pill">Inspections</span><span class="article-meta-sep">|</span><span>6 min read</span><span class="article-meta-sep">|</span><span>April 2026 · By Asvakas Engineering</span></div>
+          <figure class="article-lead-media"><img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1800&q=80" alt="Elevator filing coordination and code reference review" /></figure>
+          <div class="toc-box"><h4>In This Article</h4><ol><li><a href="#official-resources">Official NYC reference points</a></li><li><a href="#team-roles">How the filing team usually splits responsibilities</a></li><li><a href="#structural-docs">Structural documents that often support elevator work</a></li><li><a href="#common-misses">Common coordination misses</a></li><li><a href="#faq">Frequently Asked Questions</a></li></ol></div>
+
+          <h2 id="official-resources">Start with the official NYC reference points</h2>
+          <p>Elevator work in NYC should be grounded in the active DOB resources, not recycled assumptions from unrelated building filings. The most useful public starting points are the <a href="https://www.nyc.gov/site/buildings/industry/dob-now-build-resources-elevator.page" target="_blank" rel="noopener">DOB NOW: Build Elevator Filings Resources</a>, the broader <a href="https://www.nyc.gov/site/buildings/industry/dob-now-build.page" target="_blank" rel="noopener">DOB NOW: Build</a> portal guidance, and the <a href="https://www.nyc.gov/site/buildings/industry/dob-now-public-portal.page" target="_blank" rel="noopener">DOB NOW Public Portal</a> for public-facing status review.</p>
+          <p>From a code perspective, the 2022 NYC Construction Codes page is the anchor reference. Elevator teams typically need to coordinate at least Chapter 30 for elevator requirements, Appendix K for NYC modifications to elevator-related standards, and often Chapters 11, 16, 17, and 33 depending on accessibility, structural design, inspection, and construction-safeguard issues.</p>
+
+          <h2 id="team-roles">How the filing team usually splits responsibilities</h2>
+          <p>Elevator filings are rarely a one-person exercise. The elevator contractor or specialty consultant typically leads equipment-specific requirements. The architect and code team help coordinate the broader building pathway. The structural engineer supports the building-side scope when slabs, walls, pits, supports, roofs, or receiving structure are affected.</p>
+          <p>That split matters because many filing delays happen when the structural implications are assumed to be minor and then discovered late. If the receiving structure needs localized design or if openings must be framed, that work should be defined clearly enough to support the overall filing narrative.</p>
+
+          <h2 id="structural-docs">Structural documents that often support elevator work</h2>
+          <ul>
+            <li>Existing-condition observations or assumptions tied to the hoistway area.</li>
+            <li>Localized drawings for slab openings, shaft wall changes, support framing, or pit-related work.</li>
+            <li>Calculations or engineering notes for receiving-structure checks.</li>
+            <li>Coordination narratives that explain what the structural scope covers and what remains specialty work.</li>
+            <li>Inspection or construction-phase coordination where the scope triggers related structural oversight.</li>
+          </ul>
+          <p>The exact package depends on the project, but the goal is consistent: make the building-side scope explicit enough that the rest of the filing team can proceed without ambiguity.</p>
+
+          <h2 id="common-misses">Common coordination misses</h2>
+          <p>The most common problems are not abstract code errors. They are gaps between disciplines: assuming an opening can be field-cut without structural review, assuming pit work is isolated from waterproofing and below-grade conditions, assuming an MRL conversion has no receiving-structure implications, or relying on incomplete record drawings without early verification.</p>
+          <p>Good coordination means treating the structural scope as part of the filing strategy, not as a cleanup task after the elevator concept is already fixed.</p>
+
+          <div class="faq-section">
+            <h2 id="faq">Frequently Asked Questions</h2>
+            <div class="faq-item"><div class="faq-question">Does every elevator filing need structural drawings?</div><div class="faq-answer"><p>No. The need depends on whether the building-side structure is affected. When openings, pit changes, supports, or receiving-structure issues appear, structural documentation is usually part of the coordinated package.</p></div></div>
+            <div class="faq-item"><div class="faq-question">Where can owners verify public filing information?</div><div class="faq-answer"><p>The DOB NOW Public Portal is the public-facing path for viewing DOB NOW transactions and related status information.</p></div></div>
+            <div class="faq-item"><div class="faq-question">Can Asvakas replace the elevator contractor or testing agency?</div><div class="faq-answer"><p>No. Asvakas supports the building-side structural and coordination scope. Elevator installation, maintenance, and required testing remain with the appropriate elevator parties.</p></div></div>
           </div>
-        </header>
 
-        <div class="container article-layout">
-          <aside class="article-toc">
-            <p class="toc-label">Contents</p>
-            <ol>
-              <li><a href="#official-resources">Official NYC reference points</a></li>
-              <li><a href="#team-roles">How the filing team usually splits responsibilities</a></li>
-              <li><a href="#structural-docs">Structural documents that often support elevator work</a></li>
-              <li><a href="#common-misses">Common coordination misses</a></li>
-              <li><a href="#faq">FAQ</a></li>
-            </ol>
-          </aside>
-
-          <div class="article-body">
-            <section id="official-resources">
-              <h2>Start with the official NYC reference points</h2>
-              <p>Elevator work in NYC should be grounded in the active DOB resources, not recycled assumptions from unrelated building filings. The most useful public starting points are the <a href="https://www.nyc.gov/site/buildings/industry/dob-now-build-resources-elevator.page" target="_blank" rel="noopener">DOB NOW: Build Elevator Filings Resources</a>, the broader <a href="https://www.nyc.gov/site/buildings/industry/dob-now-build.page" target="_blank" rel="noopener">DOB NOW: Build</a> portal guidance, and the <a href="https://www.nyc.gov/site/buildings/industry/dob-now-public-portal.page" target="_blank" rel="noopener">DOB NOW Public Portal</a> for public-facing status review.</p>
-              <p>From a code perspective, the 2022 NYC Construction Codes page is the anchor reference. Elevator teams typically need to coordinate at least Chapter 30 for elevator requirements, Appendix K for NYC modifications to elevator-related standards, and often Chapters 11, 16, 17, and 33 depending on accessibility, structural design, inspection, and construction-safeguard issues.</p>
-            </section>
-
-            <section id="team-roles">
-              <h2>How the filing team usually splits responsibilities</h2>
-              <p>Elevator filings are rarely a one-person exercise. The elevator contractor or specialty consultant typically leads equipment-specific requirements. The architect and code team help coordinate the broader building pathway. The structural engineer supports the building-side scope when slabs, walls, pits, supports, roofs, or receiving structure are affected.</p>
-              <p>That split matters because many filing delays happen when the structural implications are assumed to be minor and then discovered late. If the receiving structure needs localized design or if openings must be framed, that work should be defined clearly enough to support the overall filing narrative.</p>
-            </section>
-
-            <section id="structural-docs">
-              <h2>Structural documents that often support elevator work</h2>
-              <ul>
-                <li>Existing-condition observations or assumptions tied to the hoistway area</li>
-                <li>Localized drawings for slab openings, shaft wall changes, support framing, or pit-related work</li>
-                <li>Calculations or engineering notes for receiving-structure checks</li>
-                <li>Coordination narratives that explain what the structural scope covers and what remains specialty work</li>
-                <li>Inspection or construction-phase coordination where the scope triggers related structural oversight</li>
-              </ul>
-              <p>The exact package depends on the project, but the goal is consistent: make the building-side scope explicit enough that the rest of the filing team can proceed without ambiguity.</p>
-            </section>
-
-            <section id="common-misses">
-              <h2>Common coordination misses</h2>
-              <p>The most common problems are not abstract code errors. They are gaps between disciplines: assuming an opening can be field-cut without structural review, assuming pit work is isolated from waterproofing and below-grade conditions, assuming an MRL conversion has no receiving-structure implications, or relying on incomplete record drawings without early verification.</p>
-              <p>Good coordination means treating the structural scope as part of the filing strategy, not as a cleanup task after the elevator concept is already fixed.</p>
-            </section>
-
-            <section id="faq">
-              <h2>Frequently Asked Questions</h2>
-              <div class="faq-list">
-                <div class="faq-item">
-                  <h3>Does every elevator filing need structural drawings?</h3>
-                  <p>No. The need depends on whether the building-side structure is affected. When openings, pit changes, supports, or receiving-structure issues appear, structural documentation is usually part of the coordinated package.</p>
-                </div>
-                <div class="faq-item">
-                  <h3>Where can owners verify public filing information?</h3>
-                  <p>The DOB NOW Public Portal is the public-facing path for viewing DOB NOW transactions and related status information.</p>
-                </div>
-                <div class="faq-item">
-                  <h3>Can Asvakas replace the elevator contractor or testing agency?</h3>
-                  <p>No. Asvakas supports the building-side structural and coordination scope. Elevator installation, maintenance, and required testing remain with the appropriate elevator parties.</p>
-                </div>
-              </div>
-            </section>
-
-            <div class="article-cta">
-              <h3>Need help clarifying the structural side of an elevator filing?</h3>
-              <p>Asvakas can review the building-side scope, define what needs to be documented, and coordinate with the rest of the elevator filing team.</p>
-              <a href="/contact?service=elevator-consulting" class="btn-solid">Request a Consultation →</a>
-            </div>
-          </div>
-        </div>
-      </article>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="brand">Asvakas<span class="brand-eng">ENG</span></p>
-        <p>&copy; 2026 Asvakas Engineering PLLC. All rights reserved.</p>
-        <nav class="footer-nav">
-          <a href="/privacy-policy">Privacy Policy</a>
-          <a href="/contact">Contact</a>
-        </nav>
+          <div class="article-cta"><h3>Need help clarifying the structural side of an elevator filing?</h3><p>Asvakas can review the building-side scope, define what needs to be documented, and coordinate with the rest of the elevator filing team.</p><a href="/contact?service=elevator-consulting" class="btn btn-solid">Request a Consultation</a></div>
+        </article>
+        <aside class="article-sidebar">
+          <div class="sidebar-cta-box"><h4>Elevator Filing Coordination</h4><p>Clarify the building-side structural scope before elevator filings get delayed by late discoveries.</p><a href="/elevator-installation-and-modernization-consulting" class="btn">Open Service →</a></div>
+          <div class="sidebar-box"><h4>Related Articles</h4><ul class="related-list"><li><a href="/blog/elevator-installation-structural-engineering-nyc">Elevator Installation in Existing NYC Buildings</a></li><li><a href="/blog/elevator-modernization-structural-upgrades-nyc">Elevator Modernization in NYC</a></li><li><a href="/blog/elevator-hoistway-openings-structural-design-nyc">Elevator Hoistway Openings in NYC</a></li><li><a href="/blog/mrl-elevator-structural-considerations-nyc">MRL Elevators in NYC</a></li></ul></div>
+        </aside>
       </div>
-    </footer>
+    </main>
+    <footer class="footer"><div class="footer-body"><div class="container footer-top"><div class="footer-brand-col"><a href="/#top" class="footer-brand"><span class="footer-brand-icon"></span>Asvakas Inc</a><h4 class="footer-sub-heading">Subscribe for Updates</h4><p class="footer-sub-text">Get engineering insights, code updates, and project guidance delivered to your inbox.</p><form class="footer-subscribe" onsubmit="return false;"><input type="email" placeholder="Enter your email address" aria-label="Email" /><button type="submit">Subscribe</button></form></div><div class="footer-links-wrap"><div class="footer-col"><h5>Company</h5><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/engineering-systems">Engineering Systems</a></li><li><a href="/resources">Resources</a></li><li><a href="/contact">Contact</a></li></ul></div><div class="footer-col"><h5>Knowledge Hub</h5><ul><li><a href="/resources">Resources</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div><div class="footer-col"><h5>Privacy</h5><ul><li><a href="/privacy-policy">Privacy Policy &amp; Terms</a></li></ul></div></div></div></div><div class="footer-bottom"><div class="container footer-bottom-inner"><span>© 2026 Asvakas Inc. All Rights Reserved.</span><a href="/privacy-policy">Privacy Policy &amp; Terms of Use</a></div></div></footer>
     <script src="../script.js"></script>
+    <script>document.querySelectorAll('.faq-question').forEach((q)=>{q.addEventListener('click',()=>{q.closest('.faq-item').classList.toggle('open');});});</script>
     <script src="../region.js"></script>
   </body>
 </html>
