@@ -19,10 +19,12 @@
           <a href="index.html" data-i18n="nav.home">Home</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="blog/index.html" data-i18n="nav.engineering">Engineering Systems</a>
           <a href="projects.html" class="active" data-i18n="nav.projects">Projects</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+          <a href="help.html" data-i18n="nav.resources">Resources</a>
+          <a href="contact.html" data-i18n="nav.contactShort">Contact</a>
         </nav>
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; margin-left: auto;">
+        <div class="header-controls">
           <div class="region-picker" id="regionPicker">
             <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
               <span class="rp-flag">🇨🇦</span>
@@ -297,7 +299,7 @@
           <div class="footer-links-wrap">
             <div class="footer-col"><h5 data-i18n="footer.col1.h">Company</h5><ul><li><a href="index.html" data-i18n="footer.link.home">Home</a></li><li><a href="about.html" data-i18n="footer.link.about">About</a></li><li><a href="services.html" data-i18n="footer.link.services">Services</a></li><li><a href="projects.html" data-i18n="footer.link.projects">Projects</a></li></ul></div>
             <div class="footer-col"><h5 data-i18n="footer.col2.h">Social Media</h5><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">Twitter/X</a></li></ul></div>
-            <div class="footer-col"><h5 data-i18n="footer.col3.h">Support</h5><ul><li><a href="blog/index.html" data-i18n="footer.link.blog">Blog</a></li><li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li><li><a href="blog/index.html" data-i18n="footer.link.help">Help Center</a></li></ul></div>
+            <div class="footer-col"><h5 data-i18n="footer.col3.h">Support</h5><ul><li><a href="blog/index.html" data-i18n="footer.link.blog">Blog</a></li><li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li><li><a href="help.html" data-i18n="footer.link.help">Help Center</a></li></ul></div>
           </div>
         </div>
       </div>
@@ -329,19 +331,23 @@
       /* Portfolio filter */
       const filts = document.querySelectorAll('.filt');
       const portCards = document.querySelectorAll('.port-card');
+      function applyProjectFilter(filter) {
+        portCards.forEach(card => {
+          const show = filter === 'all' || card.dataset.cat === filter;
+          card.hidden = !show;
+        });
+      }
+
       filts.forEach(btn => {
         btn.addEventListener('click', () => {
-          filts.forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          const f = btn.dataset.filter;
-          portCards.forEach(c => {
-            const show = f === 'all' || c.dataset.cat === f;
-            c.style.opacity = show ? '1' : '0.25';
-            c.style.pointerEvents = show ? '' : 'none';
-            c.style.transform = show ? 'scale(1)' : 'scale(0.97)';
+          filts.forEach(otherBtn => {
+            otherBtn.classList.toggle('active', otherBtn === btn);
           });
+          applyProjectFilter(btn.dataset.filter);
         });
       });
+
+      applyProjectFilter(document.querySelector('.filt.active')?.dataset.filter || 'all');
     </script>
     <script src="../region.js"></script>
     <script src="lang.js"></script>

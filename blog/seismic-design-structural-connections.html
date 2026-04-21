@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Seismic Design of Structural Connections | Asvakas Engineering</title>
-  <meta name="description" content="Learn about seismic design of connections, dynamic loading, ductility, and Asvakas Engineering's approach to seismic performance." />
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="stylesheet" href="../engineering.css" />
-</head>
-<body class="blog-article-page">
-  <header class="site-header" id="top">
-    <!-- ...existing code... -->
-  </header>
-  <main>
-    <article class="blog-article container">
-      <h1>Seismic Design of Structural Connections</h1>
-      <p>Seismic forces impose dynamic and cyclic loading conditions that require special design considerations.</p>
-      <h2>Characteristics of Seismic Loading</h2>
-      <ul>
-        <li>Reversed cyclic loading</li>
-        <li>High deformation demands</li>
-        <li>Energy dissipation requirements</li>
-      </ul>
-      <h2>Design Philosophy</h2>
-      <ul>
-        <li>Ductility</li>
-        <li>Redundancy</li>
-        <li>Controlled failure mechanisms</li>
-      </ul>
-      <h2>Connection Requirements</h2>
-      <ul>
-        <li>Allow deformation without brittle failure</li>
-        <li>Maintain load path continuity</li>
-        <li>Resist cyclic degradation</li>
-      </ul>
-      <h2>Asvakas Role</h2>
-      <p>We design connections that meet seismic performance objectives and code requirements.</p>
-    </article>
-  </main>
-  <footer class="footer">
-    <!-- ...existing code... -->
-  </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seismic Design of Structural Connections | Asvakas Engineering</title>
+    <meta name="description" content="A technical overview of seismic connection design, ductility, detailing hierarchy, inelastic demand, and why gravity-only assumptions can fail in seismic loading." />
+    
+    <link rel="canonical" href="https://asvakas.com/blog/seismic-design-structural-connections" />
+    <meta property="og:url" content="https://asvakas.com/blog/seismic-design-structural-connections" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../blog.css" />
+  </head>
+  <body class="blog-article-page">
+    <header class="site-header scrolled" id="top">
+      <div class="container header-inner">
+        <a href="/#top" class="brand">Asvakas<span class="brand-eng">ENG</span></a>
+        <nav class="main-nav" id="mainNav">
+          <a href="/">Home</a><a href="/about">About</a><a href="/services">Services</a><a href="/engineering-systems">Engineering Systems</a><a href="/projects">Projects</a><a href="/resources" class="active">Resources</a><a href="/contact">Contact</a>
+        </nav>
+        <div class="region-picker" id="regionPicker"><button class="rp-btn" aria-haspopup="listbox" aria-expanded="false"><span class="rp-flag">🇺🇸</span><span class="rp-label">USA</span><span class="rp-arrow">▾</span></button><ul class="rp-dropdown" role="listbox"><li class="rp-option" data-region="usa" role="option">🇺🇸 USA</li><li class="rp-option" data-region="canada" role="option">🇨🇦 Canada</li></ul></div>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+    <main>
+      <section class="page-hero"><div class="container page-hero-inner"><div class="breadcrumb"><a href="/">Home</a><span class="breadcrumb-sep">›</span><a href="/resources">Resources</a><span class="breadcrumb-sep">›</span><span>Seismic Design of Structural Connections</span></div><span class="page-hero-pill">Seismic Detailing</span><h1>Seismic Design of Structural Connections</h1><p>Seismic connection design is different from gravity-only connection design because the objective is not just to resist force once. It is to provide reliable behavior through load reversals, inelastic demand, and deformation beyond the purely elastic range.</p></div></section>
+      <div class="container article-layout">
+        <article class="article-body">
+          <div class="article-meta-row"><span class="blog-cat-pill">Seismic Detailing</span><span class="article-meta-sep">|</span><span>8 min read</span><span class="article-meta-sep">|</span><span>April 2026 · By Asvakas Engineering</span></div>
+          <div class="toc-box"><h4>In This Article</h4><ol><li><a href="#why-different">Why Seismic Connections Are Different</a></li><li><a href="#ductility">Ductility and Detailing Hierarchy</a></li><li><a href="#load-reversal">Load Reversal and Cyclic Demand</a></li><li><a href="#common-risks">Common Seismic Connection Risks</a></li><li><a href="#coordination">Coordination with the Lateral System</a></li><li><a href="#faq">Frequently Asked Questions</a></li></ol></div>
+
+          <h2 id="why-different">Why Seismic Connections Are Different</h2>
+          <p>A connection that performs acceptably under gravity load may behave poorly during seismic demand because earthquake loading introduces reversal, cumulative damage, and deformation requirements that simple static checks do not capture. The issue is not only peak force. It is how the detail behaves as the structure cycles through repeated inelastic response.</p>
+          <p>That is why seismic connection design depends on more than bolt count or weld size. Geometry, expected deformation mode, hierarchy of yielding, and the relationship between the connection and the surrounding lateral system all matter. If the wrong component yields first, the system may lose capacity in a brittle and undesirable way.</p>
+
+          <h2 id="ductility">Ductility and Detailing Hierarchy</h2>
+          <p>Seismic design frequently aims to produce ductile behavior, meaning the system can deform and dissipate energy without sudden brittle failure. To achieve that, engineers need a clear hierarchy of behavior. Some components may be intended to yield while others must remain protected. The connection detail therefore has to support the intended mechanism rather than undermine it.</p>
+          <p>This is one reason seismic detailing is closely tied to <a href="/lateral-load-resisting-systems">Lateral Load Resisting Systems</a> and <a href="/structural-connection-design">Structural Connection Design</a>. A connection cannot be designed correctly for seismic performance unless the broader system behavior is understood.</p>
+
+          <h2 id="load-reversal">Load Reversal and Cyclic Demand</h2>
+          <p>Under seismic motion, forces reverse direction repeatedly. A connection may go from tension to compression, from positive to negative rotation, or from one brace demand state to the opposite. Details that rely on one-direction-only assumptions can degrade quickly under those conditions. Slip, hole elongation, local buckling, low-cycle fatigue, or fracture-sensitive details can all become critical.</p>
+          <p>That makes constructability and detailing quality especially important. Small misalignments or poor field adjustments that might be tolerated in low-demand conditions can become serious weaknesses when the connection is expected to cycle inelastically.</p>
+
+          <h2 id="common-risks">Common Seismic Connection Risks</h2>
+          <p>Typical risks include brittle fracture at welded or notched zones, insufficient ductility at brace gusset interfaces, unintended prying, poor confinement at boundary elements, weak anchorage at the base of lateral elements, and connections that are overly stiff or overly flexible for the expected system response. The connection may also be adequate in strength but badly coordinated with the deformation demand of the adjacent members.</p>
+          <p>These issues are especially important in retrofit work, where new seismic demand is being introduced into existing materials, legacy geometry, or incomplete original detailing.</p>
+
+          <h2 id="coordination">Coordination with the Lateral System</h2>
+          <p>Seismic connection design is ultimately a system-coordination exercise. It depends on how diaphragms collect force, how braces or walls resist it, how supports and anchors complete the path, and what kind of deformation the building is expected to experience. When those layers are not aligned, connection detailing becomes guesswork.</p>
+          <p>That is why seismic connection review often overlaps with <a href="/structural-repair-and-retrofit">Structural Repair &amp; Retrofit</a> in existing buildings and with <a href="/anchorage-and-fastening-design">Anchorage &amp; Fastening Design</a> where base restraint and force transfer are critical.</p>
+
+          <div class="faq-section">
+            <h2 id="faq">Frequently Asked Questions</h2>
+            <div class="faq-item"><div class="faq-question">Why is gravity-only connection design not enough in seismic conditions?</div><div class="faq-answer"><p>Because seismic loading introduces reversal, repeated deformation, and inelastic demand. A detail that looks adequate under one-direction static force may behave very differently under cyclic seismic loading.</p></div></div>
+            <div class="faq-item"><div class="faq-question">What does ductility mean in connection design?</div><div class="faq-answer"><p>Ductility means the connection or system can undergo significant deformation and dissipate energy without sudden brittle failure. It is a key goal in many seismic design strategies.</p></div></div>
+            <div class="faq-item"><div class="faq-question">Can existing buildings need special seismic connection review?</div><div class="faq-answer"><p>Yes. Existing materials, prior alterations, and legacy detailing often make retrofit connection design more demanding than equivalent new construction details.</p></div></div>
+            <div class="faq-item"><div class="faq-question">What is the biggest coordination mistake?</div><div class="faq-answer"><p>Designing the connection as a local hardware problem without tying it back to the intended lateral system behavior and deformation hierarchy.</p></div></div>
+          </div>
+
+          <div class="article-cta"><h3>Need help evaluating a connection in a lateral or seismic-sensitive system?</h3><p>Asvakas can review the detail in the context of the broader force path, expected deformation, and retrofit or constructability constraints.</p><a href="/contact" class="btn btn-solid">Request Consultation</a></div>
+        </article>
+        <aside class="article-sidebar">
+          <div class="sidebar-cta-box"><h4>Related Services</h4><p>Seismic behavior depends on connection detailing, lateral path continuity, and anchorage working together.</p><a href="/lateral-load-resisting-systems" class="btn">Lateral Load Resisting Systems →</a></div>
+          <div class="sidebar-box"><h4>Explore Next</h4><ul class="related-list"><li><a href="/structural-connection-design">Structural Connection Design</a></li><li><a href="/blog/shear-walls-lateral-load-resistance">Shear Walls and Lateral Load Resistance</a></li><li><a href="/blog/structural-connection-failure-mechanisms">Structural Connection Failure Mechanisms</a></li><li><a href="/anchorage-and-fastening-design">Anchorage &amp; Fastening Design</a></li></ul></div>
+        </aside>
+      </div>
+    </main>
+    <footer class="footer"><div class="footer-body"><div class="container footer-top"><div class="footer-brand-col"><a href="/#top" class="footer-brand"><span class="footer-brand-icon"></span>Asvakas Inc</a><h4 class="footer-sub-heading">Subscribe for Updates</h4><p class="footer-sub-text">Get engineering insights, code updates, and project guidance delivered to your inbox.</p><form class="footer-subscribe" onsubmit="return false;"><input type="email" placeholder="Enter your email address" aria-label="Email" /><button type="submit">Subscribe</button></form></div><div class="footer-links-wrap"><div class="footer-col"><h5>Company</h5><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/services">Services</a></li><li><a href="/engineering-systems">Engineering Systems</a></li><li><a href="/resources">Resources</a></li><li><a href="/contact">Contact</a></li></ul></div><div class="footer-col"><h5>Knowledge Hub</h5><ul><li><a href="/resources">Resources</a></li><li><a href="/blog/">Blog</a></li><li><a href="/faq">FAQ</a></li></ul></div><div class="footer-col"><h5>Privacy</h5><ul><li><a href="/privacy-policy">Privacy Policy &amp; Terms</a></li></ul></div></div></div></div><div class="footer-bottom"><div class="container footer-bottom-inner"><span>© 2026 Asvakas Inc. All Rights Reserved.</span><a href="/privacy-policy">Privacy Policy &amp; Terms of Use</a></div></div></footer>
+    <script src="../script.js"></script>
+    <script>document.querySelectorAll('.faq-question').forEach((q)=>{q.addEventListener('click',()=>{q.closest('.faq-item').classList.toggle('open');});});</script>
+    <script src="../region.js"></script>
+  </body>
 </html>

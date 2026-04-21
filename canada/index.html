@@ -4,37 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Asvakas Engineering — Canada</title>
+    <link rel="canonical" href="https://asvakas.com/canada/" />
+    <link rel="alternate" hreflang="en-us" href="https://asvakas.com/" />
+    <link rel="alternate" hreflang="en-ca" href="https://asvakas.com/canada/" />
+    <link rel="alternate" hreflang="x-default" href="https://asvakas.com/" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="canada.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script>
-      // Region-based redirect: send US visitors to US homepage
-      (function() {
-        // Only run if not already at root homepage
-        if (window.location.pathname.toLowerCase().indexOf('/canada') !== -1) {
-          fetch('https://ipapi.co/country/').then(function(resp) { return resp.text(); }).then(function(country) {
-            if (country.trim() === 'US') {
-              window.location.href = window.location.origin + '/index.html';
-            }
-          });
-        }
-      })();
-    </script>
   </head>
   <body class="home-page">
     <header class="site-header" id="top">
       <div class="container header-inner">
         <a href="index.html#top" class="brand">Asvakas<span class="brand-eng" data-i18n="brand.eng">ENG</span></a>
         <nav class="main-nav" id="mainNav">
-          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="index.html" class="active" data-i18n="nav.home">Home</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="blog/index.html" data-i18n="nav.engineering">Engineering Systems</a>
           <a href="projects.html" data-i18n="nav.projects">Projects</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+          <a href="help.html" data-i18n="nav.resources">Resources</a>
+          <a href="contact.html" data-i18n="nav.contactShort">Contact</a>
         </nav>
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; margin-left: auto;">
+        <div class="header-controls">
           <div class="region-picker" id="regionPicker">
             <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
               <span class="rp-flag">🇨🇦</span>
@@ -65,15 +58,15 @@
         </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content">
-          <p class="hero-tag fade-up" data-i18n="hero.tag">Toronto Structural Engineering</p>
+          <p class="hero-tag fade-up" data-i18n="hero.tag">Ontario Codes, Inspections &amp; Structural Engineering</p>
           <h1 class="fade-up hero-rotating-h1" style="--delay:0.13s" aria-live="polite">
-            <span class="hero-line-static">Built on Precision.</span>
-            <span class="hero-line-rotate" id="heroRotate">OBC Compliance Inspections.</span>
+            <span class="hero-line-static">Permit-ready structural, forensic, and rehabilitation engineering.</span>
+            <span class="hero-line-rotate" id="heroRotate">OBC compliance, existing buildings, temporary works, and restoration.</span>
           </h1>
-          <p class="fade-up" style="--delay:0.26s" data-i18n="hero.sub">Asvakas Engineering helps owners and developers deliver safer, smarter projects across Canada.</p>
+          <p class="fade-up" style="--delay:0.26s" data-i18n="hero.sub">Asvakas supports permit-driven structural work, existing-building assessments, envelope rehabilitation, parking structures, temporary works, and forensic investigations across Ontario and Canada.</p>
           <div class="hero-actions fade-up" style="--delay:0.38s">
             <a class="btn btn-solid" href="#services" data-i18n="hero.cta1">Request Assessment</a>
-            <a class="btn btn-outline" href="services.html" data-i18n="hero.cta2">Explore Services</a>
+            <a class="btn btn-outline" href="services.html" data-i18n="hero.cta2">Explore Canada Services</a>
           </div>
         </div>
       </section>
@@ -82,9 +75,9 @@
         <div class="container about-inner">
           <div class="slide-left">
             <span class="section-label" data-i18n="home.about.label">About Asvakas</span>
-            <h2 data-i18n="home.about.h2">New company, decades of proven structural experience behind every project.</h2>
-            <p data-i18n="home.about.p">As a startup firm built by seasoned engineers, Asvakas delivers fresh solutions with deep construction and design expertise, plus modern client service.</p>
-            <a class="btn btn-outline" href="#services" data-i18n="home.about.cta">Get to Know Us</a>
+            <h2 data-i18n="home.about.h2">Ontario-focused structural support for existing buildings, permits, and complex site work.</h2>
+            <p data-i18n="home.about.p">We help owners, condo boards, contractors, developers, and public-sector teams with OBC compliance, PEO General Review, envelope rehabilitation, parking structures, temporary works, and forensic engineering.</p>
+            <a class="btn btn-outline" href="#services" data-i18n="home.about.cta">View Canada Services</a>
           </div>
           <div class="stats-grid">
             <div class="stat-card fade-up" style="--delay:0.05s"><strong data-target="20" data-suffix="+">20+</strong><span data-i18n="stat.years">Years Experience</span></div>
@@ -98,8 +91,8 @@
       <section class="services-section" id="services">
         <div class="container svc-header">
           <span class="section-label-pill fade-up" data-i18n="svc.pill">Our Services</span>
-          <h2 class="fade-up" style="--delay:0.1s" data-i18n="svc.h2">We Build Everything You Need</h2>
-          <p class="services-subtitle fade-up" style="--delay:0.2s" data-i18n="svc.sub">From temporary works and structural design to OBC compliance — our engineers deliver precision across every discipline.</p>
+          <h2 class="fade-up" style="--delay:0.1s" data-i18n="svc.h2">Ontario-first services for codes, inspections, rehabilitation, and delivery</h2>
+          <p class="services-subtitle fade-up" style="--delay:0.2s" data-i18n="svc.sub">From OBC permit documents and field review to facade restoration, parking garage assessment, temporary works, and forensic reporting, our Canada team is structured around real Ontario project needs.</p>
         </div>
 
         <div class="container svc-category">
@@ -114,13 +107,13 @@
             <article class="service-card fade-up" style="--delay:0.15s">
               <span class="svc-num">02</span>
               <h3 data-i18n="svc.02.h">Structural Design</h3>
-              <p data-i18n="svc.02.p">Wood, brick masonry, steel, concrete, and composite structure design to NBC/OBC standards.</p>
+              <p data-i18n="svc.02.p">Permit-ready structural design for steel, concrete, timber, masonry, and mixed systems under OBC, NBC, and CSA standards.</p>
               <img class="svc-img" src="../images/2-structural-design.png" alt="Structural design" />
             </article>
             <article class="service-card fade-up" style="--delay:0.25s">
               <span class="svc-num">03</span>
               <h3 data-i18n="svc.03.h">Supervision & Consultancy</h3>
-              <p data-i18n="svc.03.p">Peer review, supervision, special inspection, assessment and damage evaluation.</p>
+              <p data-i18n="svc.03.p">Peer review, PEO General Review, field observations, consultant coordination, and condition-based engineering advice.</p>
               <img class="svc-img" src="../images/3-supervision-consultancy1.png" alt="Engineering supervision" />
             </article>
           </div>
@@ -250,30 +243,30 @@
           <div class="why-left slide-left">
             <span class="section-label-pill" data-i18n="why.pill">Our Great Values</span>
             <h2 class="why-heading" data-i18n="why.h2">Why Asvakas?</h2>
-            <a class="btn btn-outline" href="#about" data-i18n="why.cta">Get to Know Us →</a>
+            <a class="btn btn-outline" href="#about" data-i18n="why.cta">Explore Our Approach →</a>
           </div>
           <div class="why-right">
-            <p class="why-tagline fade-up" data-i18n="why.tagline">Trusted by property owners and developers across Canada, built for precision, and designed to deliver reliable structural solutions that stand the test of time.</p>
+            <p class="why-tagline fade-up" data-i18n="why.tagline">We work at the intersection of code compliance, constructability, and existing-building reality — helping projects move from assessment to permit to site completion.</p>
             <div class="why-grid">
               <div class="why-card fade-up" style="--delay:0.05s">
                 <div class="why-icon"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg></div>
                 <h4 data-i18n="why.01.h">Proven Engineering Quality</h4>
-                <p data-i18n="why.01.p">Our team brings 35+ years of combined engineering experience to every inspection, design, and renovation project.</p>
+                <p data-i18n="why.01.p">Strong permit packages, clear scopes, and technically grounded designs for Ontario municipalities and review teams.</p>
               </div>
               <div class="why-card fade-up" style="--delay:0.15s">
                 <div class="why-icon"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                 <h4 data-i18n="why.02.h">On-Time Delivery</h4>
-                <p data-i18n="why.02.p">We value your deadlines — every permit filing, inspection report, and design deliverable is completed on schedule.</p>
+                <p data-i18n="why.02.p">Reports, permit responses, and engineering deliverables managed around construction and municipal deadlines.</p>
               </div>
               <div class="why-card fade-up" style="--delay:0.1s">
                 <div class="why-icon"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg></div>
                 <h4 data-i18n="why.03.h">Safety First Approach</h4>
-                <p data-i18n="why.03.p">We rigorously follow OBC/NBC codes and OH&S standards to protect both your property and everyone on site.</p>
+                <p data-i18n="why.03.p">Every recommendation is shaped by OBC, CSA standards, OHSA obligations, and occupant/public safety.</p>
               </div>
               <div class="why-card fade-up" style="--delay:0.2s">
                 <div class="why-icon"><svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></div>
                 <h4 data-i18n="why.04.h">Modern Engineering Solutions</h4>
-                <p data-i18n="why.04.p">Fresh perspectives backed by experience — we apply innovative methods to deliver efficient, cost-effective structural outcomes.</p>
+                <p data-i18n="why.04.p">We focus on practical solutions for aging buildings, phased repairs, and tight urban sites.</p>
               </div>
             </div>
           </div>
@@ -284,19 +277,19 @@
         <div class="container">
           <div class="projects-header">
             <h2 class="fade-up" data-i18n="proj.featured.h2">Featured Projects</h2>
-            <p class="projects-subtext fade-up" style="--delay:0.12s" data-i18n="proj.featured.sub">A closer look at our craftsmanship, showcasing quality in every project.</p>
+            <p class="projects-subtext fade-up" style="--delay:0.12s" data-i18n="proj.featured.sub">Representative work across facade renewal, mixed-use design, retrofit, and code-driven rehabilitation.</p>
           </div>
           <div class="project-slider-wrap slide-up">
             <div class="slide-image-wrap">
-              <img class="slide-img" src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80" alt="The Grand Oak Mansion" />
-              <p class="slide-caption">A meticulous restoration of a historic Toronto property, preserving classic architecture while integrating modern structural solutions.</p>
+              <img class="slide-img" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1400&q=80" alt="Toronto Balcony and Facade Renewal Program" />
+              <p class="slide-caption">Multi-building balcony and facade renewal program in Toronto with condition assessment, repair sequencing, permit support, and resident safety coordination.</p>
             </div>
             <div class="slide-info-panel">
               <div class="slide-info-top">
-                <span class="slide-tag">Renovation</span>
-                <h3 class="slide-title">The Grand Oak<br>Mansion</h3>
+                <span class="slide-tag">Existing Buildings</span>
+                <h3 class="slide-title">Toronto Balcony &amp;<br>Facade Renewal</h3>
                 <p class="slide-year">2025</p>
-                <p class="slide-client">Miller Estate</p>
+                <p class="slide-client">Condo Board Portfolio</p>
               </div>
               <div class="slide-nav">
                 <button class="slide-nav-btn active" data-slide="0" aria-label="Project 1"><span class="slide-bar"></span><span class="slide-num">01</span></button>
@@ -315,24 +308,24 @@
           <div class="process-layout">
             <div class="process-intro">
               <span class="section-label-pill" data-i18n="proc.pill">How We Work</span>
-              <h2 data-i18n="proc.h2">Our Work Process</h2>
-              <p data-i18n="proc.sub">A proven process to bring your ideas to life turns concepts into reality through strategic planning and execution.</p>
+              <h2 data-i18n="proc.h2">Our Ontario Project Workflow</h2>
+              <p data-i18n="proc.sub">A practical sequence built around assessment, approvals, and construction support.</p>
             </div>
             <div class="process-steps">
               <article class="process-step">
                 <p class="process-step-count"><strong>01</strong><span>/03</span><i aria-hidden="true">→</i></p>
-                <h3 data-i18n="proc.01.h">Consultation & Planning</h3>
-                <p data-i18n="proc.01.p">Understanding your needs, budget, and vision ensures your project aligns with your goals while staying within practical limits.</p>
+                <h3 data-i18n="proc.01.h">Assess &amp; Scope</h3>
+                <p data-i18n="proc.01.p">We review existing conditions, risks, and municipal triggers so the engineering scope matches the real building and approval path.</p>
               </article>
               <article class="process-step">
                 <p class="process-step-count"><strong>02</strong><span>/03</span><i aria-hidden="true">→</i></p>
-                <h3 data-i18n="proc.02.h">Design & Architecture</h3>
-                <p data-i18n="proc.02.p">Visualizing the project with practical design and structural precision aligns aesthetics, function, and OBC compliance.</p>
+                <h3 data-i18n="proc.02.h">Design &amp; Permit</h3>
+                <p data-i18n="proc.02.p">We prepare calculations, drawings, and code responses aligned with OBC, municipal review comments, and contractor coordination.</p>
               </article>
               <article class="process-step">
                 <p class="process-step-count"><strong>03</strong><span>/03</span><i aria-hidden="true">→</i></p>
-                <h3 data-i18n="proc.03.h">Construction & Management</h3>
-                <p data-i18n="proc.03.p">From site coordination to quality control, we guide execution with consistency so the final build meets every requirement.</p>
+                <h3 data-i18n="proc.03.h">Review &amp; Support Construction</h3>
+                <p data-i18n="proc.03.p">We stay involved through field review, deficiency follow-up, shop drawing review, and closeout documentation.</p>
               </article>
             </div>
           </div>
@@ -345,7 +338,7 @@
             <div class="testimonial-head-copy fade-up">
               <span class="section-label-pill" data-i18n="test.pill">Testimonials</span>
               <h2 data-i18n="test.h2">What Our Clients Say</h2>
-              <p class="testimonial-subtext" data-i18n="test.sub">Hear from teams who built with us and how we translated complex engineering requirements into results.</p>
+              <p class="testimonial-subtext" data-i18n="test.sub">Feedback from owners, boards, developers, and contractors who needed practical Ontario engineering support.</p>
             </div>
             <div class="testimonial-controls">
               <button class="testimonial-btn testimonial-prev" type="button" aria-label="Previous">&#8592;</button>
@@ -356,33 +349,33 @@
             <div class="testimonial-track">
               <article class="testimonial-card">
                 <p class="testimonial-quote-mark" aria-hidden="true">"</p>
-                <p class="testimonial-quote" data-i18n="test.1.quote">Asvakas exceeded all expectations. Their team turned a difficult compliance scope into a smooth, well-managed delivery.</p>
-                <p class="testimonial-body" data-i18n="test.1.body">From initial inspection to final sign-off, communication was clear and every milestone was handled with precision.</p>
-                <p class="testimonial-author"><strong>Emily Santos</strong><span data-i18n="test.1.role">Residential Client, Toronto</span></p>
+                <p class="testimonial-quote" data-i18n="test.1.quote">Their report was clear enough for the City review and practical enough for our contractor.</p>
+                <p class="testimonial-body" data-i18n="test.1.body">We moved from condition assessment to permit drawings without losing time because the scope was structured correctly from day one.</p>
+                <p class="testimonial-author"><strong>Emily Santos</strong><span data-i18n="test.1.role">Condo Board Director, Toronto</span></p>
               </article>
               <article class="testimonial-card">
                 <p class="testimonial-quote-mark" aria-hidden="true">"</p>
-                <p class="testimonial-quote" data-i18n="test.2.quote">From consultation to handover, their engineers were responsive, practical, and deeply knowledgeable.</p>
-                <p class="testimonial-body" data-i18n="test.2.body">They coordinated our office renovation with contractors and inspectors while keeping timeline risks under control.</p>
-                <p class="testimonial-author"><strong>Mark Li</strong><span data-i18n="test.2.role">Commercial Developer, Toronto</span></p>
+                <p class="testimonial-quote" data-i18n="test.2.quote">They understood both the engineering and the approval process.</p>
+                <p class="testimonial-body" data-i18n="test.2.body">Their team coordinated permit comments, site issues, and contractor questions with very little friction.</p>
+                <p class="testimonial-author"><strong>Mark Li</strong><span data-i18n="test.2.role">Developer Representative, Mississauga</span></p>
               </article>
               <article class="testimonial-card">
                 <p class="testimonial-quote-mark" aria-hidden="true">"</p>
                 <p class="testimonial-quote" data-i18n="test.3.quote">Their temporary works strategy saved us from major delays during excavation and underpinning.</p>
-                <p class="testimonial-body" data-i18n="test.3.body">The documentation was clean, permit-ready, and easy for our site team to execute without confusion.</p>
+                <p class="testimonial-body" data-i18n="test.3.body">The package was detailed, buildable, and accepted quickly by the site team and reviewers.</p>
                 <p class="testimonial-author"><strong>Sophia Rivera</strong><span data-i18n="test.3.role">General Contractor, Ontario</span></p>
               </article>
               <article class="testimonial-card">
                 <p class="testimonial-quote-mark" aria-hidden="true">"</p>
-                <p class="testimonial-quote" data-i18n="test.4.quote">We finally found an engineering partner that balances technical depth with real-world constructability.</p>
-                <p class="testimonial-body" data-i18n="test.4.body">Their team anticipated issues early and helped us make smarter decisions before costs escalated.</p>
-                <p class="testimonial-author"><strong>Daniel Brooks</strong><span data-i18n="test.4.role">Property Manager, Vancouver</span></p>
+                <p class="testimonial-quote" data-i18n="test.4.quote">They handled code, repair scope, and constructability together instead of in separate silos.</p>
+                <p class="testimonial-body" data-i18n="test.4.body">Their early review caught issues that would have become costly change orders during the facade work.</p>
+                <p class="testimonial-author"><strong>Daniel Brooks</strong><span data-i18n="test.4.role">Property Manager, Hamilton</span></p>
               </article>
               <article class="testimonial-card">
                 <p class="testimonial-quote-mark" aria-hidden="true">"</p>
-                <p class="testimonial-quote" data-i18n="test.5.quote">Inspection reporting and follow-up recommendations were clear, actionable, and built for compliance.</p>
-                <p class="testimonial-body" data-i18n="test.5.body">Asvakas gave us confidence that our facility upgrades were safe, code-aligned, and future-ready.</p>
-                <p class="testimonial-author"><strong>Priya Nair</strong><span data-i18n="test.5.role">Facilities Director, Ottawa</span></p>
+                <p class="testimonial-quote" data-i18n="test.5.quote">Their guidance gave our board confidence to prioritize repairs properly.</p>
+                <p class="testimonial-body" data-i18n="test.5.body">The inspection findings, urgency levels, and next steps were explained in a way non-engineers could actually use.</p>
+                <p class="testimonial-author"><strong>Priya Nair</strong><span data-i18n="test.5.role">Condominium Board, Ottawa</span></p>
               </article>
             </div>
           </div>
@@ -394,35 +387,35 @@
         <div class="container">
           <div class="blog-header">
             <span class="section-label-pill fade-up" data-i18n="blog.pill">Blog</span>
-            <h2 class="fade-up" style="--delay:0.1s" data-i18n="blog.h2">Insights &amp; Updates</h2>
-            <p class="fade-up" style="--delay:0.2s" data-i18n="blog.sub">Explore trends, tips, and practical insights in structural engineering and construction execution.</p>
+            <h2 class="fade-up" style="--delay:0.1s" data-i18n="blog.h2">Ontario and Canada structural engineering guides</h2>
+            <p class="fade-up" style="--delay:0.2s" data-i18n="blog.sub">Explore practical articles on OBC compliance, facade and balcony reviews, bridge works, temporary structures, heritage rehabilitation, and forensic engineering in Canadian conditions.</p>
           </div>
           <div class="blog-layout">
             <article class="blog-featured slide-left">
-              <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80" alt="Engineering insights" />
+              <a href="blog/obc-compliance-guide.html"><img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?auto=format&fit=crop&w=1200&q=80" alt="Ontario Building Code compliance guide" /></a>
               <div class="blog-meta-row">
-                <span class="blog-pill" data-i18n="blog.1.pill">Client Guide</span>
+                <span class="blog-pill" data-i18n="blog.1.pill">Code &amp; Existing Buildings</span>
                 <time datetime="2025-09-16">September 16, 2025</time>
               </div>
-              <h3 data-i18n="blog.1.h3">Choosing the Right Contractor for Your Project</h3>
-              <p class="blog-author">Albert Sandy <span class="blog-dot"></span> <span data-i18n="blog.1.time">10 minutes reading</span></p>
+              <h3 data-i18n="blog.1.h3"><a href="blog/obc-compliance-guide.html">Ontario Building Code Compliance for Existing Buildings</a></h3>
+              <p class="blog-author">Asvakas Engineering <span class="blog-dot"></span> <span data-i18n="blog.1.time">8 minute guide</span></p>
             </article>
             <div class="blog-list">
               <article class="blog-item slide-right" style="--delay:0.1s">
                 <div class="blog-meta-row">
-                  <span class="blog-pill" data-i18n="blog.2.pill">Construction Tips</span>
+                  <span class="blog-pill" data-i18n="blog.2.pill">Facade &amp; Envelope</span>
                   <time datetime="2025-09-16">September 16, 2025</time>
                 </div>
-                <h3 data-i18n="blog.2.h3">How to Plan Your Commercial Build Effectively and Efficiently</h3>
-                <p class="blog-author">Albert Sandy <span class="blog-dot"></span> <span data-i18n="blog.2.time">5 minutes reading</span></p>
+                <h3 data-i18n="blog.2.h3"><a href="blog/facade-inspection-ontario.html">Facade Inspections in Ontario: Requirements, Process &amp; Common Findings</a></h3>
+                <p class="blog-author">Asvakas Engineering <span class="blog-dot"></span> <span data-i18n="blog.2.time">6 minute guide</span></p>
               </article>
               <article class="blog-item slide-right" style="--delay:0.22s">
                 <div class="blog-meta-row">
-                  <span class="blog-pill" data-i18n="blog.3.pill">Green Building</span>
+                  <span class="blog-pill" data-i18n="blog.3.pill">Bridges &amp; Temporary Works</span>
                   <time datetime="2025-09-16">September 16, 2025</time>
                 </div>
-                <h3 data-i18n="blog.3.h3">Why Sustainable and Efficient Building Matters in 2025</h3>
-                <p class="blog-author">Jordy Alba <span class="blog-dot"></span> <span data-i18n="blog.3.time">7 minutes reading</span></p>
+                <h3 data-i18n="blog.3.h3"><a href="blog/bridge-structural-engineering-ontario.html">Bridge Structural Engineering in Ontario: CSA S6, inspections, staging, and repair</a></h3>
+                <p class="blog-author">Asvakas Engineering <span class="blog-dot"></span> <span data-i18n="blog.3.time">10 minute guide</span></p>
               </article>
             </div>
           </div>
@@ -467,7 +460,7 @@
               <ul>
                 <li><a href="blog/index.html" data-i18n="footer.link.blog">Blog</a></li>
                 <li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li>
-                <li><a href="blog/index.html" data-i18n="footer.link.help">Help Center</a></li>
+                <li><a href="help.html" data-i18n="footer.link.help">Help Center</a></li>
               </ul>
             </div>
           </div>
@@ -485,12 +478,12 @@
       window.projectData = [
         {
           image: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80",
-          alt: "The Grand Oak Mansion Toronto",
-          caption: "A meticulous restoration of a historic Toronto property, preserving classic architecture while integrating modern structural solutions and OBC compliance.",
-          tag: "Renovation",
-          title: "The Grand Oak<br>Mansion",
+          alt: "Toronto Balcony and Facade Renewal Program",
+          caption: "Multi-building balcony and facade renewal program in Toronto with condition assessment, repair sequencing, permit support, and resident safety coordination under Ontario requirements.",
+          tag: "Existing Buildings",
+          title: "Toronto Balcony &amp;<br>Facade Renewal",
           year: "2025",
-          client: "Miller Estate"
+          client: "Condo Board Portfolio"
         },
         {
           image: "https://images.unsplash.com/photo-1517090186835-e348b621c9ca?auto=format&fit=crop&w=1400&q=80",
@@ -522,7 +515,7 @@
         {
           image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
           alt: "Ottawa Mixed-Use Development",
-          caption: "Mixed-use development in Ottawa featuring structural steel and concrete design, NBC compliance documentation, and full permit coordination with the City of Ottawa.",
+          caption: "Mixed-use development in Ottawa featuring structural steel and concrete design, NBCC and OBC coordination, and a full permit submission package for municipal review.",
           tag: "Mixed-Use",
           title: "Ottawa Mixed-Use<br>Development",
           year: "2024",
@@ -532,12 +525,12 @@
       window.projectDataFR = [
         {
           image: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=1400&q=80",
-          alt: "The Grand Oak Mansion Toronto",
-          caption: "Une restauration méticuleuse d'une propriété historique de Toronto, préservant l'architecture classique tout en intégrant des solutions structurales modernes et la conformité au CCO.",
-          tag: "Rénovation",
-          title: "The Grand Oak<br>Mansion",
+          alt: "Programme de renouvellement de balcons et façades à Toronto",
+          caption: "Programme multi-immeubles de rénovation de balcons et de façades à Toronto avec évaluation de l’état, séquençage des réparations, soutien au permis et coordination de la sécurité des occupants.",
+          tag: "Bâtiments existants",
+          title: "Renouvellement de balcons<br>et façades à Toronto",
           year: "2025",
-          client: "Miller Estate"
+          client: "Portefeuille de copropriétés"
         },
         {
           image: "https://images.unsplash.com/photo-1517090186835-e348b621c9ca?auto=format&fit=crop&w=1400&q=80",
@@ -569,7 +562,7 @@
         {
           image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1400&q=80",
           alt: "Développement à usage mixte d'Ottawa",
-          caption: "Développement à usage mixte à Ottawa avec conception en acier structural et béton, documentation de conformité au CNB et coordination complète des permis avec la Ville d'Ottawa.",
+          caption: "Développement à usage mixte à Ottawa avec conception en acier structural et béton, coordination CNBC/CCO et dossier complet de permis pour l’examen municipal.",
           tag: "Usage mixte",
           title: "Développement à usage mixte<br>d'Ottawa",
           year: "2024",

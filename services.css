@@ -506,3 +506,106 @@
 .svc-section.svc-block-alt + .svc-section {
   margin-top: 2.5rem;
 }
+
+/* ============================================================
+   VISUAL REFRESH
+   ============================================================ */
+
+.services-page {
+  background: linear-gradient(180deg, #f8f3eb 0%, #f3f6f9 42%, #f7f2eb 100%);
+}
+
+.svc-intro {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(200, 105, 60, 0.18) 0%, transparent 30%),
+    radial-gradient(circle at 88% 0%, rgba(24, 39, 57, 0.1) 0%, transparent 28%),
+    linear-gradient(145deg, #f7f2ea 0%, #ffffff 52%, #f8f3ec 100%);
+}
+
+.svc-intro::after {
+  content: "";
+  position: absolute;
+  width: 22rem;
+  height: 22rem;
+  right: -7rem;
+  bottom: -8rem;
+  background: radial-gradient(circle, rgba(24, 39, 57, 0.08) 0%, rgba(24, 39, 57, 0) 70%);
+  pointer-events: none;
+}
+
+.svc-intro-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 242, 235, 0.94));
+  box-shadow: 0 28px 70px rgba(21, 36, 54, 0.14);
+}
+
+.svc-intro-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(200, 105, 60, 0.85), rgba(255, 178, 143, 0));
+}
+
+.svc-block,
+.svc-section,
+.svc-block-alt,
+.svc-why {
+  background: transparent;
+}
+
+.svc-detail-card,
+.svc-why-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 238, 0.88));
+  border: 1px solid rgba(31, 46, 65, 0.1);
+  box-shadow: 0 20px 48px rgba(21, 36, 54, 0.1);
+}
+
+.svc-detail-card::before,
+.svc-why-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(200, 105, 60, 0.85), rgba(255, 178, 143, 0));
+}
+
+.sdc-img {
+  border-radius: 18px;
+  margin: 0.75rem 0.75rem 0;
+}
+
+.sdc-body {
+  padding: 1.15rem 1.3rem 1.5rem;
+}
+
+.svc-mini-cta {
+  width: min(92%, 1240px);
+  margin: 0 auto 5rem;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid rgba(31, 46, 65, 0.12);
+  box-shadow: 0 30px 70px rgba(21, 36, 54, 0.14);
+}
+
+.svc-mini-left {
+  background: linear-gradient(135deg, #efdbcf 0%, #f8efe5 100%);
+}
+
+.svc-mini-btn {
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d17345 0%, #b3562d 100%);
+  box-shadow: 0 18px 34px rgba(179, 86, 45, 0.24);
+}
+
+@media (max-width: 680px) {
+  .svc-mini-cta {
+    width: calc(100% - 2rem);
+    margin-bottom: 3.5rem;
+  }
+}

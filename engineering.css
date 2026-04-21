@@ -17,7 +17,7 @@
 .page-hero {
   position: relative;
   overflow: hidden;
-  padding: 10rem 0 4.75rem;
+  padding: 8.75rem 0 4rem;
   background:
     radial-gradient(circle at top left, rgba(255, 88, 32, 0.16), transparent 28%),
     linear-gradient(145deg, #eef1f5 0%, #ffffff 55%, #f7f8fa 100%);
@@ -78,8 +78,8 @@
 
 .page-hero h1 {
   margin: 1rem 0 1rem;
-  font-size: clamp(2.4rem, 5vw, 4.7rem);
-  line-height: 1.02;
+  font-size: clamp(2.05rem, 4.2vw, 3.75rem);
+  line-height: 1.08;
   letter-spacing: -0.05em;
   color: var(--primary);
 }
@@ -176,6 +176,20 @@
 .category-card,
 .resource-card {
   padding: 1.4rem;
+}
+
+.link-card,
+.scope-card,
+.why-card-alt,
+.deliverable-card,
+.related-card,
+.faq-card,
+.resource-card,
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .metric-stack {
@@ -488,4 +502,121 @@
   .cta-band {
     padding: 2rem 1.5rem;
   }
+}
+
+/* ============================================================
+   VISUAL REFRESH
+   ============================================================ */
+
+.engineering-page,
+.resources-page,
+.service-detail-page {
+  background: linear-gradient(180deg, #f8f3eb 0%, #f3f6f9 42%, #f7f2eb 100%);
+}
+
+.page-hero {
+  background:
+    radial-gradient(circle at 14% 18%, rgba(200, 105, 60, 0.18) 0%, transparent 28%),
+    radial-gradient(circle at 88% 0%, rgba(24, 39, 57, 0.1) 0%, transparent 28%),
+    linear-gradient(145deg, #f7f2ea 0%, #ffffff 52%, #f8f3ec 100%);
+}
+
+.page-hero::before {
+  width: 28rem;
+  height: 28rem;
+  right: -9rem;
+  top: 5rem;
+  background: radial-gradient(circle, rgba(200, 105, 60, 0.16) 0%, rgba(200, 105, 60, 0) 68%);
+}
+
+.page-hero::after {
+  width: 22rem;
+  height: 22rem;
+  left: -7rem;
+  bottom: -8rem;
+  background: radial-gradient(circle, rgba(24, 39, 57, 0.08) 0%, rgba(24, 39, 57, 0) 70%);
+}
+
+.page-hero-panel {
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(248, 242, 235, 0.92));
+  border: 1px solid rgba(31, 46, 65, 0.1);
+  box-shadow: 0 24px 58px rgba(21, 36, 54, 0.12);
+}
+
+.page-section.alt {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.44), rgba(248, 243, 236, 0.86));
+}
+
+.metric-card,
+.link-card,
+.scope-card,
+.why-card-alt,
+.deliverable-card,
+.related-card,
+.faq-card,
+.resource-card,
+.category-card,
+.service-showcase-card,
+.service-breakdown-card,
+.aside-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 238, 0.88));
+  border: 1px solid rgba(31, 46, 65, 0.1);
+  box-shadow: 0 20px 48px rgba(21, 36, 54, 0.1);
+}
+
+.metric-card::before,
+.link-card::before,
+.scope-card::before,
+.why-card-alt::before,
+.deliverable-card::before,
+.related-card::before,
+.faq-card::before,
+.resource-card::before,
+.category-card::before,
+.service-showcase-card::before,
+.service-breakdown-card::before,
+.aside-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(200, 105, 60, 0.85), rgba(255, 178, 143, 0));
+}
+
+.service-showcase-media {
+  border-radius: 18px;
+  margin: 0.75rem 0.75rem 0;
+}
+
+.service-showcase-body,
+.service-breakdown-card {
+  padding: 1.25rem 1.3rem 1.4rem;
+}
+
+.cta-band {
+  position: relative;
+  overflow: hidden;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, #18283c 0%, #243850 100%);
+  box-shadow: 0 30px 70px rgba(11, 21, 34, 0.28);
+}
+
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 0%, rgba(200, 105, 60, 0.22) 0%, transparent 30%),
+    radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.1) 0%, transparent 28%);
+  pointer-events: none;
+}
+
+.cta-band > * {
+  position: relative;
+  z-index: 1;
 }

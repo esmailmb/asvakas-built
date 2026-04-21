@@ -1,14 +1,596 @@
 const navToggle = document.getElementById("navToggle");
 const mainNav = document.getElementById("mainNav");
 const siteHeader = document.querySelector(".site-header");
+const headerInner = document.querySelector(".header-inner");
+const brand = headerInner?.querySelector(".brand");
+const headerControls = headerInner?.querySelector(".header-controls, .region-picker");
+const motionEnabled = typeof window.matchMedia !== "function" || !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-navToggle?.addEventListener("click", () => {
-  mainNav?.classList.toggle("active");
+if (motionEnabled) {
+  document.body.classList.add("motion-enhanced");
+}
+
+function setNavOpen(isOpen) {
+  const shouldOpen = Boolean(isOpen && mainNav && navToggle);
+  mainNav?.classList.toggle("active", shouldOpen);
+  document.body.classList.toggle("nav-open", shouldOpen);
+  navToggle?.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+}
+
+navToggle?.setAttribute("aria-expanded", "false");
+
+navToggle?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  setNavOpen(!document.body.classList.contains("nav-open"));
+});
+
+function normalizeNavHref(href, isCanadaSection) {
+  if (!href) return "";
+
+  let normalized = href.trim();
+
+  if (!normalized) return "";
+
+  normalized = normalized.replace(/^https?:\/\/[^/]+/i, "");
+
+  if (!normalized.startsWith("/")) {
+    if (normalized.startsWith("../")) {
+      normalized = normalized.replace(/^\.\.\//, isCanadaSection ? "/canada/" : "/");
+    } else if (normalized.startsWith("./")) {
+      normalized = normalized.replace(/^\.\//, isCanadaSection ? "/canada/" : "/");
+    } else {
+      normalized = `${isCanadaSection ? "/canada/" : "/"}${normalized}`;
+    }
+  }
+
+  normalized = normalized
+    .replace(/index\.html$/i, "")
+    .replace(/\.html$/i, "")
+    .replace(/\/+$/, "");
+
+  return normalized || "/";
+}
+
+function getHeaderActiveKey(normalizedPath, isCanadaSection) {
+  const homePath = isCanadaSection ? "/canada" : "/";
+  const aboutPath = isCanadaSection ? "/canada/about" : "/about";
+  const servicesPath = isCanadaSection ? "/canada/services" : "/services";
+  const engineeringPath = isCanadaSection ? "/canada/engineering-systems" : "/engineering-systems";
+  const projectsPath = isCanadaSection ? "/canada/projects" : "/projects";
+  const resourcesPath = isCanadaSection ? "/canada/resources" : "/resources";
+  const helpPath = isCanadaSection ? "/canada/help" : "/help";
+  const faqPath = isCanadaSection ? "/canada/faq" : "/faq";
+  const contactPath = isCanadaSection ? "/canada/contact" : "/contact";
+  const blogPrefix = isCanadaSection ? "/canada/blog" : "/blog";
+
+  if (document.body.classList.contains("about-page") || normalizedPath === aboutPath) return "about";
+  if (document.body.classList.contains("projects-page") || normalizedPath === projectsPath) return "projects";
+  if (document.body.classList.contains("contact-page") || normalizedPath === contactPath) return "contact";
+  if (document.body.classList.contains("engineering-page") || normalizedPath === engineeringPath) return "engineering";
+  if (
+    document.body.classList.contains("resources-page") ||
+    document.body.classList.contains("blog-hub-page") ||
+    document.body.classList.contains("blog-article-page") ||
+    document.body.classList.contains("help-center-page") ||
+    normalizedPath === resourcesPath ||
+    normalizedPath === helpPath ||
+    normalizedPath === faqPath ||
+    normalizedPath === blogPrefix ||
+    normalizedPath.startsWith(`${blogPrefix}/`)
+  ) {
+    return "resources";
+  }
+  if (
+    document.body.classList.contains("services-page") ||
+    document.body.classList.contains("service-detail-page") ||
+    normalizedPath === servicesPath
+  ) {
+    return "services";
+  }
+
+  return normalizedPath === homePath ? "home" : "home";
+}
+
+function normalizeHeaderNavigation() {
+  if (!mainNav) return;
+
+  const rawPath = window.location.pathname.replace(/\\/g, "/");
+  const normalizedPath = rawPath
+    .replace(/index\.html$/i, "")
+    .replace(/\.html$/i, "")
+    .replace(/\/+$/, "") || "/";
+  const isCanadaSection = normalizedPath === "/canada" || normalizedPath.startsWith("/canada/");
+  const navItems = isCanadaSection
+    ? [
+        { key: "home", label: "Home", href: "/canada/" },
+        { key: "about", label: "About", href: "/canada/about" },
+        { key: "services", label: "Services", href: "/canada/services" },
+        { key: "engineering", label: "Engineering Systems", href: "/canada/engineering-systems" },
+        { key: "projects", label: "Projects", href: "/canada/projects" },
+        { key: "resources", label: "Resources", href: "/canada/resources" },
+        { key: "contact", label: "Contact", href: "/canada/contact" }
+      ]
+    : [
+        { key: "home", label: "Home", href: "/" },
+        { key: "about", label: "About", href: "/about" },
+        { key: "services", label: "Services", href: "/services" },
+        { key: "engineering", label: "Engineering Systems", href: "/engineering-systems" },
+        { key: "projects", label: "Projects", href: "/projects" },
+        { key: "resources", label: "Resources", href: "/resources" },
+        { key: "contact", label: "Contact", href: "/contact" }
+      ];
+
+  const currentLinks = Array.from(mainNav.querySelectorAll("a"));
+  const needsNormalization =
+    currentLinks.length < navItems.length ||
+    navItems.some(item => !currentLinks.some(link => normalizeNavHref(link.getAttribute("href"), isCanadaSection) === item.href));
+
+  if (!needsNormalization) return;
+
+  const activeKey = getHeaderActiveKey(normalizedPath, isCanadaSection);
+  mainNav.innerHTML = "";
+
+  navItems.forEach(item => {
+    const link = document.createElement("a");
+    link.href = item.href;
+    link.textContent = item.label;
+    if (item.key === activeKey) {
+      link.classList.add("active");
+    }
+    mainNav.appendChild(link);
+  });
+}
+
+normalizeHeaderNavigation();
+
+mainNav?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    setNavOpen(false);
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!document.body.classList.contains("nav-open") || !mainNav || !navToggle) return;
+
+  const target = event.target;
+  if (!(target instanceof Node)) return;
+  if (mainNav.contains(target) || navToggle.contains(target)) return;
+
+  setNavOpen(false);
 });
 
 function updateHeaderState() {
   if (!siteHeader) return;
   siteHeader.classList.toggle("scrolled", window.scrollY > 120);
+}
+
+function syncHeaderColumns() {
+  if (!headerInner || !brand || !headerControls || !mainNav) return;
+
+  headerInner.style.removeProperty("--header-side-width");
+
+  if (window.innerWidth < 1221) return;
+
+  const brandWidth = Math.ceil(brand.getBoundingClientRect().width);
+  const controlsWidth = Math.ceil(headerControls.getBoundingClientRect().width);
+  const navWidth = Math.ceil(mainNav.getBoundingClientRect().width);
+  const headerWidth = Math.ceil(headerInner.getBoundingClientRect().width);
+  const sideWidth = Math.max(brandWidth, controlsWidth);
+
+  if ((sideWidth * 2) + navWidth > headerWidth) return;
+
+  headerInner.style.setProperty("--header-side-width", `${sideWidth}px`);
+}
+
+function normalizeFooterSocialLinks() {
+  const socialLinks = {
+    linkedin: "https://www.linkedin.com/company/asvakas",
+    instagram: "https://www.instagram.com/",
+    facebook: "https://www.facebook.com/",
+    twitterx: "https://twitter.com/",
+    twitter: "https://twitter.com/",
+    x: "https://twitter.com/"
+  };
+
+  document.querySelectorAll('.footer .footer-col a[href="#"]').forEach((link) => {
+    const label = link.textContent.toLowerCase().replace(/[^a-z]/g, "");
+    const href = socialLinks[label];
+    if (!href) return;
+
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener";
+  });
+}
+
+function normalizeFooterBlogLinks() {
+  const pathname = window.location.pathname.replace(/\\/g, "/");
+  const isCanadaSection = pathname === "/canada" || pathname.startsWith("/canada/");
+  const blogHubHref = isCanadaSection ? "/canada/blog/" : "/blog/";
+
+  document.querySelectorAll(".footer a, .site-footer a").forEach((link) => {
+    const label = link.textContent.toLowerCase().replace(/[^a-z]/g, "");
+    const href = link.getAttribute("href")?.trim();
+    const isBlogLabel = label === "blog" || label === "allarticles";
+    const isBlogHref = href === "/blog/" || href === "/blog" || href === "/blog/#top" || href === "/blog/index.html" || href === "/blog/index.html#top" || href === "blog/index.html" || href === "blog/index.html#top" || href === "/canada/blog/" || href === "/canada/blog" || href === "/canada/blog/#top" || href === "/canada/blog/index.html" || href === "/canada/blog/index.html#top" || href === "index.html" || href === "index.html#top";
+
+    if (!isBlogLabel || !isBlogHref) return;
+
+    link.setAttribute("href", blogHubHref);
+  });
+}
+
+const blogImageLibrary = {
+  "anchorage-and-fastening-design-guide": {
+    file: "11-anchorage-connection.png",
+    alt: "Anchorage and fastening connection detail"
+  },
+  "anchorage-connections-nyc": {
+    file: "11-anchorage-connection.png",
+    alt: "Structural anchorage connection detail"
+  },
+  "anchorage-connections-ontario": {
+    file: "11-anchorage-connection.png",
+    alt: "Structural anchorage connection detail"
+  },
+  "anchor-bolt-design-and-anchorage-systems": {
+    file: "11-anchorage-connection.png",
+    alt: "Anchor bolt and anchorage system detail"
+  },
+  "bridge-demolition-nyc": {
+    file: "9-bridge-demolition-removal.png",
+    alt: "Bridge demolition and removal operation"
+  },
+  "bridge-demolition-ontario": {
+    file: "9-bridge-demolition-removal.png",
+    alt: "Bridge demolition and removal operation"
+  },
+  "bridge-structural-engineering-nyc": {
+    file: "9-bridge-demolition-removal.png",
+    alt: "Bridge structural engineering works"
+  },
+  "bridge-structural-engineering-ontario": {
+    file: "9-bridge-demolition-removal.png",
+    alt: "Bridge structural engineering works"
+  },
+  "building-openings-nyc": {
+    file: "19-building-opening.png",
+    alt: "Structural opening and lintel framing"
+  },
+  "building-openings-ontario": {
+    file: "19-building-opening.png",
+    alt: "Structural opening and lintel framing"
+  },
+  "cofferdam-nyc": {
+    file: "8-cofferdam-diversion.png",
+    alt: "Cofferdam and diversion support system"
+  },
+  "cofferdam-ontario": {
+    file: "8-cofferdam-diversion.png",
+    alt: "Cofferdam and diversion support system"
+  },
+  "construction-administration-guide": {
+    file: "construction-administration.png",
+    alt: "Construction administration site coordination"
+  },
+  "construction-defect-ontario": {
+    file: "structural-failure-analysis.png",
+    alt: "Construction defect and failure analysis review"
+  },
+  "cost-estimation-guide": {
+    file: "construction-costestimation.png",
+    alt: "Construction cost estimation review"
+  },
+  "erection-plans-nyc": {
+    file: "7-erection-plan.png",
+    alt: "Steel erection sequencing plan"
+  },
+  "erection-plans-ontario": {
+    file: "7-erection-plan.png",
+    alt: "Steel erection sequencing plan"
+  },
+  "expert-witness-engineering": {
+    file: "expertwitness-engineering.png",
+    alt: "Engineering expert witness case review"
+  },
+  "facade-inspection-guide": {
+    file: "4-facade-inspection.png",
+    alt: "Facade inspection at an existing building"
+  },
+  "facade-inspection-ontario": {
+    file: "4-facade-inspection.png",
+    alt: "Facade inspection at an existing building"
+  },
+  "facade-renovation-nyc": {
+    file: "20-facade-renov-rest.png",
+    alt: "Facade renovation and restoration work"
+  },
+  "facade-renovation-ontario": {
+    file: "20-facade-renov-rest.png",
+    alt: "Facade renovation and restoration work"
+  },
+  "failure-analysis-guide": {
+    file: "structural-failure-analysis.png",
+    alt: "Structural failure analysis investigation"
+  },
+  "forensic-structural-investigation": {
+    file: "forensic-structural-investigation.png",
+    alt: "Forensic structural investigation at an existing building"
+  },
+  "formwork-nyc": {
+    file: "12-form-work-design.png",
+    alt: "Concrete formwork design system"
+  },
+  "formwork-ontario": {
+    file: "12-form-work-design.png",
+    alt: "Concrete formwork design system"
+  },
+  "heritage-restoration-ontario": {
+    file: "inspection-historicbuilding-facade.png",
+    alt: "Heritage building facade restoration"
+  },
+  "historic-restoration-nyc": {
+    file: "inspection-historicbuilding-facade.png",
+    alt: "Historic building facade restoration"
+  },
+  "insurance-claim-structural-ontario": {
+    file: "forensic-structural-investigation.png",
+    alt: "Insurance claim structural investigation"
+  },
+  "local-law-inspections-guide": {
+    file: "inspection-nyclocallaw11.png",
+    alt: "NYC local law facade inspection"
+  },
+  "project-scheduling-guide": {
+    file: "construction-project-scheduling.png",
+    alt: "Construction project scheduling plan"
+  },
+  "retrofitting-nyc": {
+    file: "21-building-structural-renov.png",
+    alt: "Building structural retrofit and renovation"
+  },
+  "retrofitting-ontario": {
+    file: "21-building-structural-renov.png",
+    alt: "Building structural retrofit and renovation"
+  },
+  "roof-renovation-nyc": {
+    file: "10-roof-repair.png",
+    alt: "Roof renovation and repair work"
+  },
+  "roof-renovation-ontario": {
+    file: "10-roof-repair.png",
+    alt: "Roof renovation and repair work"
+  },
+  "roof-safety-nyc": {
+    file: "specialty-structural-roof-anchorage.png",
+    alt: "Roof safety anchorage system"
+  },
+  "roof-safety-ontario": {
+    file: "specialty-structural-roof-anchorage.png",
+    alt: "Roof safety anchorage system"
+  },
+  "shoring-systems-guide": {
+    file: "temporarywork-shoringsystems.png",
+    alt: "Construction shoring support system"
+  },
+  "sidewalk-repair-ontario": {
+    file: "6-sidewalk-slab-renovation.png",
+    alt: "Sidewalk slab renovation work"
+  },
+  "sidewalk-vault-nyc": {
+    file: "6-sidewalk-slab-renovation.png",
+    alt: "Sidewalk slab renovation and vault engineering"
+  },
+  "specialty-engineering-guide": {
+    file: "specialty-structural-roof-anchorage.png",
+    alt: "Specialty structural roof anchorage system"
+  },
+  "structural-engineering-guide": {
+    file: "structural-engineering-property.png",
+    alt: "Structural engineering plans and property review"
+  },
+  "structural-renovation-nyc": {
+    file: "1-structural-renovation.png",
+    alt: "Structural renovation and alteration works"
+  },
+  "structural-renovation-ontario": {
+    file: "1-structural-renovation.png",
+    alt: "Structural renovation and alteration works"
+  },
+  "temporary-works-engineering": {
+    file: "temporarywork-shoring-scaffolding.png",
+    alt: "Temporary works shoring and scaffolding system"
+  }
+};
+
+const blogImageSharedAssets = {
+  "structural-design-generic": {
+    file: "2-structural-design.png",
+    alt: "Structural design plans and engineering review"
+  },
+  "field-review-generic": {
+    file: "3-supervision-consultancy1.png",
+    alt: "Engineering field review and site coordination"
+  },
+  "building-inspection-generic": {
+    file: "5-parking-garage-inspection.png",
+    alt: "Building inspection and permit review"
+  },
+  "construction-admin-generic": {
+    file: "18-construction-administration.png",
+    alt: "Construction administration and project coordination"
+  },
+  "cost-value-generic": {
+    file: "construction-costestimation.png",
+    alt: "Construction value engineering and cost review"
+  },
+  "facade-envelope-generic": {
+    file: "inspection-historicbuilding-facade.png",
+    alt: "Building envelope and facade condition review"
+  },
+  "facade-rehab-generic": {
+    file: "20-facade-renov-rest.png",
+    alt: "Facade rehabilitation and protective systems work"
+  },
+  "forensic-survey-generic": {
+    file: "forensic-structural-investigation.png",
+    alt: "Structural investigation and condition survey"
+  },
+  "below-grade-generic": {
+    file: "8-cofferdam-diversion.png",
+    alt: "Below-grade support and water control system"
+  },
+  "wood-retrofit-generic": {
+    file: "1-structural-renovation.png",
+    alt: "Structural renovation and rehabilitation work"
+  }
+};
+
+const blogImageAliases = {
+  "anchor-bolt-design-basics": "anchor-bolt-design-and-anchorage-systems",
+  "building-envelope-consulting-guide": "facade-envelope-generic",
+  "certificate-of-occupancy-nyc": "building-inspection-generic",
+  "code-compliance-and-engineering-reports-guide": "structural-design-generic",
+  "composite-materials-and-retrofit-systems-guide": "retrofitting-nyc",
+  "concrete-repair-materials-and-surface-preparation": "facade-rehab-generic",
+  "construction-closeout-nyc": "construction-admin-generic",
+  "frye-standard-expert-witness-nyc": "expert-witness-engineering",
+  "greenhouse-structure-engineering-guide": "structural-design-generic",
+  "installation-quality-control-structural-connectors": "anchorage-connections-nyc",
+  "insurance-claim-structural-nyc": "forensic-survey-generic",
+  "lightweight-steel-and-cold-formed-systems-guide": "structural-design-generic",
+  "liquid-applied-waterproofing-and-protective-systems": "facade-rehab-generic",
+  "load-path-analysis-structural-systems": "structural-engineering-guide",
+  "local-law-152-gas-piping-nyc": "local-law-inspections-guide",
+  "local-law-97-carbon-emissions-nyc": "building-inspection-generic",
+  "masonry-and-stone-consulting-guide": "facade-envelope-generic",
+  "mudsill-anchors-design-installation": "anchorage-connections-nyc",
+  "mudsill-anchors-structural-behavior": "anchorage-connections-nyc",
+  "nyc-dob-annual-inspections-checklist": "local-law-inspections-guide",
+  "nyc-dob-filing-types": "field-review-generic",
+  "nyc-dob-violations-guide": "local-law-inspections-guide",
+  "nyc-mechanics-lien": "construction-admin-generic",
+  "nyc-special-inspections-guide": "local-law-inspections-guide",
+  "nyc-zoning-structural-guide": "structural-design-generic",
+  "painting-systems-for-construction-and-rehabilitation": "facade-rehab-generic",
+  "pre-construction-survey-nyc": "field-review-generic",
+  "protective-coatings-for-structural-steel": "facade-rehab-generic",
+  "seismic-design-structural-connections": "anchorage-connections-nyc",
+  "shear-walls-lateral-load-resistance": "structural-design-generic",
+  "structural-connection-failure-mechanisms": "failure-analysis-guide",
+  "structural-connectors-in-systems": "anchorage-connections-nyc",
+  "structural-fasteners-connection-performance": "anchorage-connections-nyc",
+  "structural-glass-and-glazing-systems-guide": "facade-rehab-generic",
+  "structural-peer-review-nyc": "field-review-generic",
+  "structural-retrofit-rehabilitation": "retrofitting-nyc",
+  "timber-and-wood-engineering-guide": "wood-retrofit-generic",
+  "underground-waterproofing-and-below-grade-systems-guide": "below-grade-generic",
+  "underpinning-methods-nyc": "shoring-systems-guide",
+  "underpinning-nyc-guide": "shoring-systems-guide",
+  "understanding-structural-connectors": "anchorage-connections-nyc",
+  "unsafe-building-nyc": "failure-analysis-guide",
+  "value-engineering-nyc": "cost-value-generic",
+  "what-is-a-shear-wall": "structural-design-generic",
+  "when-need-structural-retrofit": "retrofitting-nyc",
+  "building-condition-assessment-ontario": "field-review-generic",
+  "construction-closeout-ontario": "construction-admin-generic",
+  "csa-standards-ontario-structural": "structural-design-generic",
+  "municipal-property-standards-ontario": "field-review-generic",
+  "obc-compliance-guide": "building-inspection-generic",
+  "obc-permit-types-ontario": "building-inspection-generic",
+  "ohsa-construction-safety-ontario": "temporary-works-engineering",
+  "ontario-balcony-inspection-oreg-59-20": "facade-inspection-ontario",
+  "ontario-building-permit-process": "building-inspection-generic",
+  "ontario-construction-act": "construction-admin-generic",
+  "peer-review-ontario": "field-review-generic",
+  "peo-general-review-ontario": "field-review-generic",
+  "tarion-warranty-structural-engineering": "forensic-survey-generic",
+  "toronto-eplan-guide": "construction-admin-generic",
+  "underpinning-ontario-guide": "shoring-systems-guide",
+  "value-engineering-ontario": "cost-value-generic"
+};
+
+function getBlogSlugFromPath(path) {
+  if (!path) return "";
+
+  const normalizedPath = path
+    .trim()
+    .replace(/^https?:\/\/[^/]+/i, "")
+    .split("#")[0]
+    .split("?")[0]
+    .replace(/index\.html$/i, "")
+    .replace(/\.html$/i, "")
+    .replace(/\/+$/, "");
+
+  const segments = normalizedPath.split("/").filter(Boolean);
+  const blogIndex = segments.lastIndexOf("blog");
+
+  if (blogIndex !== -1) {
+    return segments[blogIndex + 1] || "";
+  }
+
+  return segments[segments.length - 1] || "";
+}
+
+function getBlogImageBasePath() {
+  const pathname = window.location.pathname.replace(/\\/g, "/");
+  return pathname.includes("/canada/blog") ? "../../images/" : "../images/";
+}
+
+function getBlogImageAsset(slug) {
+  const resolvedKey = blogImageAliases[slug] || slug;
+  const asset = blogImageLibrary[resolvedKey] || blogImageSharedAssets[resolvedKey];
+  if (!asset) return null;
+
+  return {
+    ...asset,
+    src: `${getBlogImageBasePath()}${asset.file}`
+  };
+}
+
+function enhanceBlogHubCardImages() {
+  if (!document.body.classList.contains("blog-hub-page")) return;
+
+  document.querySelectorAll(".blog-card[href]").forEach((card) => {
+    const slug = getBlogSlugFromPath(card.getAttribute("href"));
+    const asset = getBlogImageAsset(slug);
+    const image = card.querySelector(".blog-card-img img");
+
+    if (!asset || !image) return;
+
+    image.src = asset.src;
+    image.alt = asset.alt;
+    image.loading = "lazy";
+    image.decoding = "async";
+  });
+}
+
+function enhanceBlogArticleLeadImage() {
+  if (!document.body.classList.contains("blog-article-page")) return;
+
+  const slug = getBlogSlugFromPath(window.location.pathname);
+  const asset = getBlogImageAsset(slug);
+  const articleBody = document.querySelector(".article-layout .article-body");
+
+  if (!asset || !articleBody || articleBody.querySelector(".article-lead-media")) return;
+
+  const figure = document.createElement("figure");
+  const image = document.createElement("img");
+  const anchor = articleBody.querySelector(".article-meta-row");
+
+  figure.className = "article-lead-media";
+  image.src = asset.src;
+  image.alt = asset.alt;
+  image.loading = "eager";
+  image.decoding = "async";
+  image.fetchPriority = "high";
+  figure.appendChild(image);
+
+  if (anchor) {
+    anchor.insertAdjacentElement("afterend", figure);
+  } else {
+    articleBody.prepend(figure);
+  }
 }
 
 // ── Scroll Progress Bar ──
@@ -39,7 +621,19 @@ function onScroll() {
 }
 
 onScroll();
+syncHeaderColumns();
+normalizeFooterSocialLinks();
+normalizeFooterBlogLinks();
+enhanceBlogHubCardImages();
+enhanceBlogArticleLeadImage();
 window.addEventListener("scroll", onScroll, { passive: true });
+window.addEventListener("resize", () => {
+  syncHeaderColumns();
+
+  if (window.innerWidth > 1220) {
+    setNavOpen(false);
+  }
+});
 
 const links = document.querySelectorAll('a[href^="#"]');
 links.forEach(link => {
@@ -50,9 +644,7 @@ links.forEach(link => {
       if (target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-      if (mainNav?.classList.contains("active")) {
-        mainNav.classList.remove("active");
-      }
+      setNavOpen(false);
     }
   });
 });
@@ -457,3 +1049,181 @@ const counterObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+function setupAmbientSections() {
+  if (!motionEnabled) return;
+
+  const ambientSections = Array.from(document.querySelectorAll(
+    ".hero, .page-hero, .about-hero, .proj-intro, .contact-page .intro, .svc-intro"
+  ));
+
+  if (ambientSections.length === 0) return;
+
+  const resetAmbient = (section) => {
+    section.style.setProperty("--ambient-frame-x", "0px");
+    section.style.setProperty("--ambient-frame-y", "0px");
+    section.style.setProperty("--ambient-media-x", "0px");
+    section.style.setProperty("--ambient-media-y", "0px");
+  };
+
+  ambientSections.forEach(section => {
+    section.classList.add("ambient-section");
+    resetAmbient(section);
+
+    section.addEventListener("pointermove", event => {
+      if (event.pointerType === "touch" || window.innerWidth < 980) return;
+
+      const rect = section.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+
+      const x = ((event.clientX - rect.left) / rect.width) - 0.5;
+      const y = ((event.clientY - rect.top) / rect.height) - 0.5;
+      const shiftX = x * 28;
+      const shiftY = y * 18;
+
+      section.style.setProperty("--ambient-frame-x", `${(shiftX * -0.45).toFixed(2)}px`);
+      section.style.setProperty("--ambient-frame-y", `${(shiftY * -0.4).toFixed(2)}px`);
+      section.style.setProperty("--ambient-media-x", `${(shiftX * 0.6).toFixed(2)}px`);
+      section.style.setProperty("--ambient-media-y", `${(shiftY * 0.6).toFixed(2)}px`);
+    });
+
+    const resetSection = () => resetAmbient(section);
+    section.addEventListener("pointerleave", resetSection);
+    section.addEventListener("pointercancel", resetSection);
+  });
+
+  let ambientTicking = false;
+
+  const updateAmbientScroll = () => {
+    ambientSections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+      const distance = (window.innerHeight * 0.55) - rect.top;
+      const scrollShift = Math.max(-16, Math.min(16, distance * 0.035));
+      section.style.setProperty("--ambient-scroll", `${scrollShift.toFixed(2)}px`);
+    });
+
+    ambientTicking = false;
+  };
+
+  const requestAmbientUpdate = () => {
+    if (ambientTicking) return;
+    ambientTicking = true;
+    window.requestAnimationFrame(updateAmbientScroll);
+  };
+
+  updateAmbientScroll();
+  window.addEventListener("scroll", requestAmbientUpdate, { passive: true });
+  window.addEventListener("resize", requestAmbientUpdate);
+}
+
+function setupInteractiveCards() {
+  if (!motionEnabled) return;
+
+  const cardSelectors = [
+    ".brand-hub-card",
+    ".stat-card",
+    ".service-card",
+    ".why-card",
+    ".fp-card",
+    ".port-card",
+    ".about-team-card",
+    ".about-project-card",
+    ".metric-card",
+    ".link-card",
+    ".scope-card",
+    ".deliverable-card",
+    ".related-card",
+    ".resource-card",
+    ".category-card",
+    ".faq-card",
+    ".service-showcase-card",
+    ".service-breakdown-card",
+    ".svc-detail-card",
+    ".svc-why-card",
+    ".blog-card",
+    ".blog-featured",
+    ".blog-item"
+  ];
+
+  const cards = [...new Set(
+    cardSelectors.flatMap(selector => Array.from(document.querySelectorAll(selector)))
+  )];
+
+  if (cards.length === 0) return;
+
+  const resetCardMotion = (card) => {
+    card.classList.remove("is-pointer-active");
+    card.style.setProperty("--pointer-tilt-x", "0deg");
+    card.style.setProperty("--pointer-tilt-y", "0deg");
+    card.style.setProperty("--pointer-lift", "0px");
+    card.style.setProperty("--pointer-shadow-x", "0px");
+    card.style.setProperty("--pointer-shadow-y", "26px");
+  };
+
+  cards.forEach(card => {
+    card.classList.add("interactive-card");
+    resetCardMotion(card);
+
+    let frameId = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+
+    const applyMotion = () => {
+      frameId = 0;
+
+      if (window.innerWidth < 980) {
+        resetCardMotion(card);
+        return;
+      }
+
+      const rect = card.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return;
+
+      const relativeX = ((pointerX - rect.left) / rect.width) - 0.5;
+      const relativeY = ((pointerY - rect.top) / rect.height) - 0.5;
+      const rotateX = relativeY * -10;
+      const rotateY = relativeX * 12;
+      const shadowX = relativeX * 18;
+      const shadowY = 28 + (relativeY * 12);
+
+      card.classList.add("is-pointer-active");
+      card.style.setProperty("--pointer-tilt-x", `${rotateX.toFixed(2)}deg`);
+      card.style.setProperty("--pointer-tilt-y", `${rotateY.toFixed(2)}deg`);
+      card.style.setProperty("--pointer-lift", "-8px");
+      card.style.setProperty("--pointer-shadow-x", `${shadowX.toFixed(2)}px`);
+      card.style.setProperty("--pointer-shadow-y", `${shadowY.toFixed(2)}px`);
+    };
+
+    card.addEventListener("pointermove", event => {
+      if (event.pointerType === "touch") return;
+      pointerX = event.clientX;
+      pointerY = event.clientY;
+
+      if (frameId) return;
+      frameId = window.requestAnimationFrame(applyMotion);
+    });
+
+    const reset = () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId);
+        frameId = 0;
+      }
+      resetCardMotion(card);
+    };
+
+    card.addEventListener("pointerleave", reset);
+    card.addEventListener("pointercancel", reset);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 980) {
+      cards.forEach(resetCardMotion);
+    }
+  });
+}
+
+setupAmbientSections();
+setupInteractiveCards();

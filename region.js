@@ -2,11 +2,108 @@
 (function () {
   const STORAGE_KEY = "asvakas_region";
   const LANG_KEY    = "asvakas_lang";
+  const SHARED_BLOG_FILES = new Set([
+    "index.html",
+    "temporary-works-engineering.html",
+    "cost-estimation-guide.html",
+    "project-scheduling-guide.html",
+    "construction-administration-guide.html",
+    "forensic-structural-investigation.html",
+    "failure-analysis-guide.html",
+    "expert-witness-engineering.html",
+    "specialty-engineering-guide.html",
+    "structural-engineering-guide.html",
+    "shoring-systems-guide.html"
+  ]);
+
+  const USA_TO_CANADA = {
+    "index.html": "canada/index.html",
+    "about.html": "canada/about.html",
+    "services.html": "canada/services.html",
+    "projects.html": "canada/projects.html",
+    "contact.html": "canada/contact.html",
+    "faq.html": "canada/faq.html",
+    "help.html": "canada/help.html",
+    "privacy-policy.html": "canada/privacy-policy.html",
+    "engineering-systems.html": "canada/services.html",
+    "resources.html": "canada/help.html",
+    "blog/index.html": "canada/blog/index.html",
+    "blog/temporary-works-engineering.html": "canada/blog/temporary-works-engineering.html",
+    "blog/cost-estimation-guide.html": "canada/blog/cost-estimation-guide.html",
+    "blog/project-scheduling-guide.html": "canada/blog/project-scheduling-guide.html",
+    "blog/construction-administration-guide.html": "canada/blog/construction-administration-guide.html",
+    "blog/forensic-structural-investigation.html": "canada/blog/forensic-structural-investigation.html",
+    "blog/failure-analysis-guide.html": "canada/blog/failure-analysis-guide.html",
+    "blog/expert-witness-engineering.html": "canada/blog/expert-witness-engineering.html",
+    "blog/specialty-engineering-guide.html": "canada/blog/specialty-engineering-guide.html",
+    "blog/structural-engineering-guide.html": "canada/blog/structural-engineering-guide.html",
+    "blog/shoring-systems-guide.html": "canada/blog/shoring-systems-guide.html"
+  };
+
+  const CANADA_TO_USA = {
+    "index.html": "index.html",
+    "about.html": "about.html",
+    "services.html": "services.html",
+    "projects.html": "projects.html",
+    "contact.html": "contact.html",
+    "faq.html": "faq.html",
+    "help.html": "help.html",
+    "privacy-policy.html": "privacy-policy.html",
+    "blog/index.html": "blog/index.html",
+    "blog/temporary-works-engineering.html": "blog/temporary-works-engineering.html",
+    "blog/cost-estimation-guide.html": "blog/cost-estimation-guide.html",
+    "blog/project-scheduling-guide.html": "blog/project-scheduling-guide.html",
+    "blog/construction-administration-guide.html": "blog/construction-administration-guide.html",
+    "blog/forensic-structural-investigation.html": "blog/forensic-structural-investigation.html",
+    "blog/failure-analysis-guide.html": "blog/failure-analysis-guide.html",
+    "blog/expert-witness-engineering.html": "blog/expert-witness-engineering.html",
+    "blog/specialty-engineering-guide.html": "blog/specialty-engineering-guide.html",
+    "blog/structural-engineering-guide.html": "blog/structural-engineering-guide.html",
+    "blog/shoring-systems-guide.html": "blog/shoring-systems-guide.html"
+  };
 
   const REGIONS = {
     usa:    { flag: "🇺🇸", label: "USA",    heroTag: "NYC Structural Engineering",       heroSub: "Asvakas Engineering helps owners and developers deliver safer, smarter projects across New York City." },
     canada: { flag: "🇨🇦", label: "Canada", heroTag: "Canadian Structural Engineering", heroSub: "Asvakas Engineering helps owners and developers deliver safer, smarter projects across Canada." },
   };
+
+  function normalizePath(pathname) {
+    let path = (pathname || window.location.pathname || "").replace(/^\/+/, "");
+    if (!path) return "index.html";
+    if (path.endsWith("/")) return path + "index.html";
+    return path;
+  }
+
+  function toAbsolutePath(path) {
+    const normalized = path.replace(/^\/+/, "");
+    if (normalized === "index.html") return "/";
+    if (normalized === "blog/index.html") return "/blog/";
+    if (normalized === "canada/index.html") return "/canada/";
+    if (normalized === "canada/blog/index.html") return "/canada/blog/";
+    return "/" + normalized.replace(/\.html$/, "");
+  }
+
+  function mapPathToRegion(currentPath, region) {
+    const normalized = normalizePath(currentPath);
+
+    if (region === "canada") {
+      if (normalized.startsWith("canada/")) return normalized;
+      if (USA_TO_CANADA[normalized]) return USA_TO_CANADA[normalized];
+      if (normalized.startsWith("blog/")) {
+        const blogFile = normalized.slice(5);
+        return SHARED_BLOG_FILES.has(blogFile) ? `canada/${normalized}` : "canada/blog/index.html";
+      }
+      return `canada/${normalized}`;
+    }
+
+    const localPath = normalized.startsWith("canada/") ? normalized.slice(7) : normalized;
+    if (CANADA_TO_USA[localPath]) return CANADA_TO_USA[localPath];
+    if (localPath.startsWith("blog/")) {
+      const blogFile = localPath.slice(5);
+      return SHARED_BLOG_FILES.has(blogFile) ? localPath : "blog/index.html";
+    }
+    return localPath;
+  }
 
   /* ── Auto-detect region + language on very first visit ── */
   function autoDetect() {
@@ -35,11 +132,6 @@
     if (isCanada) {
       localStorage.setItem(STORAGE_KEY, 'canada');
       if (isFrench) localStorage.setItem(LANG_KEY, 'fr');
-      if (!window.location.pathname.includes('/canada/')) {
-        const file = window.location.pathname.split('/').pop() || 'index.html';
-        window.location.href = 'canada/' + file;
-        return;
-      }
     } else {
       localStorage.setItem(STORAGE_KEY, 'usa');
     }
@@ -48,20 +140,19 @@
   autoDetect();
 
   function applyRegion(region, fromUserClick) {
-    const isCanada = window.location.pathname.includes('/canada/');
-    const rawFile  = window.location.pathname.split('/').pop();
-    const file     = rawFile || 'index.html';
+    const currentPath = normalizePath(window.location.pathname);
+    const isCanada = currentPath.startsWith("canada/");
 
     // Redirect when user actively picks a different region
     if (fromUserClick) {
       if (region === 'canada' && !isCanada) {
         localStorage.setItem(STORAGE_KEY, region);
-        window.location.href = 'canada/' + file;
+        window.location.href = toAbsolutePath(mapPathToRegion(currentPath, "canada"));
         return;
       }
       if (region === 'usa' && isCanada) {
         localStorage.setItem(STORAGE_KEY, region);
-        window.location.href = '../' + file;
+        window.location.href = toAbsolutePath(mapPathToRegion(currentPath, "usa"));
         return;
       }
     }
@@ -119,6 +210,5 @@
 
   // On load — default to Canada when on /canada/ path, otherwise USA
   const isCanadaPath = window.location.pathname.includes('/canada/');
-  const saved = localStorage.getItem(STORAGE_KEY) || (isCanadaPath ? "canada" : "usa");
-  applyRegion(saved);
+  applyRegion(isCanadaPath ? "canada" : "usa");
 })();

@@ -19,10 +19,12 @@
           <a href="index.html" data-i18n="nav.home">Home</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="blog/index.html" data-i18n="nav.engineering">Engineering Systems</a>
           <a href="projects.html" data-i18n="nav.projects">Projects</a>
-          <a href="contact.html" class="active" data-i18n="nav.contact">Contact Us</a>
+          <a href="help.html" data-i18n="nav.resources">Resources</a>
+          <a href="contact.html" class="active" data-i18n="nav.contactShort">Contact</a>
         </nav>
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; margin-left: auto;">
+        <div class="header-controls">
           <div class="region-picker" id="regionPicker">
             <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
               <span class="rp-flag">🇨🇦</span>
@@ -55,7 +57,7 @@
         <div class="container panel-grid">
 
           <div class="panel-left slide-left">
-            <span class="pill pill-light" data-i18n="contact.map.h2">Our Toronto Office</span>
+            <span class="pill pill-light" data-i18n="contact.map.h2">Canada Support</span>
             <h2 data-i18n="contact.panel.h2">Let's Work Together</h2>
             <p data-i18n="contact.panel.p">Whether you have a question, need details about our services, or want to discuss a project — we're here to help.</p>
 
@@ -63,13 +65,6 @@
               <div>
                 <h3 data-i18n="contact.detail.email.h">Message Us</h3>
                 <p><a href="mailto:info@asvakas.com" style="color:inherit">info@asvakas.com</a></p>
-              </div>
-            </div>
-
-            <div class="contact-lines one-col">
-              <div>
-                <h3 data-i18n="contact.detail.addr.h">Location</h3>
-                <p>100 King Street West, Suite 5700<br>Toronto, ON M5X 1C7</p>
               </div>
             </div>
 
@@ -166,7 +161,7 @@
                 <div class="dyn-group-inner">
                   <div class="dyn-hint">🏢 <strong>Façade / Balcony Inspection (O.Reg 59/20)</strong> — Mandatory 5-year balcony guard and exterior cladding inspections for Ontario multi-unit residential buildings.</div>
                   <label>Building Address*</label>
-                  <input type="text" name="Building-Address" placeholder="e.g. 100 King St W, Toronto ON M5X 1C7" required />
+                  <input type="text" name="Building-Address" placeholder="e.g. 200 Bay St, Toronto ON" required />
                   <div class="split-inputs">
                     <div>
                       <label>Building Type*</label>
@@ -1077,21 +1072,6 @@
       </section>
 
       <!-- Map -->
-      <section class="map-section section">
-        <div class="container">
-          <span class="pill fade-up" data-i18n="contact.map.pill">Our Location</span>
-          <h2 class="fade-up" style="--delay:0.1s" data-i18n="contact.map.h2b">Find Us on the Map</h2>
-          <div class="map-frame fade-up" style="--delay:0.22s">
-            <iframe
-              title="Asvakas Toronto Office"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.171497895576!2d-79.38347868450222!3d43.64795417912156!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34d6b1fc3e0b%3A0x3b3c3b3c3b3c3b3c!2s100%20King%20St%20W%2C%20Toronto%2C%20ON%20M5X%201C7%2C%20Canada!5e0!3m2!1sen!2s!4v1718000000000!5m2!1sen!2s"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-
       <!-- FAQ -->
       <section class="faq-section section">
         <div class="container">
@@ -1218,7 +1198,7 @@
               <ul>
                 <li><a href="blog/index.html" data-i18n="footer.link.blog">Blog</a></li>
                 <li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li>
-                <li><a href="blog/index.html" data-i18n="footer.link.help">Help Center</a></li>
+                <li><a href="help.html" data-i18n="footer.link.help">Help Center</a></li>
               </ul>
             </div>
           </div>

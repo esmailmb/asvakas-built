@@ -6,16 +6,89 @@
     <title>Structural Engineering Blog — Toronto & Ontario | Asvakas Engineering</title>
     <meta name="description" content="Structural engineering articles for Ontario property owners, developers, and contractors — OBC compliance, Toronto facade inspections, temporary works, forensic investigation, and more." />
     <meta name="keywords" content="structural engineering blog Toronto, Ontario building code guide, Toronto facade inspection, structural engineering Ontario, OBC compliance articles" />
-    <link rel="canonical" href="https://asvakas.ca/canada/blog/" />
+    <link rel="canonical" href="https://asvakas.com/canada/blog/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="Structural Engineering Blog — Toronto & Ontario | Asvakas Engineering" />
     <meta property="og:description" content="Comprehensive structural engineering knowledge base for Ontario — OBC compliance, temporary works, forensic investigation, and construction services." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://asvakas.com/canada/blog/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../../styles.css" />
     <link rel="stylesheet" href="../canada.css" />
-    <link rel="stylesheet" href="../../blog.css" />
+    <link rel="stylesheet" href="../../blog.css?v=3" />
+    <style>
+      .blog-hub-page .blog-search-wrap {
+        padding: 1.9rem 0 1.7rem;
+      }
+      .blog-hub-page .blog-search-inner {
+        gap: 1.15rem;
+      }
+      .blog-hub-page .blog-search-bar {
+        position: relative;
+        width: min(100%, 900px);
+        max-width: 900px;
+        display: block;
+      }
+      .blog-hub-page .blog-search-icon {
+        position: absolute !important;
+        left: 1.35rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1.45rem;
+        height: 1.45rem;
+        color: #53637a;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .blog-hub-page .blog-search-bar input {
+        display: block;
+        width: 100%;
+        min-height: 4.35rem;
+        padding: 1rem 1.2rem 1rem 4rem;
+        border-radius: 16px;
+        box-sizing: border-box;
+      }
+      .blog-hub-page .blog-filters {
+        width: min(100%, 1180px);
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.85rem;
+      }
+      .blog-hub-page .blog-filter-btn {
+        min-height: 3.25rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.78rem 1.55rem;
+        white-space: nowrap;
+        text-align: center;
+      }
+      @media (max-width: 768px) {
+        .blog-hub-page .blog-search-wrap {
+          padding: 1.15rem 0 1.1rem;
+        }
+        .blog-hub-page .blog-search-bar {
+          width: 100%;
+        }
+        .blog-hub-page .blog-search-bar input {
+          min-height: 3.8rem;
+          padding-left: 3.55rem;
+        }
+        .blog-hub-page .blog-filters {
+          gap: 0.65rem;
+        }
+        .blog-hub-page .blog-filter-btn {
+          min-height: 2.9rem;
+          padding: 0.72rem 1.15rem;
+          font-size: 0.78rem;
+        }
+      }
+    </style>
   </head>
   <body class="blog-hub-page">
 
@@ -26,8 +99,10 @@
           <a href="../index.html" data-i18n="nav.home">Home</a>
           <a href="../about.html" data-i18n="nav.about">About</a>
           <a href="../services.html" data-i18n="nav.services">Services</a>
+          <a href="../engineering-systems.html" data-i18n="nav.engineering">Engineering Systems</a>
           <a href="../projects.html" data-i18n="nav.projects">Projects</a>
-          <a href="../contact.html" data-i18n="nav.contact">Contact Us</a>
+          <a href="../resources.html" class="active" data-i18n="nav.resources">Resources</a>
+          <a href="../contact.html" data-i18n="nav.contactShort">Contact</a>
         </nav>
           <div class="region-picker" id="regionPicker">
             <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
@@ -46,27 +121,26 @@
       <section class="page-hero">
         <div class="container page-hero-inner">
           <span class="page-hero-pill" data-i18n="blogHub.hero.pill">Knowledge Base</span>
-          <h1 data-i18n="blogHub.hero.h1">Insights & Updates</h1>
-          <p data-i18n="blogHub.hero.desc">Explore trends, tips, and practical insights in structural engineering and construction execution.</p>
+          <h1 data-i18n="blogHub.hero.h1">Ontario Structural Guides &amp; Code Updates</h1>
+          <p data-i18n="blogHub.hero.desc">Practical articles on OBC permits, facade and balcony rehabilitation, temporary works, forensic reporting, and Ontario project delivery.</p>
         </div>
       </section>
 
       <section class="blog-search-wrap">
         <div class="container blog-search-inner">
           <div class="blog-search-bar">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <svg class="blog-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
             <input type="text" id="blogSearch" placeholder="Search articles…" data-i18n-ph="blogHub.search.ph" aria-label="Search articles" />
           </div>
           <div class="blog-filters" role="group" aria-label="Filter by category">
-            <button class="blog-filter-btn active" data-filter="all" data-i18n="blogHub.filt.all">All Articles</button>
-            <button class="blog-filter-btn" data-filter="client" data-i18n="blogHub.filt.client">Client Guide</button>
-            <button class="blog-filter-btn" data-filter="construction" data-i18n="blogHub.filt.construction">Construction Tips</button>
-            <button class="blog-filter-btn" data-filter="green" data-i18n="blogHub.filt.green">Green Building</button>
+            <button class="blog-filter-btn active" data-filter="all" data-i18n="blogHub.filt.all">All Ontario Articles</button>
             <button class="blog-filter-btn" data-filter="structural" data-i18n="blogHub.filt.structural">Structural Engineering</button>
-            <button class="blog-filter-btn" data-filter="inspections" data-i18n="blogHub.filt.inspections">Inspections &amp; OBC</button>
+            <button class="blog-filter-btn" data-filter="inspections" data-i18n="blogHub.filt.inspections">Permits &amp; Inspections</button>
             <button class="blog-filter-btn" data-filter="temporary" data-i18n="blogHub.filt.temporary">Temporary Works</button>
             <button class="blog-filter-btn" data-filter="forensic" data-i18n="blogHub.filt.forensic">Forensic Engineering</button>
+            <button class="blog-filter-btn" data-filter="construction" data-i18n="blogHub.filt.construction2">Construction Delivery</button>
             <button class="blog-filter-btn" data-filter="specialty" data-i18n="blogHub.filt.specialty">Specialty Engineering</button>
+            <button class="blog-filter-btn" data-filter="facade" data-i18n="blogHub.filt.facade">Façades &amp; Restoration</button>
           </div>
         </div>
       </section>
@@ -75,7 +149,7 @@
         <div class="container">
           <div class="blog-grid-header">
             <h2 style="font-size:1.15rem;font-weight:800;margin:0;" data-i18n="blogHub.grid.h">All Articles</h2>
-            <span class="blog-count" id="articleCount" data-i18n="blogHub.grid.count">21 articles</span>
+            <span class="blog-count" id="articleCount" data-i18n="blogHub.grid.count">0 articles</span>
           </div>
 
           <div class="blog-grid" id="blogGrid">
@@ -177,13 +251,13 @@
             </a>
 
             <a class="blog-card" href="cost-estimation-guide.html"
-               data-cat="construction" data-title="Construction Cost Estimation Structural Engineer Toronto Ontario"
-               data-desc="construction cost estimation Toronto structural engineering quantity takeoff">
+              data-cat="construction" data-title="Construction Cost Estimation Structural Engineer Toronto Ontario"
+              data-desc="construction cost estimation Ontario structural engineering quantity takeoff project cost drivers">
               <div class="blog-card-img"><img src="../../images/16-cost-estimate.png" alt="Cost estimation" loading="lazy" /></div>
               <div class="blog-card-body">
                 <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.construction">Construction Services</span><span class="blog-read-time" data-i18n="blogHub.c09.rt">7 min read</span></div>
                 <h3 data-i18n="blogHub.c09.h3">Construction Cost Estimation: A Structural Engineer's Approach for Ontario Projects</h3>
-                <p data-i18n="blogHub.c09.p">Accurate structural cost estimation prevents budget overruns — AACE estimate classes, quantity takeoffs, and Toronto-specific cost factors explained.</p>
+                <p data-i18n="blogHub.c09.p">Accurate structural cost estimation prevents budget overruns — AACE estimate classes, quantity takeoffs, and project-specific Ontario cost drivers explained.</p>
                 <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
@@ -225,14 +299,14 @@
             </a>
 
             <a class="blog-card" href="ontario-balcony-inspection-oreg-59-20.html"
-               data-cat="inspections" data-title="Ontario Balcony Inspection O.Reg 59/20 Requirements"
-               data-desc="Ontario balcony inspection O.Reg 59/20 mandatory 5 year cycle condominium buildings">
+              data-cat="inspections" data-title="Ontario Balcony Inspection O.Reg 59/20 Requirements"
+              data-desc="Ontario balcony inspection O.Reg 59/20 current inspection cycle condominium buildings">
               <div class="blog-card-img"><img src="../../images/11-anchorage-connection.png" alt="Ontario balcony inspection" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Inspections &amp; OBC</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Ontario Balcony Inspections Under O.Reg 59/20: Requirements &amp; Process</h3>
-                <p>Ontario's O.Reg 59/20 mandates 5-year balcony guard inspections for multi-unit residential buildings. Learn who is responsible, what engineers look for, and how to report findings.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.inspections">Inspections &amp; OBC</span><span class="blog-read-time" data-i18n="blogHub.c22.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c22.h3">Ontario Balcony Inspections Under O.Reg 59/20: Requirements &amp; Process</h3>
+                <p data-i18n="blogHub.c22.p">Ontario's O.Reg 59/20 sets balcony inspection obligations for covered residential buildings. Learn who is responsible, what engineers look for, and how findings are reported under the current framework.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -241,10 +315,10 @@
                data-desc="OHSA Regulation 213/91 Ontario construction safety engineer design responsibilities excavation shoring">
               <div class="blog-card-img"><img src="../../images/10-roof-repair.png" alt="OHSA construction safety Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Temporary Works</span><span class="blog-read-time">8 min read</span></div>
-                <h3>OHSA Reg 213/91: Construction Safety Obligations for Ontario Engineers &amp; Contractors</h3>
-                <p>OHSA Regulation 213/91 governs construction site safety in Ontario. Learn when P.Eng.-stamped designs are mandatory for shoring, excavations, formwork, and scaffold systems.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.temporary">Temporary Works</span><span class="blog-read-time" data-i18n="blogHub.c23.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c23.h3">OHSA Reg 213/91: Construction Safety Obligations for Ontario Engineers &amp; Contractors</h3>
+                <p data-i18n="blogHub.c23.p">OHSA Regulation 213/91 governs construction site safety in Ontario. Learn how engineers confirm current design and review obligations for shoring, excavations, formwork, and related temporary works.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -253,10 +327,10 @@
                data-desc="building condition assessment Ontario BCA PCA property condition assessment structural engineer">
               <div class="blog-card-img"><img src="../../images/3-supervision-consultancy1.png" alt="Building condition assessment Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Inspections &amp; OBC</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Building Condition Assessment (BCA) in Ontario: What It Is &amp; When You Need One</h3>
-                <p>A Building Condition Assessment evaluates structural, mechanical, and envelope systems for existing Ontario buildings. Essential for acquisitions, major renovations, and condo reserve fund studies.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.inspections">Inspections &amp; OBC</span><span class="blog-read-time" data-i18n="blogHub.c24.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c24.h3">Building Condition Assessment (BCA) in Ontario: What It Is &amp; When You Need One</h3>
+                <p data-i18n="blogHub.c24.p">A Building Condition Assessment evaluates structural, mechanical, and envelope systems for existing Ontario buildings. Essential for acquisitions, major renovations, and condo reserve fund studies.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -265,10 +339,10 @@
                data-desc="PEO general review Ontario OBC Schedule 1 Schedule 2 field review reports P.Eng requirements">
               <div class="blog-card-img"><img src="../../images/1-structural-renovation.png" alt="PEO General Review Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Inspections &amp; OBC</span><span class="blog-read-time">7 min read</span></div>
-                <h3>PEO General Review Requirements in Ontario: What Schedule 1 &amp; 2 Engineers Must Do</h3>
-                <p>Ontario's OBC requires General Review by a P.Eng. for Schedule 1 and Schedule 2 buildings. Learn the field visit requirements, review reports, and engineer-of-record obligations.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.inspections">Inspections &amp; OBC</span><span class="blog-read-time" data-i18n="blogHub.c25.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c25.h3">PEO General Review Requirements in Ontario: What Schedule 1 &amp; 2 Engineers Must Do</h3>
+                <p data-i18n="blogHub.c25.p">Ontario's OBC may require General Review by a P.Eng. depending on the permit path and design commitments. Learn how Schedule 1, field review reports, and Schedule 2 fit together.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -285,37 +359,37 @@
             </a>
 
             <a class="blog-card" href="toronto-eplan-guide.html"
-               data-cat="inspections" data-title="Toronto ePLAN Submission Guide Drawing Standards Review Timeline"
-               data-desc="Toronto ePLAN portal building permit digital submission drawing standards review timeline">
+              data-cat="inspections" data-title="Toronto ePLAN Permit Filing Support Drawing Standards Review Workflow"
+              data-desc="Toronto ePLAN permit filing support drawing standards reviewer comments review workflow">
               <div class="blog-card-img"><img src="../../images/18-construction-administration.png" alt="Toronto ePLAN submission" loading="lazy" /></div>
               <div class="blog-card-body">
                 <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.inspections">Inspections &amp; OBC</span><span class="blog-read-time" data-i18n="blogHub.c14.rt">7 min read</span></div>
-                <h3 data-i18n="blogHub.c14.h3">Toronto ePLAN Submission Guide: Drawing Standards, Documents &amp; Review Timeline</h3>
-                <p data-i18n="blogHub.c14.p">Toronto's ePLAN portal requires digital submission for all building permit applications. Learn drawing standards, required documents, common rejection reasons, and realistic review timelines.</p>
+                <h3 data-i18n="blogHub.c14.h3">Toronto ePLAN Filing Support: Drawing Standards, Documents &amp; Review Workflow</h3>
+                <p data-i18n="blogHub.c14.p">Toronto's ePLAN portal is the filing path for many permit applications. See how Asvakas manages drawings, submission requirements, reviewer comments, and the current review process on your behalf.</p>
                 <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
             <a class="blog-card" href="ontario-building-permit-process.html"
-               data-cat="inspections" data-title="Ontario Building Permit Process Application to Occupancy Permit OBC"
-               data-desc="Ontario building permit process OBC application permit issuance mandatory inspections occupancy permit">
+              data-cat="inspections" data-title="Ontario Building Permit Coordination Filing Review Occupancy OBC"
+              data-desc="Ontario building permit coordination OBC filing municipal review inspections occupancy closeout">
               <div class="blog-card-img"><img src="../../images/5-parking-garage-inspection.png" alt="Ontario building permit process" loading="lazy" /></div>
               <div class="blog-card-body">
                 <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.inspections">Inspections &amp; OBC</span><span class="blog-read-time" data-i18n="blogHub.c15.rt">8 min read</span></div>
-                <h3 data-i18n="blogHub.c15.h3">Ontario Building Permit Process: From Application to Occupancy Permit</h3>
-                <p data-i18n="blogHub.c15.p">A complete walkthrough of the Ontario building permit process under the Building Code Act — application requirements, statutory review timelines, mandatory inspections, and occupancy permits.</p>
+                <h3 data-i18n="blogHub.c15.h3">Ontario Building Permit Process: Engineer-Led Filing to Occupancy</h3>
+                <p data-i18n="blogHub.c15.p">Overview of how Asvakas coordinates Ontario building permit filings under the Building Code Act — application requirements, municipal review, mandatory inspections, and occupancy or closeout steps.</p>
                 <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
             <a class="blog-card" href="tarion-warranty-structural-engineering.html"
-               data-cat="inspections" data-title="Tarion New Home Warranty Structural Defects Ontario 7 Year MSD"
-               data-desc="Tarion major structural defect MSD warranty Ontario 7 year new home warranty claim process">
+              data-cat="inspections" data-title="Tarion New Home Warranty Structural Defects Ontario MSD"
+              data-desc="Tarion major structural defect warranty Ontario new home warranty claim process">
               <div class="blog-card-img"><img src="../../images/6-sidewalk-slab-renovation.png" alt="Tarion warranty structural defects" loading="lazy" /></div>
               <div class="blog-card-body">
                 <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.inspections">Inspections &amp; OBC</span><span class="blog-read-time" data-i18n="blogHub.c16.rt">7 min read</span></div>
                 <h3 data-i18n="blogHub.c16.h3">Tarion New Home Warranty &amp; Structural Engineering Obligations in Ontario</h3>
-                <p data-i18n="blogHub.c16.p">Ontario's Tarion warranty provides 7-year Major Structural Defect coverage. Learn what qualifies as an MSD, how the claim process works, and when a structural engineer is needed.</p>
+                <p data-i18n="blogHub.c16.p">Ontario's Tarion warranty includes major structural defect coverage. Learn what qualifies as an MSD, how the claim process works, and when a structural engineer is needed.</p>
                 <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
@@ -327,7 +401,7 @@
               <div class="blog-card-body">
                 <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.structural">Structural Engineering</span><span class="blog-read-time" data-i18n="blogHub.c17.rt">8 min read</span></div>
                 <h3 data-i18n="blogHub.c17.h3">CSA Standards in Ontario Structural Engineering: A23.3, S16, O86 &amp; S6 Explained</h3>
-                <p data-i18n="blogHub.c17.p">A practical guide to the CSA standards every Ontario structural engineer uses — concrete (A23.3), steel (S16), wood (O86), and bridges (S6) — and how they relate to the OBC and NBCC.</p>
+                <p data-i18n="blogHub.c17.p">A practical guide to the CSA standards Ontario structural engineers use for concrete, steel, wood, and bridge design — and how they tie into the current OBC and NBCC adoption path.</p>
                 <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
@@ -339,7 +413,7 @@
               <div class="blog-card-body">
                 <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.structural">Structural Engineering</span><span class="blog-read-time" data-i18n="blogHub.c18.rt">7 min read</span></div>
                 <h3 data-i18n="blogHub.c18.h3">OBC Permit Types in Ontario: Building, Conditional, Demolition & Change of Use</h3>
-                <p data-i18n="blogHub.c18.p">A complete guide to Ontario Building Code permit types — when each applies, what drawings and documents are required, and how permit timelines work across Ontario municipalities.</p>
+                <p data-i18n="blogHub.c18.p">A complete guide to Ontario Building Code permit types — when each applies, what drawings and documents are required, and how permit paths vary across Ontario municipalities.</p>
                 <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
@@ -385,10 +459,10 @@
                data-desc="steel erection plans Ontario OHSA 213/91 temporary bracing precast erection P.Eng CSA S16">
               <div class="blog-card-img"><img src="../../images/7-erection-plan.png" alt="Steel erection Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Temporary Works</span><span class="blog-read-time">8 min read</span></div>
-                <h3>Steel Erection Plans in Ontario: OHSA Reg 213/91, Temporary Bracing & P.Eng Obligations</h3>
-                <p>OHSA requires P.Eng-designed erection plans for Ontario steel and precast projects above specific thresholds. This guide covers temporary bracing design, erection sequence, and precast element picks.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.temporary">Temporary Works</span><span class="blog-read-time" data-i18n="blogHub.c26.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c26.h3">Steel Erection Plans in Ontario: OHSA Reg 213/91, Temporary Bracing & P.Eng Obligations</h3>
+                <p data-i18n="blogHub.c26.p">OHSA requires P.Eng-designed erection plans for Ontario steel and precast projects above specific thresholds. This guide covers temporary bracing design, erection sequence, and precast element picks.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -397,10 +471,10 @@
                data-desc="cofferdam Ontario OHSA 213/91 Part XI Conservation Authority DFO watercourse permit sheet pile">
               <div class="blog-card-img"><img src="../../images/8-cofferdam-diversion.png" alt="Cofferdam construction Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Temporary Works</span><span class="blog-read-time">8 min read</span></div>
-                <h3>Cofferdam Engineering in Ontario: OHSA Reg 213/91, Watercourse Permits & Dewatering Risks</h3>
-                <p>Ontario cofferdam projects require OHSA Part XI compliance, Conservation Authority and DFO permits, and engineering design for hydrostatic, soil, and ice loads. This guide explains all requirements.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.temporary">Temporary Works</span><span class="blog-read-time" data-i18n="blogHub.c27.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c27.h3">Cofferdam Engineering in Ontario: OHSA Reg 213/91, Watercourse Permits & Dewatering Risks</h3>
+                <p data-i18n="blogHub.c27.p">Ontario cofferdam projects require OHSA Part XI compliance, Conservation Authority and DFO permits, and engineering design for hydrostatic, soil, and ice loads. This guide explains all requirements.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -409,10 +483,10 @@
                data-desc="bridge demolition Ontario MTO authorization OHSA demolition plan OTM Book 7 vibration PPV">
               <div class="blog-card-img"><img src="../../images/9-bridge-demolition-removal.png" alt="Bridge demolition Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Temporary Works</span><span class="blog-read-time">8 min read</span></div>
-                <h3>Bridge Demolition in Ontario: MTO Authorization, OHSA Requirements & Traffic Management</h3>
-                <p>Ontario bridge demolition requires MTO authorization, a P.Eng demolition plan under OHSA, OTM Book 7 traffic management, and environmental permits. This guide covers all requirements.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.temporary">Temporary Works</span><span class="blog-read-time" data-i18n="blogHub.c28.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c28.h3">Bridge Demolition in Ontario: MTO Authorization, OHSA Requirements & Traffic Management</h3>
+                <p data-i18n="blogHub.c28.p">Ontario bridge demolition requires MTO authorization, a P.Eng demolition plan under OHSA, OTM Book 7 traffic management, and environmental permits. This guide covers all requirements.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -421,10 +495,10 @@
                data-desc="bridge erection plans Ontario falsework design cofferdam Ontario MTO bridge standards OHSA O.Reg 213">
               <div class="blog-card-img"><img src="../../images/9-bridge-demolition-removal.png" alt="Bridge structural engineering Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Bridge Engineering</span><span class="blog-read-time">10 min read</span></div>
-                <h3>Bridge Structural Engineering in Ontario: Erection Plans, Demolition & Cofferdam</h3>
-                <p>P.Eng.-sealed bridge engineering for Ontario — erection plans, falsework design, demolition, cofferdam construction, CHBDC compliance, OHSA requirements, and multi-agency environmental permitting.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.bridge">Bridge Engineering</span><span class="blog-read-time" data-i18n="blogHub.c29.rt">10 min read</span></div>
+                <h3 data-i18n="blogHub.c29.h3">Bridge Structural Engineering in Ontario: Erection Plans, Demolition & Cofferdam</h3>
+                <p data-i18n="blogHub.c29.p">P.Eng.-sealed bridge engineering for Ontario — erection plans, falsework design, demolition, cofferdam construction, CHBDC compliance, OHSA requirements, and multi-agency environmental permitting.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -433,10 +507,10 @@
                data-desc="roof renovation Ontario structural engineer P.Eng deck replacement parapet repair dunnage OBC building permit">
               <div class="blog-card-img"><img src="../../images/10-roof-repair.png" alt="Roof renovation structural engineering Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Specialty Engineering</span><span class="blog-read-time">9 min read</span></div>
-                <h3>Roof Renovation & Replacement in Ontario: Structural Engineering Guide</h3>
-                <p>P.Eng.-sealed structural services for Ontario roof projects — deck replacement, parapet repair, dunnage framing, green roof load analysis, and OBC building permit filings for residential and commercial buildings.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.specialty">Specialty Engineering</span><span class="blog-read-time" data-i18n="blogHub.c30.rt">9 min read</span></div>
+                <h3 data-i18n="blogHub.c30.h3">Roof Renovation & Replacement in Ontario: Structural Engineering Guide</h3>
+                <p data-i18n="blogHub.c30.p">P.Eng.-sealed structural services for Ontario roof projects — deck replacement, parapet repair, dunnage framing, green roof load analysis, and OBC building permit filings for residential and commercial buildings.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -445,10 +519,10 @@
                data-desc="roof safety Ontario OHSA fall protection anchor CSA Z259 P.Eng certification working at heights">
               <div class="blog-card-img"><img src="../../images/11-anchorage-connection.png" alt="Roof safety anchor system" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Specialty Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Roof Safety Engineering in Ontario: OHSA Fall Protection, CSA Z259 Anchors & P.Eng Certification</h3>
-                <p>Ontario rooftop safety anchor systems must be P.Eng designed and CSA Z259 certified under OHSA. This guide explains anchor design loads, types, certification requirements, and annual inspection obligations.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.specialty">Specialty Engineering</span><span class="blog-read-time" data-i18n="blogHub.c31.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c31.h3">Roof Safety Engineering in Ontario: OHSA Fall Protection, CSA Z259 Anchors & P.Eng Certification</h3>
+                <p data-i18n="blogHub.c31.p">Ontario rooftop safety anchor systems must be P.Eng designed and CSA Z259 certified under OHSA. This guide explains anchor design loads, types, certification requirements, and annual inspection obligations.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -457,10 +531,10 @@
                data-desc="structural anchorage Ontario CSA A23.3 Annex D post-installed anchors pull-out testing P.Eng">
               <div class="blog-card-img"><img src="../../images/11-anchorage-connection.png" alt="Structural anchor connection" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Specialty Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Structural Anchorage in Ontario: CSA A23.3 Annex D, Post-Installed Anchors & Special Inspections</h3>
-                <p>Ontario anchor design under CSA A23.3 Annex D covers six failure modes, expansion and adhesive anchor types, pull-out testing, special inspection requirements, and seismic design provisions.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.specialty">Specialty Engineering</span><span class="blog-read-time" data-i18n="blogHub.c32.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c32.h3">Structural Anchorage in Ontario: CSA A23.3 Annex D, Post-Installed Anchors & Special Inspections</h3>
+                <p data-i18n="blogHub.c32.p">Ontario anchor design under CSA A23.3 Annex D covers six failure modes, expansion and adhesive anchor types, pull-out testing, installation verification requirements, and seismic design provisions.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -469,10 +543,10 @@
                data-desc="formwork engineering Ontario CSA S269 OHSA Reg 213/91 P.Eng stamp falsework concrete pressure">
               <div class="blog-card-img"><img src="../../images/12-form-work-design.png" alt="Concrete formwork Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Specialty Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Formwork Engineering in Ontario: CSA S269, OHSA Reg 213/91 & When a P.Eng Stamp Is Required</h3>
-                <p>Ontario formwork must comply with CSA S269 and OHSA Reg 213/91. A P.Eng stamp is required when loads exceed 10 kN/m² or spans exceed 6 metres. This guide covers formwork loads, failure causes, and pre-pour inspection.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.specialty">Specialty Engineering</span><span class="blog-read-time" data-i18n="blogHub.c33.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c33.h3">Formwork Engineering in Ontario: CSA S269, OHSA Reg 213/91 & When a P.Eng Stamp Is Required</h3>
+                <p data-i18n="blogHub.c33.p">Ontario formwork must comply with CSA S269 and OHSA Reg 213/91. This guide explains when project-specific engineering is usually required, along with formwork loads, failure causes, and pre-pour review.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -481,10 +555,10 @@
                data-desc="municipal property standards Ontario Toronto Chapter 629 property standards order structural engineer appeal">
               <div class="blog-card-img"><img src="../../images/3-supervision-consultancy1.png" alt="Municipal property standards Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Forensic Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Municipal Property Standards Orders in Ontario: Toronto Chapter 629, Structural Repairs & Appeals</h3>
-                <p>Ontario property standards orders require structural repairs within deadlines. Learn how Toronto's Chapter 629 works, when a structural engineer is needed, how to appeal, and what emergency orders mean for building owners.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.forensic">Forensic Engineering</span><span class="blog-read-time" data-i18n="blogHub.c34.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c34.h3">Municipal Property Standards Orders in Ontario: Toronto Chapter 629, Structural Repairs & Appeals</h3>
+                <p data-i18n="blogHub.c34.p">Ontario property standards orders require structural repairs within deadlines. Learn how Toronto's Chapter 629 works, when a structural engineer is needed, how to appeal, and what emergency orders mean for building owners.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -493,22 +567,22 @@
                data-desc="insurance claim structural damage Ontario P.Eng assessment sudden loss gradual deterioration exclusion insurer engineer">
               <div class="blog-card-img"><img src="../../images/13-forensic-structural-invest.png" alt="Structural damage insurance Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Forensic Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Insurance Claims for Structural Damage in Ontario: Engineering Assessments & the IBC Process</h3>
-                <p>Structural damage insurance claims in Ontario require P.Eng engineering assessments. Learn how the IBC policy, gradual deterioration exclusion, insurer's independent engineer, and subrogation rights work.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.forensic">Forensic Engineering</span><span class="blog-read-time" data-i18n="blogHub.c35.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c35.h3">Insurance Claims for Structural Damage in Ontario: Engineering Assessments & the IBC Process</h3>
+                <p data-i18n="blogHub.c35.p">Structural damage insurance claims in Ontario require P.Eng engineering assessments. Learn how the IBC policy, gradual deterioration exclusion, insurer's independent engineer, and subrogation rights work.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
             <a class="blog-card" href="construction-defect-ontario.html"
                data-cat="forensic" data-title="Construction Defect Claims Ontario Construction Act ODACC Rule 53.03"
-               data-desc="construction defect claims Ontario Construction Act ODACC Tarion warranty limitation period Rule 53.03 expert witness">
+               data-desc="construction defect claims Ontario Construction Act ODACC Tarion warranty limitation risk Rule 53.03 expert witness">
               <div class="blog-card-img"><img src="../../images/14-failure-analysis.png" alt="Construction defect investigation" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Forensic Engineering</span><span class="blog-read-time">8 min read</span></div>
-                <h3>Construction Defect Claims in Ontario: Construction Act, ODACC Adjudication & Rule 53.03 Expert Evidence</h3>
-                <p>Ontario construction defect claims navigate the Construction Act, Tarion warranty, ODACC adjudication, and 15-year limitation periods. This guide explains the legal framework and the structural engineer's role as expert witness.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.forensic">Forensic Engineering</span><span class="blog-read-time" data-i18n="blogHub.c36.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c36.h3">Construction Defect Claims in Ontario: Construction Act, ODACC Adjudication & Rule 53.03 Expert Evidence</h3>
+                <p data-i18n="blogHub.c36.p">Ontario construction defect claims navigate the Construction Act, Tarion warranty, ODACC adjudication, and limitation-law risk. This guide explains the legal framework and the structural engineer's role as expert witness.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -517,10 +591,10 @@
                data-desc="value engineering Ontario CCDC 2 structural VE slab systems foundation alternates cost reduction P.Eng">
               <div class="blog-card-img"><img src="../../images/15-expert-vitness.png" alt="Value engineering construction Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Construction Services</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Value Engineering in Ontario Construction: Structural VE, CCDC 2 Contracts & Cost Reduction</h3>
-                <p>Structural VE on Ontario projects can save 5–15% of structural contract cost when done right. This guide covers the VE workshop process, CCDC 2 savings-sharing, common structural VE items, and how engineers evaluate proposals.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.construction">Construction Services</span><span class="blog-read-time" data-i18n="blogHub.c37.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c37.h3">Value Engineering in Ontario Construction: Structural VE, CCDC 2 Contracts & Cost Reduction</h3>
+                <p data-i18n="blogHub.c37.p">Structural VE on Ontario projects can improve value when it is handled through a disciplined review process. This guide covers VE workshops, contract treatment, common structural VE items, and how engineers evaluate proposals.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -529,22 +603,22 @@
                data-desc="construction closeout Ontario substantial performance CCDC 2 occupancy permit Schedule 2 Division C General Review letter holdback">
               <div class="blog-card-img"><img src="../../images/16-cost-estimate.png" alt="Construction project closeout" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Construction Services</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Construction Closeout in Ontario: Substantial Performance, Occupancy Permit & P.Eng Schedule 2 Letter</h3>
-                <p>Ontario construction closeout requires substantial performance declaration, occupancy permit, P.Eng General Review Schedule 2 Division C final certificate, and CCDC 2 deficiency clearance. This guide explains every step.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.construction">Construction Services</span><span class="blog-read-time" data-i18n="blogHub.c38.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c38.h3">Construction Closeout in Ontario: Substantial Performance, Occupancy Permit & P.Eng Schedule 2 Letter</h3>
+                <p data-i18n="blogHub.c38.p">Ontario construction closeout typically includes occupancy, professional completion certificates, deficiency clearance, and contract closeout coordination. This guide explains the major steps and how they fit together.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
             <a class="blog-card" href="ontario-construction-act.html"
                data-cat="construction" data-title="Ontario Construction Act 2018 Prompt Payment Liens ODACC"
-               data-desc="Ontario Construction Act 2018 prompt payment 28 days construction lien ODACC adjudication holdback Bill 142">
+               data-desc="Ontario Construction Act prompt payment construction lien ODACC adjudication holdback Bill 142">
               <div class="blog-card-img"><img src="../../images/17-project-scheduling.png" alt="Ontario Construction Act 2018" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Construction Services</span><span class="blog-read-time">8 min read</span></div>
-                <h3>Ontario Construction Act 2018: Prompt Payment, Construction Liens, ODACC & Engineer Rights</h3>
-                <p>Ontario's Construction Act 2018 introduced mandatory 28-day prompt payment, ODACC adjudication, and modernized lien law. Learn how structural engineers protect payment rights, register liens, and use ODACC to resolve disputes fast.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.construction">Construction Services</span><span class="blog-read-time" data-i18n="blogHub.c39.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c39.h3">Ontario Construction Act 2018: Prompt Payment, Construction Liens, ODACC & Engineer Rights</h3>
+                <p data-i18n="blogHub.c39.p">Ontario's Construction Act introduced prompt payment, ODACC adjudication, and modernized lien law. Learn how structural engineers protect payment rights, preserve liens, and use ODACC for eligible disputes.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -553,10 +627,10 @@
                data-desc="sidewalk slab repair replacement Ontario underground vault P.Eng OBC building permit municipal">
               <div class="blog-card-img"><img src="../../images/6-sidewalk-slab-renovation.png" alt="Sidewalk slab repair Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Structural Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Sidewalk Slab Repair & Municipal Standards in Ontario: Engineer's Guide</h3>
-                <p>Ontario sidewalk slab repair and vault engineering — municipal by-law obligations, structural design for slabs over underground spaces, OBC compliance, and P.Eng permit process.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.structural">Structural Engineering</span><span class="blog-read-time" data-i18n="blogHub.c40.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c40.h3">Sidewalk Slab Repair & Municipal Standards in Ontario: Engineer's Guide</h3>
+                <p data-i18n="blogHub.c40.p">Ontario sidewalk slab repair and vault engineering — municipal by-law obligations, structural design for slabs over underground spaces, OBC compliance, and P.Eng permit process.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -565,10 +639,10 @@
                data-desc="new window door passage opening load-bearing wall Ontario OBC Part 9 Part 3 P.Eng building permit lintel beam">
               <div class="blog-card-img"><img src="../../images/19-building-opening.png" alt="Structural opening Ontario building" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Structural Engineering</span><span class="blog-read-time">7 min read</span></div>
-                <h3>Structural Openings in Ontario Buildings: Windows, Doors & Passage Cuts</h3>
-                <p>Creating new window or door openings in Ontario buildings requires P.Eng structural design under OBC, temporary shoring, and a building permit. Complete engineering and permit process guide.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.structural">Structural Engineering</span><span class="blog-read-time" data-i18n="blogHub.c41.rt">7 min read</span></div>
+                <h3 data-i18n="blogHub.c41.h3">Structural Openings in Ontario Buildings: Windows, Doors & Passage Cuts</h3>
+                <p data-i18n="blogHub.c41.p">Creating new window or door openings in Ontario buildings requires P.Eng structural design under OBC, temporary shoring, and a building permit. Complete engineering and permit process guide.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -577,10 +651,10 @@
                data-desc="Ontario facade renovation masonry repointing cladding replacement OBC Part 11 O.Reg 59/20 SB-10 P.Eng heritage">
               <div class="blog-card-img"><img src="../../images/20-facade-renov-rest.png" alt="Ontario facade renovation" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Façade Engineering</span><span class="blog-read-time">8 min read</span></div>
-                <h3>Façade Renovation & Restoration in Ontario: OBC, O.Reg 59/20 & P.Eng Design Guide</h3>
-                <p>Ontario facade renovation — masonry repointing, cladding system replacement, OBC Part 11 compliance, energy code requirements, heritage considerations, and building permit process.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.facade">Façade Engineering</span><span class="blog-read-time" data-i18n="blogHub.c42.rt">8 min read</span></div>
+                <h3 data-i18n="blogHub.c42.h3">Façade Renovation & Restoration in Ontario: OBC, O.Reg 59/20 & P.Eng Design Guide</h3>
+                <p data-i18n="blogHub.c42.p">Ontario facade renovation — masonry repointing, cladding system replacement, OBC Part 11 compliance, energy code requirements, heritage considerations, and building permit process.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -589,10 +663,10 @@
                data-desc="heritage building restoration Ontario Heritage Act Part IV Part V OBC Part 11 alternative solutions P.Eng structural investigation">
               <div class="blog-card-img"><img src="../../images/21-building-structural-renov.png" alt="Heritage building restoration Ontario" loading="lazy" /></div>
               <div class="blog-card-body">
-                <div class="blog-card-meta"><span class="blog-cat-pill">Heritage Preservation</span><span class="blog-read-time">9 min read</span></div>
-                <h3>Heritage Building Structural Restoration in Ontario: Ontario Heritage Act, OBC Part 11 & P.Eng Guide</h3>
-                <p>Restoring a heritage-designated Ontario building involves OHA permits, OBC Part 11 compliance, and P.Eng engineering of historic masonry, timber, cast iron, and early concrete structural systems.</p>
-                <div class="blog-card-footer"><span class="blog-card-date">April 2026</span><span class="blog-card-arrow">Read →</span></div>
+                <div class="blog-card-meta"><span class="blog-cat-pill" data-i18n="blogHub.cat.heritage">Heritage Preservation</span><span class="blog-read-time" data-i18n="blogHub.c43.rt">9 min read</span></div>
+                <h3 data-i18n="blogHub.c43.h3">Heritage Building Structural Restoration in Ontario: Ontario Heritage Act, OBC Part 11 & P.Eng Guide</h3>
+                <p data-i18n="blogHub.c43.p">Restoring a heritage-designated Ontario building involves OHA permits, OBC Part 11 compliance, and P.Eng engineering of historic masonry, timber, cast iron, and early concrete structural systems.</p>
+                <div class="blog-card-footer"><span class="blog-card-date" data-i18n="blogHub.card.date">April 2026</span><span class="blog-card-arrow" data-i18n="blogHub.card.read">Read →</span></div>
               </div>
             </a>
 
@@ -630,7 +704,7 @@
             <div class="footer-col"><h5 data-i18n="footer.col3.h">Support</h5><ul>
               <li><a href="index.html" data-i18n="footer.link.blog">Blog</a></li>
               <li><a href="../faq.html" data-i18n="footer.link.faq">FAQ</a></li>
-              <li><a href="index.html" data-i18n="footer.link.help">Help Center</a></li>
+              <li><a href="../help.html" data-i18n="footer.link.help">Help Center</a></li>
             </ul></div>
           </div>
         </div>
@@ -651,20 +725,78 @@
       const cards = document.querySelectorAll('.blog-card');
       const noResults = document.getElementById('noResults');
       const countEl = document.getElementById('articleCount');
+      const blogHeroPill = document.querySelector('.page-hero-pill');
+      const blogHeroTitle = document.querySelector('.page-hero h1');
+      const blogHeroDesc = document.querySelector('.page-hero p');
+      const filterLabels = {
+        en: {
+          heroPill: 'Knowledge Base',
+          heroTitle: 'Ontario Structural Guides & Code Updates',
+          heroDesc: 'Practical articles on OBC permits, facade and balcony rehabilitation, temporary works, forensic reporting, and Ontario project delivery.',
+          noResults: 'No articles match your search. Try a different keyword or category.',
+          allHeading: 'All Articles',
+          all: 'All Ontario Articles',
+          structural: 'Structural Engineering',
+          inspections: 'Permits & Inspections',
+          temporary: 'Temporary Works',
+          forensic: 'Forensic Engineering',
+          construction: 'Construction Delivery',
+          specialty: 'Specialty Engineering',
+          facade: 'Façades & Restoration'
+        },
+        fr: {
+          heroPill: 'Base de connaissances',
+          heroTitle: 'Guides ontariens et mises à jour du CBO',
+          heroDesc: 'Articles pratiques sur les permis CBO, la réhabilitation des façades et balcons, les ouvrages temporaires, les rapports judiciaires et la livraison des projets en Ontario.',
+          noResults: 'Aucun article ne correspond à votre recherche. Essayez un autre mot-clé ou une autre catégorie.',
+          allHeading: 'Tous les articles',
+          all: 'Tous les articles de l’Ontario',
+          structural: 'Génie structurel',
+          inspections: 'Permis et inspections',
+          temporary: 'Ouvrages temporaires',
+          forensic: 'Génie judiciaire',
+          construction: 'Livraison de chantier',
+          specialty: 'Ingénierie spécialisée',
+          facade: 'Façades et restauration'
+        }
+      };
       let activeFilter = 'all';
+
+      function syncBlogHubLocale() {
+        const currentLang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
+        const labels = filterLabels[currentLang];
+        if (blogHeroPill) blogHeroPill.textContent = labels.heroPill;
+        if (blogHeroTitle) blogHeroTitle.textContent = labels.heroTitle;
+        if (blogHeroDesc) blogHeroDesc.textContent = labels.heroDesc;
+        filterBtns.forEach((btn) => {
+          const label = labels[btn.dataset.filter];
+          if (label) btn.textContent = label;
+        });
+        const gridHeading = document.querySelector('.blog-grid-header h2');
+        if (gridHeading) gridHeading.textContent = labels.allHeading;
+        if (noResults?.firstElementChild) noResults.firstElementChild.textContent = labels.noResults;
+        searchInput.setAttribute('aria-label', currentLang === 'fr' ? 'Rechercher des articles' : 'Search articles');
+        searchInput.setAttribute('placeholder', currentLang === 'fr' ? 'Rechercher des articles...' : 'Search articles...');
+        document.querySelector('.blog-filters')?.setAttribute(
+          'aria-label',
+          currentLang === 'fr' ? 'Filtrer par catégorie' : 'Filter by category'
+        );
+      }
+
       function filterCards() {
         const q = searchInput.value.toLowerCase().trim();
         let visible = 0;
         cards.forEach(card => {
-          const title = card.dataset.title.toLowerCase();
-          const desc = card.dataset.desc.toLowerCase();
+          const title = (card.querySelector('h3')?.textContent || card.dataset.title || '').toLowerCase();
+          const desc = (card.querySelector('p')?.textContent || card.dataset.desc || '').toLowerCase();
           const cat = card.dataset.cat.toLowerCase();
           const matchSearch = !q || title.includes(q) || desc.includes(q);
           const matchFilter = activeFilter === 'all' || cat === activeFilter;
           if (matchSearch && matchFilter) { card.hidden = false; visible++; }
           else { card.hidden = true; }
         });
-        countEl.textContent = visible + ' articles';
+        const currentLang = document.documentElement.lang === 'fr' ? 'fr' : 'en';
+        countEl.textContent = currentLang === 'fr' ? visible + ' articles' : visible + ' articles';
         noResults.style.display = visible === 0 ? 'block' : 'none';
       }
       searchInput.addEventListener('input', filterCards);
@@ -676,6 +808,12 @@
           filterCards();
         });
       });
+      syncBlogHubLocale();
+      filterCards();
+      window.addEventListener('asvakas:langchange', () => {
+        syncBlogHubLocale();
+        filterCards();
+      });
       /* Fade-up animation */
       const observer = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = 1; e.target.style.transform = 'translateY(0)'; } });
@@ -684,8 +822,9 @@
         c.style.opacity = 0; c.style.transform = 'translateY(18px)'; c.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
         observer.observe(c);
       });
+      window.addEventListener('load', syncBlogHubLocale);
     </script>
     <script src="../../region.js"></script>
-    <script src="../lang.js"></script>
+    <script src="../lang.js?v=4"></script>
   </body>
 </html>

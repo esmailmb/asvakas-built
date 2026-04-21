@@ -1,4 +1,9 @@
-/* ── Contact form → Formspree direct submission ── */
+/* ── Contact form submission ── */
+const isLocalContactApi = ["localhost", "127.0.0.1"].includes(window.location.hostname) || window.location.protocol === "file:";
+const contactApiBaseUrl = isLocalContactApi
+  ? "http://localhost:3000"
+  : "https://asvakas-backend.onrender.com";
+
 const contactForm = document.getElementById("contactForm");
 const formSuccess = document.getElementById("formSuccess");
 
@@ -7,9 +12,15 @@ if (contactForm) {
     e.preventDefault();
 
     const submitBtn = document.getElementById("submitBtn");
+    const isFrench = document.documentElement.lang === "fr";
+    const submitLabels = {
+      sending: isFrench ? "Envoi..." : "Sending...",
+      waking: isFrench ? "Toujours en cours d'envoi..." : "Still sending...",
+      idle: isFrench ? "Envoyer le message ->" : "Send Message ->"
+    };
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
+      submitBtn.textContent = submitLabels.sending;
     }
 
     /* Build the data payload */
@@ -34,23 +45,47 @@ if (contactForm) {
     }
 
     /* (3) Always-on contact fields */
-    ["fullName", "email", "message"].forEach(function (id) {
-      const el = document.getElementById(id);
-      if (el && el.value.trim()) {
-        data[el.name.replace(/-/g, " ")] = el.value.trim();
+    const fullName = document.getElementById("fullName");
+    const firstName = document.getElementById("firstName");
+    const lastName = document.getElementById("lastName");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    if (fullName && fullName.value.trim()) {
+      data[fullName.name.replace(/-/g, " ")] = fullName.value.trim();
+    } else {
+      const firstNameValue = firstName && firstName.value.trim();
+      const lastNameValue = lastName && lastName.value.trim();
+      const combinedName = [firstNameValue, lastNameValue].filter(Boolean).join(" ").trim();
+
+      if (firstNameValue) {
+        data[firstName.name.replace(/-/g, " ")] = firstNameValue;
       }
-    });
+      if (lastNameValue) {
+        data[lastName.name.replace(/-/g, " ")] = lastNameValue;
+      }
+      if (combinedName) {
+        data["Full Name"] = combinedName;
+      }
+    }
+
+    if (email && email.value.trim()) {
+      data[email.name.replace(/-/g, " ")] = email.value.trim();
+    }
+    if (message && message.value.trim()) {
+      data[message.name.replace(/-/g, " ")] = message.value.trim();
+    }
 
     try {
-      /* Render free tier can take ~60s to wake up — show a hint after 8s */
+      /* Keep the user informed on slower first requests without exposing backend details */
       const wakeTimer = setTimeout(function () {
-        if (submitBtn) submitBtn.textContent = "Waking up server… (~60s first time)";
+        if (submitBtn) submitBtn.textContent = submitLabels.waking;
       }, 8000);
 
       const controller = new AbortController();
       const hardTimeout = setTimeout(function () { controller.abort(); }, 120000);
 
-      const res = await fetch("https://asvakas-backend.onrender.com/submit", {
+      const res = await fetch(contactApiBaseUrl + "/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(data),
@@ -69,11 +104,15 @@ if (contactForm) {
       }
     } catch (err) {
       const msg = err.name === "AbortError"
-        ? "Request timed out. Please try again or email us directly at info@asvakas.com"
-        : "Sorry, your message could not be sent. Please email us directly at info@asvakas.com";
+        ? (isFrench
+            ? "La demande a expire. Veuillez reessayer ou nous ecrire directement a info@asvakas.com."
+            : "Request timed out. Please try again or email us directly at info@asvakas.com")
+        : (isFrench
+            ? "Desole, votre message n'a pas pu etre envoye. Veuillez nous ecrire directement a info@asvakas.com."
+            : "Sorry, your message could not be sent. Please email us directly at info@asvakas.com");
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message \u2192";
+        submitBtn.textContent = submitLabels.idle;
       }
       alert(msg);
     }

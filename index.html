@@ -3,85 +3,133 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Engineering Consultancy | Asvakas Engineering</title>
-    <meta name="description" content="Structural, forensic, and construction engineering consultancy for analysis, connection design, retrofit strategy, and code-compliant project support." />
-
-      <!-- SEO: Structured Data for Google Sitelinks and Business Info -->
-      <script type="application/ld+json">
+    <title>Asvakas Engineering | Structural, Forensic &amp; Construction Consultants</title>
+    <meta name="description" content="Asvakas Engineering provides structural, forensic, facade, restoration, and construction engineering consulting for owners, contractors, and design teams in the U.S. and Canada." />
+    <link rel="canonical" href="https://asvakas.com/" />
+    <link rel="alternate" hreflang="en-us" href="https://asvakas.com/" />
+    <link rel="alternate" hreflang="en-ca" href="https://asvakas.com/canada/" />
+    <link rel="alternate" hreflang="x-default" href="https://asvakas.com/" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="Asvakas Engineering | Structural, Forensic &amp; Construction Consultants" />
+    <meta property="og:description" content="Structural, forensic, facade, restoration, and construction engineering consulting for owners, contractors, and design teams." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://asvakas.com/" />
+    <meta property="og:site_name" content="Asvakas Engineering" />
+    <meta name="twitter:card" content="summary" />
+    <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "EngineeringService",
-        "name": "Asvakas Engineering",
-        "url": "https://www.asvakas.com",
-        "logo": "https://www.asvakas.com/logo.png",
-        "description": "Civil & Structural Engineering Consultants serving Canada and the US. Precision design, inspections, and project delivery.",
-        "areaServed": [
-          { "@type": "Country", "name": "Canada" },
-          { "@type": "Country", "name": "United States" }
-        ],
-        "sameAs": [
-          "https://www.linkedin.com/company/asvakas"
-        ],
-        "contactPoint": [
+        "@graph": [
           {
-            "@type": "ContactPoint",
-            "telephone": "+1-XXX-XXX-XXXX",
-            "contactType": "customer service",
-            "areaServed": "CA"
+            "@type": "EngineeringService",
+            "@id": "https://asvakas.com/#organization",
+            "name": "Asvakas Engineering",
+            "alternateName": "Asvakas",
+            "url": "https://asvakas.com/",
+            "logo": "https://asvakas.com/favicon.svg",
+            "image": "https://asvakas.com/favicon.svg",
+            "description": "Structural, forensic, facade, restoration, and construction engineering consulting for owners, contractors, and design teams in the U.S. and Canada.",
+            "email": "info@asvakas.com",
+            "areaServed": [
+              { "@type": "Country", "name": "United States" },
+              { "@type": "Country", "name": "Canada" }
+            ],
+            "sameAs": [
+              "https://www.linkedin.com/company/asvakas"
+            ],
+            "contactPoint": [
+              {
+                "@type": "ContactPoint",
+                "contactType": "customer support",
+                "email": "info@asvakas.com",
+                "availableLanguage": ["en"]
+              }
+            ]
           },
           {
-            "@type": "ContactPoint",
-            "telephone": "+1-XXX-XXX-YYYY",
-            "contactType": "customer service",
-            "areaServed": "US"
+            "@type": "WebSite",
+            "@id": "https://asvakas.com/#website",
+            "url": "https://asvakas.com/",
+            "name": "Asvakas Engineering",
+            "publisher": {
+              "@id": "https://asvakas.com/#organization"
+            }
+          },
+          {
+            "@type": "CollectionPage",
+            "@id": "https://asvakas.com/#homepage",
+            "url": "https://asvakas.com/",
+            "name": "Asvakas Engineering",
+            "description": "Primary homepage for Asvakas Engineering with service, project, resource, and regional navigation.",
+            "isPartOf": {
+              "@id": "https://asvakas.com/#website"
+            },
+            "about": {
+              "@id": "https://asvakas.com/#organization"
+            }
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-about",
+            "name": "About",
+            "url": "https://asvakas.com/about"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-services",
+            "name": "Services",
+            "url": "https://asvakas.com/services"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-engineering-systems",
+            "name": "Engineering Systems",
+            "url": "https://asvakas.com/engineering-systems"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-projects",
+            "name": "Projects",
+            "url": "https://asvakas.com/projects"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-resources",
+            "name": "Resources",
+            "url": "https://asvakas.com/resources"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-contact",
+            "name": "Contact",
+            "url": "https://asvakas.com/contact"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "@id": "https://asvakas.com/#nav-canada",
+            "name": "Canada",
+            "url": "https://asvakas.com/canada/"
           }
         ]
       }
-      </script>
-      <script type="application/ld+json">
-      {
-       "@context": "https://schema.org",
-       "@type": "WebSite",
-       "name": "Asvakas Engineering",
-       "url": "https://www.asvakas.com/",
-       "potentialAction": {
-         "@type": "SearchAction",
-         "target": "https://www.asvakas.com/search?q={search_term_string}",
-         "query-input": "required name=search_term_string"
-       }
-      }
-      </script>
+    </script>
     <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <script>
-      // Region-based redirect: send Canadian visitors to canada/index.html
-      (function() {
-        // Only run if not already in /canada/
-        if (window.location.pathname.toLowerCase().indexOf('/canada') === -1) {
-          // Use a free IP geolocation API (ipapi.co)
-          fetch('https://ipapi.co/country/').then(function(resp) { return resp.text(); }).then(function(country) {
-            if (country.trim() === 'CA') {
-              window.location.href = window.location.origin + '/canada/index.html';
-            }
-          });
-        }
-      })();
-    </script>
   </head>
   <body class="home-page">
     <header class="site-header" id="top">
       <div class="container header-inner">
-        <a href="#top" class="brand">Asvakas<span class="brand-eng">ENG</span></a>
+        <a href="/#top" class="brand">Asvakas<span class="brand-eng">ENG</span></a>
         <nav class="main-nav" id="mainNav">
-          <a href="index.html" class="active">Home</a>
-          <a href="about.html">About</a>
-          <a href="services.html">Services</a>
-          <a href="engineering-systems.html">Engineering Systems</a>
-          <a href="projects.html">Projects</a>
-          <a href="resources.html">Resources</a>
-          <a href="contact.html">Contact</a>
+          <a href="/" class="active">Home</a>
+          <a href="/about">About</a>
+          <a href="/services">Services</a>
+          <a href="/engineering-systems">Engineering Systems</a>
+          <a href="/projects">Projects</a>
+          <a href="/resources">Resources</a>
+          <a href="/contact">Contact</a>
         </nav>
         <div class="region-picker" id="regionPicker">
           <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
@@ -93,7 +141,6 @@
             <li class="rp-option" data-region="usa" role="option">🇺🇸 USA</li>
             <li class="rp-option" data-region="canada" role="option">🇨🇦 Canada</li>
           </ul>
-        </div>
         </div>
         <button class="nav-toggle" id="navToggle" aria-label="Open menu">☰</button>
       </div>
@@ -111,13 +158,13 @@
         <div class="container hero-content">
           <p class="hero-tag fade-up" data-region-tag>Engineering Consultancy</p>
           <h1 class="fade-up hero-rotating-h1" style="--delay:0.13s" aria-live="polite">
-            <span class="hero-line-static">Structural Consulting for Complex Projects.</span>
-            <span class="hero-line-rotate" id="heroRotate">Connection Design. Retrofit Strategy. Construction Support.</span>
+            <span class="hero-line-static">Structural, Forensic, and Construction Engineering.</span>
+            <span class="hero-line-rotate" id="heroRotate">Local Law. Bridges. Restoration. Specialty Systems.</span>
           </h1>
-          <p class="fade-up" style="--delay:0.26s" data-region-sub>Asvakas provides structural consulting, forensic investigation, construction-phase engineering support, connection design, anchorage analysis, retrofit strategy, and code-compliant technical documentation.</p>
+          <p class="fade-up" style="--delay:0.26s" data-region-sub>Asvakas supports structural consulting, forensic investigation, Local Law and parking garage inspections, bridge design and demolition planning, facade and envelope review, anchorage and connection design, repair and retrofit strategy, and construction-phase coordination.</p>
           <div class="hero-actions fade-up" style="--delay:0.38s">
-            <a class="btn btn-solid" href="contact.html">Request Consultation</a>
-            <a class="btn btn-outline" href="engineering-systems.html">Discuss Your Project</a>
+            <a class="btn btn-solid" href="/contact">Request Consultation</a>
+            <a class="btn btn-outline" href="/engineering-systems">Discuss Your Project</a>
           </div>
         </div>
       </section>
@@ -128,7 +175,7 @@
             <span class="section-label">About Asvakas</span>
             <h2>Technical engineering leadership built for design teams, owners, and contractors.</h2>
             <p>Asvakas operates as an engineering consultancy focused on structural systems, forensic assessment, construction coordination, and technically demanding building work.</p>
-            <a class="btn btn-outline" href="about.html">Get to Know Us</a>
+            <a class="btn btn-outline" href="/about">Get to Know Us</a>
           </div>
           <div class="stats-grid">
             <div class="stat-card fade-up" style="--delay:0.05s"><strong data-target="20" data-suffix="+">20+</strong><span>Years Experience</span></div>
@@ -139,117 +186,191 @@
         </div>
       </section>
 
+      <section class="section brand-hub-section" aria-labelledby="brand-hub-title">
+        <div class="container brand-hub">
+          <div class="brand-hub-copy fade-up">
+            <span class="section-label">Explore Asvakas</span>
+            <h2 id="brand-hub-title">Start with the page that matches your project, question, or region.</h2>
+            <p>The homepage now surfaces the primary destinations we want search engines and visitors to treat as the core Asvakas paths: services, technical systems, projects, resources, contact, and the Canada section.</p>
+          </div>
+          <div class="brand-hub-grid">
+            <article class="brand-hub-card fade-up" style="--delay:0.05s">
+              <h3>About</h3>
+              <p>Company background, positioning, and how Asvakas approaches technical consulting.</p>
+              <a class="brand-hub-link" href="/about">Open About</a>
+            </article>
+            <article class="brand-hub-card fade-up" style="--delay:0.1s">
+              <h3>Services</h3>
+              <p>Core service lines across structural, forensic, facade, and construction engineering.</p>
+              <a class="brand-hub-link" href="/services">Open Services</a>
+            </article>
+            <article class="brand-hub-card fade-up" style="--delay:0.15s">
+              <h3>Engineering Systems</h3>
+              <p>Specialty engineering topics, assemblies, interfaces, and deeper technical scopes.</p>
+              <a class="brand-hub-link" href="/engineering-systems">Open Engineering Systems</a>
+            </article>
+            <article class="brand-hub-card fade-up" style="--delay:0.2s">
+              <h3>Projects</h3>
+              <p>Representative work, delivery types, and project categories across the practice.</p>
+              <a class="brand-hub-link" href="/projects">Open Projects</a>
+            </article>
+            <article class="brand-hub-card fade-up" style="--delay:0.25s">
+              <h3>Resources</h3>
+              <p>Guides, articles, and practical reference material tied to engineering decisions.</p>
+              <a class="brand-hub-link" href="/resources">Open Resources</a>
+            </article>
+            <article class="brand-hub-card fade-up" style="--delay:0.3s">
+              <h3>Contact</h3>
+              <p>Direct inquiry path for owners, contractors, architects, and consultants.</p>
+              <a class="brand-hub-link" href="/contact">Open Contact</a>
+            </article>
+            <article class="brand-hub-card brand-hub-card-region fade-up" style="--delay:0.35s">
+              <h3>Canada</h3>
+              <p>Ontario-focused pages, resources, and regional content under the Canada section.</p>
+              <a class="brand-hub-link" href="/canada/">Open Canada</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="services-section" id="services">
         <div class="container svc-header">
           <span class="section-label-pill fade-up">Engineering Expertise</span>
-          <h2 class="fade-up" style="--delay:0.1s">Technical Consulting Built Around the Way Projects Actually Move</h2>
-          <p class="services-subtitle fade-up" style="--delay:0.2s">Asvakas provides structural consulting, forensic investigation, construction-phase engineering support, connection design, anchorage analysis, retrofit strategy, and code-compliant technical documentation.</p>
+          <h2 class="fade-up" style="--delay:0.1s">Technical Consulting for Safer, Stronger, and More Durable Structures</h2>
+          <p class="services-subtitle fade-up" style="--delay:0.2s">Asvakas supports projects from concept through evaluation, repair, retrofit, code review, and construction-phase coordination. The consultancy spans structural systems, facades, building envelopes, restoration, anchorage, specialty assemblies, and technical reporting.</p>
         </div>
 
         <div class="container svc-category">
-          <p class="svc-cat-label fade-up">Core Engineering Services</p>
+          <p class="svc-cat-label fade-up">Core Consultancy</p>
           <div class="services-grid">
             <article class="service-card fade-up" style="--delay:0.05s">
               <span class="svc-num">01</span>
               <h3>Structural Engineering</h3>
               <p>Structural analysis, framing systems, load path evaluation, and design coordination for new and existing buildings.</p>
               <img class="svc-img" src="images/2-structural-design.png" alt="Structural engineering" />
-              <a class="btn btn-outline" href="structural-engineering.html">View Service</a>
+              <a class="btn btn-outline" href="/structural-engineering">View Service</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.15s">
               <span class="svc-num">02</span>
               <h3>Forensic Engineering</h3>
               <p>Failure investigation, damage assessment, defect review, and technical reporting for claims, disputes, and remediation planning.</p>
               <img class="svc-img" src="images/13-forensic-structural-invest.png" alt="Forensic engineering" />
-              <a class="btn btn-outline" href="forensic-engineering.html">View Service</a>
+              <a class="btn btn-outline" href="/forensic-engineering">View Service</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.25s">
               <span class="svc-num">03</span>
-              <h3>Construction Engineering</h3>
-              <p>Shop drawing review, field issue resolution, coordination with design teams, and buildability-focused engineering during construction.</p>
-              <img class="svc-img" src="images/18-construction-administration.png" alt="Construction engineering" />
-              <a class="btn btn-outline" href="construction-engineering.html">View Service</a>
+              <h3>Facade Engineering</h3>
+              <p>Facade systems consulting focused on movement, attachment strategy, durability, water management, and rehabilitation planning.</p>
+              <img class="svc-img" src="images/20-facade-renov-rest.png" alt="Facade engineering" />
+              <a class="btn btn-outline" href="/facade-engineering">View Service</a>
             </article>
           </div>
         </div>
 
         <div class="container svc-category">
-          <p class="svc-cat-label fade-up">Engineering Systems</p>
+          <p class="svc-cat-label fade-up">Envelope &amp; Restoration</p>
           <div class="services-grid">
             <article class="service-card fade-up" style="--delay:0.05s">
               <span class="svc-num">04</span>
-              <h3>Structural Connection Design</h3>
-              <p>Connection analysis, detailing support, and constructable load transfer design across steel, wood, and concrete interfaces.</p>
-              <img class="svc-img" src="images/11-anchorage-connection.png" alt="Structural connection design" />
-              <a class="btn btn-outline" href="structural-connection-design.html">Explore</a>
+              <h3>Building Envelope Consulting</h3>
+              <p>Moisture control strategy, transition detailing, enclosure evaluation, and leakage-risk reduction for durable assemblies.</p>
+              <img class="svc-img" src="images/10-roof-repair.png" alt="Building envelope consulting" />
+              <a class="btn btn-outline" href="/building-envelope-consulting">Explore</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.15s">
               <span class="svc-num">05</span>
-              <h3>Anchorage &amp; Fastening Design</h3>
-              <p>Anchorage engineering for post-installed, cast-in, retrofit, and edge-sensitive conditions requiring coordinated documentation.</p>
-              <img class="svc-img" src="images/11-anchorage-connection.png" alt="Anchorage and fastening design" />
-              <a class="btn btn-outline" href="anchorage-and-fastening-design.html">Explore</a>
+              <h3>Masonry &amp; Stone Consulting</h3>
+              <p>Masonry distress review, stone repair compatibility, mortar strategy, and facade material behavior consulting.</p>
+              <img class="svc-img" src="images/4-facade-inspection.png" alt="Masonry and stone consulting" />
+              <a class="btn btn-outline" href="/masonry-and-stone-consulting">Explore</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.25s">
               <span class="svc-num">06</span>
-              <h3>Lateral Load Resisting Systems</h3>
-              <p>Engineering support for shear walls, braced systems, diaphragms, and stability review under wind and seismic demands.</p>
-              <img class="svc-img" src="images/7-erection-plan.png" alt="Lateral load resisting systems" />
-              <a class="btn btn-outline" href="lateral-load-resisting-systems.html">Explore</a>
+              <h3>Historic Restoration Consulting</h3>
+              <p>Preservation-compatible engineering for historic building renovation, legacy materials, repair sequencing, and moisture-sensitive restoration scopes.</p>
+              <img class="svc-img" src="images/1-structural-renovation.png" alt="Historic restoration consulting" />
+              <a class="btn btn-outline" href="/historic-restoration-consulting">Explore</a>
             </article>
           </div>
         </div>
 
         <div class="container svc-category">
-          <p class="svc-cat-label fade-up">Repair, Compliance, and Project Support</p>
+          <p class="svc-cat-label fade-up">Systems Expertise</p>
           <div class="services-grid">
             <article class="service-card fade-up" style="--delay:0.05s">
               <span class="svc-num">07</span>
-              <h3>Structural Repair &amp; Retrofit</h3>
-              <p>Existing building strengthening, repair strategy, rehabilitation planning, and upgrade concepts for deficient structures.</p>
-              <img class="svc-img" src="images/1-structural-renovation.png" alt="Structural repair and retrofit" />
-              <a class="btn btn-outline" href="structural-repair-and-retrofit.html">Explore</a>
+              <h3>Structural Connections</h3>
+              <p>Connection analysis, detailing support, and constructable load transfer design across steel, wood, and concrete interfaces.</p>
+              <img class="svc-img" src="images/11-anchorage-connection.png" alt="Structural connection design" />
+              <a class="btn btn-outline" href="/structural-connection-design">Explore</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.15s">
               <span class="svc-num">08</span>
-              <h3>Code Compliance &amp; Engineering Reports</h3>
-              <p>Structural code review, permit support, technical letters, and engineering reports for due diligence and filings.</p>
-              <img class="svc-img" src="images/14-failure-analysis.png" alt="Code compliance and engineering reports" />
-              <a class="btn btn-outline" href="code-compliance-and-engineering-reports.html">Explore</a>
+              <h3>Anchorage Systems</h3>
+              <p>Anchorage engineering for post-installed, cast-in, retrofit, and edge-sensitive conditions requiring coordinated documentation.</p>
+              <img class="svc-img" src="images/11-anchorage-connection.png" alt="Anchorage systems" />
+              <a class="btn btn-outline" href="/anchorage-and-fastening-design">Explore</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.25s">
               <span class="svc-num">09</span>
-              <h3>Construction Engineering Support</h3>
-              <p>Responsive technical support for RFIs, submittals, site coordination, and installation questions during active construction.</p>
-              <img class="svc-img" src="images/3-supervision-consultancy1.png" alt="Construction engineering support" />
-              <a class="btn btn-outline" href="construction-engineering-support.html">Explore</a>
+              <h3>Waterproofing &amp; Below-Grade</h3>
+              <p>Below-grade waterproofing consulting, transition detailing, leak investigation support, and buried-structure durability review.</p>
+              <img class="svc-img" src="images/10-roof-repair.png" alt="Waterproofing and below-grade systems" />
+              <a class="btn btn-outline" href="/underground-waterproofing-and-below-grade-systems">Explore</a>
             </article>
           </div>
         </div>
 
         <div class="container svc-category">
-          <p class="svc-cat-label fade-up">Explore the Full Architecture</p>
+          <p class="svc-cat-label fade-up">Specialty Consulting</p>
           <div class="services-grid">
             <article class="service-card fade-up" style="--delay:0.05s">
               <span class="svc-num">10</span>
-              <h3>Engineering Systems Hub</h3>
-              <p>See how connection design, steel systems, timber engineering, retrofit, and construction support work together across project delivery.</p>
-              <img class="svc-img" src="images/7-erection-plan.png" alt="Engineering systems hub" />
-              <a class="btn btn-outline" href="engineering-systems.html">Open Hub</a>
+              <h3>Structural Glass &amp; Glazing</h3>
+              <p>Glass support strategy, glazing movement compatibility, and attachment review for facade and specialty assemblies.</p>
+              <img class="svc-img" src="images/4-facade-inspection.png" alt="Structural glass and glazing systems" />
+              <a class="btn btn-outline" href="/structural-glass-and-glazing-systems">Explore</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.15s">
               <span class="svc-num">11</span>
-              <h3>Services Hub</h3>
-              <p>Browse the full consulting architecture across structural, forensic, construction, systems, reporting, and project support services.</p>
-              <img class="svc-img" src="images/3-supervision-consultancy1.png" alt="Services hub" />
-              <a class="btn btn-outline" href="services.html">Open Hub</a>
+              <h3>Lightweight Steel &amp; Composites</h3>
+              <p>Cold-formed framing, composite retrofit strategy, corrosion-sensitive detailing, and specialty material consulting.</p>
+              <img class="svc-img" src="images/2-structural-design.png" alt="Lightweight steel and composites" />
+              <a class="btn btn-outline" href="/lightweight-steel-and-cold-formed-systems">Explore</a>
             </article>
             <article class="service-card fade-up" style="--delay:0.25s">
               <span class="svc-num">12</span>
-              <h3>Technical Resources</h3>
-              <p>Use the new resources section to navigate structural engineering guides, connection topics, retrofit content, and compliance articles.</p>
+              <h3>Construction Support</h3>
+              <p>Construction-phase RFIs, submittal review, field clarifications, and coordination support for technically demanding work.</p>
+              <img class="svc-img" src="images/18-construction-administration.png" alt="Construction engineering support" />
+              <a class="btn btn-outline" href="/construction-engineering-support">Explore</a>
+            </article>
+          </div>
+        </div>
+
+        <div class="container svc-category">
+          <p class="svc-cat-label fade-up">Infrastructure, Compliance &amp; Specialty Delivery</p>
+          <div class="services-grid">
+            <article class="service-card fade-up" style="--delay:0.05s">
+              <span class="svc-num">13</span>
+              <h3>Bridge Design, Repair &amp; Demolition</h3>
+              <p>Bridge engineering support for inspections, repair concepts, staged demolition, structural assessment, and infrastructure coordination.</p>
+              <img class="svc-img" src="images/7-erection-plan.png" alt="Bridge design repair and demolition" />
+              <a class="btn btn-outline" href="/blog/bridge-structural-engineering-nyc">Explore</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.15s">
+              <span class="svc-num">14</span>
+              <h3>Erection Plans &amp; Water Diversion</h3>
+              <p>PE-sealed erection plans for buildings and bridges, plus cofferdams and water diversion engineering for temporary works and staged construction.</p>
+              <img class="svc-img" src="images/3-supervision-consultancy1.png" alt="Erection plans and water diversion engineering" />
+              <a class="btn btn-outline" href="/blog/erection-plans-nyc">Explore</a>
+            </article>
+            <article class="service-card fade-up" style="--delay:0.25s">
+              <span class="svc-num">15</span>
+              <h3>Local Law &amp; Garage Inspections</h3>
+              <p>Local Law 11 facade filing support, Local Law 126 parking garage inspections, and compliance reporting for ongoing ownership obligations.</p>
               <img class="svc-img" src="images/14-failure-analysis.png" alt="Technical resources" />
-              <a class="btn btn-outline" href="resources.html">Open Resources</a>
+              <a class="btn btn-outline" href="/blog/local-law-inspections-guide">Explore</a>
             </article>
           </div>
         </div>
@@ -260,7 +381,7 @@
           <div class="why-left slide-left">
             <span class="section-label-pill">Why Asvakas</span>
             <h2 class="why-heading">Why Asvakas?</h2>
-            <a class="btn btn-outline" href="contact.html">Contact Our Engineering Team &rarr;</a>
+            <a class="btn btn-outline" href="/contact">Contact Our Engineering Team &rarr;</a>
           </div>
           <div class="why-right">
             <p class="why-tagline fade-up">Trusted by owners, architects, contractors, and developers who need technically rigorous analysis, better coordination, and documentation that holds up under review.</p>
@@ -491,13 +612,13 @@
             <div class="footer-col">
               <h5>Company</h5>
               <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="engineering-systems.html">Engineering Systems</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/engineering-systems">Engineering Systems</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/contact">Contact</a></li>
               </ul>
             </div>
             <div class="footer-col">
@@ -512,10 +633,10 @@
             <div class="footer-col">
               <h5>Support</h5>
               <ul>
-                <li><a href="resources.html">Resources</a></li>
-                <li><a href="blog/index.html">Blog</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="help.html">Help Center</a></li>
+                <li><a href="/resources">Resources</a></li>
+                <li><a href="/blog/">Blog</a></li>
+                <li><a href="/faq">FAQ</a></li>
+                <li><a href="/help">Help Center</a></li>
               </ul>
             </div>
           </div>
@@ -524,7 +645,7 @@
       <div class="footer-bottom">
         <div class="container footer-bottom-inner">
           <span>© 2026 Asvakas Inc. All Rights Reserved.</span>
-          <a href="privacy-policy.html">Privacy Policy &amp; Terms of Use</a>
+          <a href="/privacy-policy">Privacy Policy &amp; Terms of Use</a>
         </div>
       </div>
     </footer>
@@ -557,12 +678,12 @@
     <script>
       (function () {
         var phrases = [
-          'Connection Design for Complex Load Paths.',
-          'Anchorage Analysis for Existing and New Work.',
+          'Local Law, Garage, and Facade Inspection Support.',
+          'Bridge Design, Demolition, and Erection Planning.',
           'Forensic Investigation and Technical Reporting.',
-          'Construction Engineering Support in the Field.',
-          'Retrofit Strategy for Existing Structures.',
-          'Code-Compliant Engineering Documentation.'
+          'Facade, Envelope, Waterproofing, and Restoration Consulting.',
+          'Anchorage, Connection, and Specialty System Design.',
+          'Construction Engineering Support and Code-Compliant Documentation.'
         ];
         var el = document.getElementById('heroRotate');
         if (!el) return;

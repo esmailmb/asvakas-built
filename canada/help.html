@@ -6,12 +6,14 @@
     <title>Help Center — Ontario Structural Engineering | Asvakas ENG</title>
     <meta name="description" content="Asvakas Engineering Help Center for Ontario structural engineering services. Find guides on OBC permits, PEO General Review, façade inspections, shoring, underpinning, forensic investigations, expert witness services, Construction Act, and ODACC adjudication." />
     <meta name="keywords" content="Ontario structural engineering help center, OBC permit guide Ontario, PEO general review guide, OHSA formwork Ontario, shoring guide Ontario, Construction Act Ontario guide, structural engineer help Canada, ODACC adjudication guide" />
-    <link rel="canonical" href="https://asvakas.ca/canada/help.html" />
+    <link rel="canonical" href="https://asvakas.com/canada/help" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <meta property="og:title" content="Help Center — Ontario Structural Engineering | Asvakas Engineering" />
     <meta property="og:description" content="Comprehensive guides on Ontario structural engineering, OBC permits, PEO General Review, shoring, temporary works, forensic engineering, Ontario Construction Act, and expert witness services." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://asvakas.com/canada/help" />
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"WebPage","name":"Asvakas Engineering Help Center — Ontario","description":"Comprehensive resource hub for structural engineering in Ontario — OBC permits, PEO General Review, shoring, temporary works, forensic engineering, Ontario Construction Act, ODACC adjudication, and expert witness services.","url":"https://asvakas.ca/canada/help.html","provider":{"@type":"Organization","name":"Asvakas Engineering","url":"https://asvakas.ca"}}
+    {"@context":"https://schema.org","@type":"WebPage","name":"Asvakas Engineering Help Center — Ontario","description":"Comprehensive resource hub for structural engineering in Ontario — OBC permits, PEO General Review, shoring, temporary works, forensic engineering, Ontario Construction Act, ODACC adjudication, and expert witness services.","url":"https://asvakas.com/canada/help","provider":{"@type":"Organization","name":"Asvakas Engineering","url":"https://asvakas.com"}}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,32 +22,283 @@
     <link rel="stylesheet" href="canada.css" />
     <link rel="stylesheet" href="../blog.css" />
     <style>
-      .help-hero-search{display:flex;gap:.75rem;margin-top:1.5rem;max-width:480px}
-      .help-hero-search input{flex:1;padding:.75rem 1rem;border:2px solid var(--clr-border,#dde2ea);border-radius:8px;font-size:1rem;font-family:inherit;outline:none}
-      .help-hero-search input:focus{border-color:var(--clr-accent,#1e6fbf)}
-      .help-hero-search button{padding:.75rem 1.25rem;background:var(--clr-accent,#1e6fbf);color:#fff;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:inherit}
-      .help-categories{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem;margin:2.5rem 0}
-      .help-card{background:#fff;border:1.5px solid #dde2ea;border-radius:12px;padding:1.5rem;text-decoration:none;color:inherit;transition:box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:.5rem}
-      .help-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.10);border-color:var(--clr-accent,#1e6fbf)}
-      .help-card-icon{font-size:2rem;line-height:1}
-      .help-card h3{font-size:1.1rem;margin:0;color:#1a2232}
-      .help-card p{font-size:.92rem;color:#5a6474;margin:0;line-height:1.55}
-      .help-card .help-card-count{font-size:.82rem;color:var(--clr-accent,#1e6fbf);font-weight:600;margin-top:auto;padding-top:.5rem}
-      .help-section{margin:3rem 0}
-      .help-section h2{font-size:1.5rem;border-bottom:2px solid #eee;padding-bottom:.5rem;margin-bottom:1.5rem}
-      .help-guides-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-      .help-guide-item{background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1rem 1.25rem;text-decoration:none;color:#1a2232;display:flex;flex-direction:column;gap:.3rem;transition:background .15s}
-      .help-guide-item:hover{background:#eef3fb}
-      .help-guide-item h4{font-size:.98rem;margin:0;color:#1a2232}
-      .help-guide-item p{font-size:.87rem;color:#5a6474;margin:0;line-height:1.45}
-      .help-guide-item .pill-sm{font-size:.75rem;font-weight:600;color:var(--clr-accent,#1e6fbf);background:#e8f0fb;border-radius:20px;padding:.2em .7em;width:fit-content}
-      .help-contact-banner{background:linear-gradient(90deg,#1e4d8c,#1e6fbf);color:#fff;border-radius:12px;padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;margin:2.5rem 0}
-      .help-contact-banner h3{margin:0;font-size:1.25rem}
-      .help-contact-banner p{margin:.25rem 0 0;opacity:.88;font-size:.95rem}
-      .help-contact-banner a{background:#fff;color:#1e4d8c;padding:.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:700;white-space:nowrap}
+      .help-center-page .page-hero{
+        background:
+          radial-gradient(circle at 18% 18%, rgba(255,88,32,.16) 0%, transparent 28%),
+          radial-gradient(circle at 82% 0%, rgba(62,126,210,.2) 0%, transparent 34%),
+          linear-gradient(135deg, #17263b 0%, #2a3550 45%, #314666 100%);
+      }
+      .help-center-page .page-hero::before{
+        content:"";
+        position:absolute;
+        inset:auto 0 0;
+        height:140px;
+        background:linear-gradient(180deg, rgba(17,28,43,0) 0%, rgba(11,19,31,.22) 100%);
+        pointer-events:none;
+      }
+      .help-center-page .page-hero-inner{
+        max-width:900px;
+        margin:0 auto;
+        display:grid;
+        justify-items:center;
+        text-align:center;
+      }
+      .help-center-page .page-hero p{max-width:760px}
+      .help-hero-search{
+        display:grid;
+        grid-template-columns:minmax(0,1fr) auto;
+        align-items:center;
+        gap:.75rem;
+        width:min(100%, 620px);
+        margin:1.85rem auto 0;
+        padding:.55rem;
+        border:1px solid rgba(255,255,255,.12);
+        border-radius:22px;
+        background:rgba(255,255,255,.08);
+        box-shadow:0 26px 50px rgba(9,17,30,.22);
+        -webkit-backdrop-filter:blur(14px);
+        backdrop-filter:blur(14px);
+      }
+      .help-hero-search input{
+        min-width:0;
+        width:100%;
+        padding:.95rem 1.1rem;
+        border:1px solid rgba(16,32,52,.08);
+        border-radius:16px;
+        font-size:1rem;
+        font-family:inherit;
+        outline:none;
+        color:#1b2b44;
+        background:rgba(255,255,255,.96);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.65);
+      }
+      .help-hero-search input:focus{border-color:rgba(30,111,191,.4);box-shadow:0 0 0 4px rgba(30,111,191,.14)}
+      .help-hero-search button{
+        padding:.95rem 1.35rem;
+        border:none;
+        border-radius:16px;
+        font-weight:800;
+        cursor:pointer;
+        font-family:inherit;
+        color:#fff;
+        background:linear-gradient(135deg, #2f79ca 0%, #1f5ea5 100%);
+        box-shadow:0 16px 30px rgba(20,67,126,.32);
+      }
+      .help-categories{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+        gap:1.5rem;
+        margin:2.75rem 0 0;
+      }
+      .help-card{
+        position:relative;
+        min-height:100%;
+        background:#fff;
+        border:1px solid rgba(217, 221, 228, 0.9);
+        border-radius:22px;
+        text-decoration:none;
+        color:inherit;
+        transition:transform .26s ease,box-shadow .26s ease,border-color .26s ease;
+        display:flex;
+        flex-direction:column;
+        overflow:hidden;
+        box-shadow:0 12px 30px rgba(32, 47, 68, 0.08);
+      }
+      .help-card::before{
+        content:"";
+        position:absolute;
+        inset:0 0 auto;
+        height:4px;
+        background:var(--accent,#ff5820);
+        pointer-events:none;
+      }
+      .help-card:hover{
+        transform:translateY(-6px);
+        box-shadow:0 18px 36px rgba(32, 47, 68, 0.12);
+        border-color:rgba(189, 198, 210, 0.95);
+      }
+      .help-card-body{
+        position:relative;
+        z-index:1;
+        display:flex;
+        flex-direction:column;
+        gap:.95rem;
+        padding:1.45rem 1.45rem 1.35rem;
+        flex:1;
+      }
+      .help-card-top{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:.85rem;
+      }
+      .help-card-icon{
+        width:3rem;
+        height:3rem;
+        border-radius:18px;
+        background:#fff;
+        color:#1e6fbf;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        font-size:1.3rem;
+        line-height:1;
+        border:1px solid rgba(217, 221, 228, 0.9);
+        box-shadow:0 8px 20px rgba(32, 47, 68, 0.06);
+      }
+      .help-card-kicker{
+        margin-left:auto;
+        padding:.38rem .82rem;
+        border-radius:999px;
+        background:#f8fafc;
+        font-size:.7rem;
+        font-weight:800;
+        letter-spacing:.11em;
+        text-transform:uppercase;
+        color:#62738b;
+        border:1px solid rgba(217, 221, 228, 0.9);
+      }
+      .help-card h3{
+        font-size:1.28rem;
+        line-height:1.18;
+        margin:0;
+        color:#162235;
+        letter-spacing:-.025em;
+      }
+      .help-card p{
+        font-size:.95rem;
+        color:#566679;
+        margin:0;
+        line-height:1.62;
+      }
+      .help-card-points{
+        list-style:none;
+        margin:0;
+        padding:0;
+        display:grid;
+        gap:.5rem;
+      }
+      .help-card-points li{
+        position:relative;
+        padding-left:1rem;
+        font-size:.84rem;
+        font-weight:700;
+        color:#33455f;
+        line-height:1.46;
+      }
+      .help-card-points li::before{
+        content:"";
+        position:absolute;
+        left:0;
+        top:.52rem;
+        width:.4rem;
+        height:.4rem;
+        border-radius:999px;
+        background:var(--accent,#ff5820);
+        box-shadow:0 0 0 4px rgba(255,88,32,.12);
+      }
+      .help-card-footer{
+        margin-top:auto;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:1rem;
+        padding-top:.85rem;
+        border-top:1px solid rgba(217, 221, 228, 0.9);
+      }
+      .help-card-count{
+        font-size:.83rem;
+        color:#1e6fbf;
+        font-weight:800;
+      }
+      .help-card-link{
+        font-size:.84rem;
+        font-weight:800;
+        color:#1a2232;
+        letter-spacing:.01em;
+      }
+      .help-section{margin:3.5rem 0}
+      .help-section h2{
+        font-size:1.56rem;
+        color:#17263b;
+        border-bottom:1px solid rgba(135,154,181,.24);
+        padding-bottom:.75rem;
+        margin-bottom:1.5rem;
+      }
+      .help-guides-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:1rem;
+      }
+      .help-guide-item{
+        background:linear-gradient(180deg, #ffffff 0%, #f8fbfe 100%);
+        border:1px solid rgba(135,154,181,.2);
+        border-radius:18px;
+        padding:1.1rem 1.2rem 1.2rem;
+        text-decoration:none;
+        color:#1a2232;
+        display:flex;
+        flex-direction:column;
+        gap:.55rem;
+        box-shadow:0 12px 28px rgba(23,38,59,.05);
+        transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      }
+      .help-guide-item:hover{
+        transform:translateY(-4px);
+        border-color:rgba(30,111,191,.3);
+        box-shadow:0 18px 34px rgba(23,38,59,.09);
+      }
+      .help-guide-item h4{font-size:1rem;margin:0;color:#1a2232;line-height:1.38}
+      .help-guide-item p{font-size:.89rem;color:#5a6474;margin:0;line-height:1.55}
+      .help-guide-item .pill-sm{
+        font-size:.74rem;
+        font-weight:800;
+        color:#1e6fbf;
+        background:#ecf4ff;
+        border:1px solid rgba(30,111,191,.1);
+        border-radius:999px;
+        padding:.3em .78em;
+        width:fit-content;
+        letter-spacing:.03em;
+      }
+      .help-contact-banner{
+        background:linear-gradient(135deg, #1b467f 0%, #266ab5 58%, #347fcb 100%);
+        color:#fff;
+        border-radius:24px;
+        padding:2rem 2.25rem;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:1.5rem;
+        flex-wrap:wrap;
+        margin:2.75rem 0;
+        box-shadow:0 24px 48px rgba(18,49,92,.2);
+      }
+      .help-contact-banner h3{margin:0;font-size:1.3rem}
+      .help-contact-banner p{margin:.3rem 0 0;opacity:.9;font-size:.96rem}
+      .help-contact-banner a{
+        background:#fff;
+        color:#1e4d8c;
+        padding:.85rem 1.55rem;
+        border-radius:999px;
+        text-decoration:none;
+        font-weight:800;
+        white-space:nowrap;
+      }
+      @media (max-width:768px){
+        .help-hero-search{
+          grid-template-columns:1fr;
+          border-radius:20px;
+        }
+        .help-hero-search button{width:100%}
+        .help-categories{grid-template-columns:1fr;gap:1.25rem}
+        .help-card-body{padding:1.15rem}
+        .help-card h3{font-size:1.17rem}
+        .help-contact-banner{padding:1.5rem}
+      }
     </style>
   </head>
-  <body class="blog-article-page">
+  <body class="blog-article-page help-center-page">
     <header class="site-header scrolled" id="top">
       <div class="container header-inner">
         <a href="index.html#top" class="brand">Asvakas<span class="brand-eng" data-i18n="brand.eng">ENG</span></a>
@@ -53,10 +306,12 @@
           <a href="index.html" data-i18n="nav.home">Home</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="services.html" data-i18n="nav.services">Services</a>
+          <a href="engineering-systems.html" data-i18n="nav.engineering">Engineering Systems</a>
           <a href="projects.html" data-i18n="nav.projects">Projects</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+          <a href="resources.html" class="active" data-i18n="nav.resources">Resources</a>
+          <a href="contact.html" data-i18n="nav.contactShort">Contact</a>
         </nav>
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; margin-left: auto;">
+        <div class="header-controls">
           <div class="region-picker" id="regionPicker">
             <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
               <span class="rp-flag">🇨🇦</span><span class="rp-label">Canada</span><span class="rp-arrow">▾</span>
@@ -73,13 +328,13 @@
     <main>
       <section class="page-hero">
         <div class="container page-hero-inner">
-          <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">›</span><span>Help Center</span></div>
-          <span class="page-hero-pill">Help Center</span>
-          <h1>Structural Engineering Help Center — Ontario</h1>
-          <p>Guides, how-tos, and answers for every phase of structural engineering in Ontario — OBC permit filings, PEO General Review, shoring and temporary works, forensic investigations, expert witness services, Ontario Construction Act, and ODACC adjudication.</p>
+          <div class="breadcrumb"><a href="index.html" data-i18n="help.breadcrumb.home">Home</a><span class="breadcrumb-sep">›</span><span data-i18n="help.breadcrumb.current">Help Center</span></div>
+          <span class="page-hero-pill" data-i18n="help.hero.pill">Help Center</span>
+          <h1 data-i18n="help.hero.h1">Structural Engineering Help Center — Ontario</h1>
+          <p data-i18n="help.hero.p">Guides, how-tos, and answers for every phase of structural engineering in Ontario — OBC permit filings, PEO General Review, shoring and temporary works, forensic investigations, expert witness services, Ontario Construction Act, and ODACC adjudication.</p>
           <div class="help-hero-search">
-            <input type="search" id="helpSearch" placeholder="Search guides (e.g. OBC, OHSA, formwork)…" aria-label="Search help articles" />
-            <button onclick="filterHelp()">Search</button>
+            <input type="search" id="helpSearch" placeholder="Search guides (e.g. OBC, OHSA, formwork)…" data-i18n-ph="help.hero.search.ph" aria-label="Search help articles" />
+            <button onclick="filterHelp()" data-i18n="help.hero.search.btn">Search</button>
           </div>
         </div>
       </section>
@@ -88,58 +343,82 @@
         <!-- Category Cards -->
         <div class="help-categories" id="helpCategories">
           <a class="help-card" href="#getting-started-on">
-            <div class="help-card-icon">🏗️</div>
-            <h3>Getting Started</h3>
-            <p>Engaging a P.Eng., PEO licensing, what to expect, and how we work across Ontario and the GTA.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">🏗️</span><span class="help-card-kicker" data-i18n="help.card.1.kicker">Onboarding</span></div>
+              <h3 data-i18n="help.card.1.h3">Getting Started</h3>
+              <p data-i18n="help.card.1.p">Engaging a P.Eng., PEO licensing, what to expect, and how we work across Ontario and the GTA.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.1.li1">PEO licensing and seal expectations</li><li data-i18n="help.card.1.li2">Project scope, fees, and first-step planning</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#obc-permits">
-            <div class="help-card-icon">📋</div>
-            <h3>OBC Permits &amp; Filings</h3>
-            <p>Ontario Building Code permit applications, Part 9 vs. Part 3, ePLAN, and permit review timelines.</p>
-            <div class="help-card-count">6 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">📋</span><span class="help-card-kicker" data-i18n="help.card.2.kicker">Permit Process</span></div>
+              <h3 data-i18n="help.card.2.h3">OBC Permits &amp; Filings</h3>
+              <p data-i18n="help.card.2.p">Ontario Building Code permit filings, Part 9 vs. Part 3, ePLAN coordination, and how Asvakas manages review flow.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.2.li1">Permit path, filing strategy, and city review coordination</li><li data-i18n="help.card.2.li2">Toronto ePLAN handling through our permit team</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides6">6 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#peo-review">
-            <div class="help-card-icon">🔍</div>
-            <h3>PEO General Review &amp; CA</h3>
-            <p>Field review stages, shop drawing review, Schedule 2 Division C final certificate, and occupancy permit.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">🔍</span><span class="help-card-kicker" data-i18n="help.card.3.kicker">Field Review</span></div>
+              <h3 data-i18n="help.card.3.h3">PEO General Review &amp; CA</h3>
+              <p data-i18n="help.card.3.p">Field review stages, shop drawing review, Schedule 2 Division C final certificate, and occupancy permit.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.3.li1">Construction administration and site observation stages</li><li data-i18n="help.card.3.li2">Shop drawings, closeout certificates, and occupancy</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#foundations-on">
-            <div class="help-card-icon">⚙️</div>
-            <h3>Foundations &amp; Site Work</h3>
-            <p>Underpinning (basement lowering), shoring under OHSA, excavation monitoring, and geotechnical reports.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">⚙️</span><span class="help-card-kicker" data-i18n="help.card.4.kicker">Below Grade</span></div>
+              <h3 data-i18n="help.card.4.h3">Foundations &amp; Site Work</h3>
+              <p data-i18n="help.card.4.p">Underpinning (basement lowering), shoring under OHSA, excavation monitoring, and geotechnical reports.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.4.li1">Underpinning sequence and neighbour protection</li><li data-i18n="help.card.4.li2">Excavation support, monitoring, and soils coordination</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#temporary-works-on">
-            <div class="help-card-icon">🔩</div>
-            <h3>Temporary Works Ontario</h3>
-            <p>Formwork (OHSA s.83), erection plans, cofferdam permits, demolition plans, and temporary bracing.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">🔩</span><span class="help-card-kicker" data-i18n="help.card.5.kicker">Construction Support</span></div>
+              <h3 data-i18n="help.card.5.h3">Temporary Works Ontario</h3>
+              <p data-i18n="help.card.5.p">Formwork (OHSA s.83), erection plans, cofferdam permits, demolition plans, and temporary bracing.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.5.li1">Formwork, staging, and engineered temporary conditions</li><li data-i18n="help.card.5.li2">Erection, demolition, and bracing risk planning</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#construction-act-guide">
-            <div class="help-card-icon">⚖️</div>
-            <h3>Ontario Construction Act</h3>
-            <p>Prompt payment, construction liens, ODACC adjudication, statutory holdback, and engineer payment rights.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">⚖️</span><span class="help-card-kicker" data-i18n="help.card.6.kicker">Project Risk</span></div>
+              <h3 data-i18n="help.card.6.h3">Ontario Construction Act</h3>
+              <p data-i18n="help.card.6.p">Prompt payment, construction liens, ODACC adjudication, statutory holdback, and engineer payment rights.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.6.li1">Payment timing, holdback, and lien exposure</li><li data-i18n="help.card.6.li2">Adjudication workflow and dispute documentation</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#forensic-on">
-            <div class="help-card-icon">🔬</div>
-            <h3>Forensic Engineering</h3>
-            <p>Structural investigations, insurance claims, construction defects, Tarion warranty, and Rule 53.03 expert evidence.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">🔬</span><span class="help-card-kicker" data-i18n="help.card.7.kicker">Investigations</span></div>
+              <h3 data-i18n="help.card.7.h3">Forensic Engineering</h3>
+              <p data-i18n="help.card.7.p">Structural investigations, insurance claims, construction defects, Tarion warranty, and Rule 53.03 expert evidence.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.7.li1">Failure analysis, damage documentation, and claims support</li><li data-i18n="help.card.7.li2">Tarion, defect review, and expert evidence workflows</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
           <a class="help-card" href="#specialty-help">
-            <div class="help-card-icon">🛠️</div>
-            <h3>Specialty Engineering</h3>
-            <p>Roof safety anchors (CSA Z259), post-installed anchors (CSA A23.3 Annex D), seismic retrofit, and cladding.</p>
-            <div class="help-card-count">5 guides</div>
+            <div class="help-card-body">
+              <div class="help-card-top"><span class="help-card-icon">🛠️</span><span class="help-card-kicker" data-i18n="help.card.8.kicker">Systems + Retrofit</span></div>
+              <h3 data-i18n="help.card.8.h3">Specialty Engineering</h3>
+              <p data-i18n="help.card.8.p">Roof safety anchors (CSA Z259), post-installed anchors (CSA A23.3 Annex D), seismic retrofit, and cladding.</p>
+              <ul class="help-card-points"><li data-i18n="help.card.8.li1">Anchors, specialty attachments, and retrofit detailing</li><li data-i18n="help.card.8.li2">Cladding, safety systems, and seismic upgrades</li></ul>
+              <div class="help-card-footer"><span class="help-card-count" data-i18n="help.card.common.guides5">5 guides</span><span class="help-card-link" data-i18n="help.card.common.explore">Explore →</span></div>
+            </div>
           </a>
         </div>
 
         <!-- Getting Started -->
         <div class="help-section" id="getting-started-on">
-          <h2>Getting Started in Ontario</h2>
+          <h2 data-i18n="help.section.1.h2">Getting Started in Ontario</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="faq.html#general">
               <div class="pill-sm">General</div>
@@ -171,7 +450,7 @@
 
         <!-- OBC Permits -->
         <div class="help-section" id="obc-permits">
-          <h2>OBC Permits &amp; Filings</h2>
+          <h2 data-i18n="help.section.2.h2">OBC Permits &amp; Filings</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/obc-compliance-guide.html">
               <div class="pill-sm">OBC</div>
@@ -180,8 +459,8 @@
             </a>
             <a class="help-guide-item" href="blog/ontario-building-permit-process.html">
               <div class="pill-sm">Permits</div>
-              <h4>Ontario building permit application process</h4>
-              <p>How to apply, required documents, permit fees, Toronto ePLAN, and review timeline by building type.</p>
+              <h4>Ontario building permit coordination process</h4>
+              <p>How Asvakas prepares the application, assembles the required documents, and coordinates Toronto ePLAN or municipal permit review.</p>
             </a>
             <a class="help-guide-item" href="blog/obc-permit-types-ontario.html">
               <div class="pill-sm">Types</div>
@@ -195,20 +474,20 @@
             </a>
             <a class="help-guide-item" href="faq.html#obc">
               <div class="pill-sm">Toronto</div>
-              <h4>Getting a building permit in Toronto (City of Toronto)</h4>
-              <p>Toronto Building's ePLAN system, review timelines, common objections, and tips for efficient approval.</p>
+              <h4>Toronto building permit coordination with Asvakas</h4>
+              <p>Toronto Building's ePLAN system, common objections, and how Asvakas manages filing and reviewer responses for a smoother process.</p>
             </a>
             <a class="help-guide-item" href="blog/toronto-eplan-guide.html">
               <div class="pill-sm">ePLAN</div>
-              <h4>Toronto ePLAN digital submission guide</h4>
-              <p>Step-by-step guide to submitting structural drawings through Toronto Building's ePLAN system.</p>
+              <h4>Toronto ePLAN filing support</h4>
+              <p>Guide to how Asvakas handles structural drawing submission through Toronto Building's ePLAN system.</p>
             </a>
           </div>
         </div>
 
         <!-- PEO General Review -->
         <div class="help-section" id="peo-review">
-          <h2>PEO General Review &amp; Construction Administration</h2>
+          <h2 data-i18n="help.section.3.h2">PEO General Review &amp; Construction Administration</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/peo-general-review-ontario.html">
               <div class="pill-sm">General Review</div>
@@ -240,7 +519,7 @@
 
         <!-- Foundations -->
         <div class="help-section" id="foundations-on">
-          <h2>Foundations &amp; Site Work Ontario</h2>
+          <h2 data-i18n="help.section.4.h2">Foundations &amp; Site Work Ontario</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/shoring-systems-guide.html">
               <div class="pill-sm">Shoring</div>
@@ -260,7 +539,7 @@
             <a class="help-guide-item" href="faq.html#foundations">
               <div class="pill-sm">Façade</div>
               <h4>Ontario façade inspection requirements</h4>
-              <p>Toronto Chapter 629, O. Reg. 59/20 balcony guards, proactive BCA approach, and property standards orders.</p>
+                <p>Toronto Chapter 629, balcony guard inspection requirements, proactive condition assessments, and property standards orders.</p>
             </a>
             <a class="help-guide-item" href="faq.html#residential-on">
               <div class="pill-sm">Foundation Cracks</div>
@@ -272,7 +551,7 @@
 
         <!-- Temporary Works -->
         <div class="help-section" id="temporary-works-on">
-          <h2>Temporary Works — Ontario</h2>
+          <h2 data-i18n="help.section.5.h2">Temporary Works — Ontario</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/formwork-ontario.html">
               <div class="pill-sm">Formwork</div>
@@ -304,27 +583,27 @@
 
         <!-- Ontario Construction Act -->
         <div class="help-section" id="construction-act-guide">
-          <h2>Ontario Construction Act &amp; Payment</h2>
+          <h2 data-i18n="help.section.6.h2">Ontario Construction Act &amp; Payment</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/ontario-construction-act.html">
               <div class="pill-sm">Construction Act</div>
               <h4>Ontario Construction Act 2018 — complete guide</h4>
-              <p>Prompt payment (28-day cycle), construction liens, ODACC adjudication, holdback, and engineer payment rights.</p>
+              <p>Prompt payment, construction liens, ODACC adjudication, holdback, and engineer payment rights.</p>
             </a>
             <a class="help-guide-item" href="faq.html#construction-act-on">
               <div class="pill-sm">Prompt Payment</div>
               <h4>How prompt payment works under the Construction Act</h4>
-              <p>28-day owner-to-contractor cycle, 7-day cascade, proper invoice requirements, and notice of non-payment obligations.</p>
+              <p>How prompt payment works, what qualifies as a proper invoice, and when notice of non-payment obligations arise.</p>
             </a>
             <a class="help-guide-item" href="faq.html#construction-act-on">
               <div class="pill-sm">Construction Liens</div>
               <h4>How structural engineers preserve and perfect construction liens</h4>
-              <p>60-day preservation deadline, 90-day perfection deadline, registration process, and what happens if deadlines are missed.</p>
+              <p>How engineers preserve and perfect construction liens, the registration process, and why legal deadlines must be confirmed right away when payment issues arise.</p>
             </a>
             <a class="help-guide-item" href="faq.html#construction-act-on">
               <div class="pill-sm">ODACC</div>
               <h4>ODACC adjudication — how it works and what it covers</h4>
-              <p>Notice of Adjudication, adjudicator appointment, 30-day decision timeline, binding interim status, and scope of ODACC jurisdiction.</p>
+              <p>Notice of Adjudication, adjudicator appointment, binding interim status, and the scope of ODACC jurisdiction.</p>
             </a>
             <a class="help-guide-item" href="blog/construction-closeout-ontario.html">
               <div class="pill-sm">Closeout</div>
@@ -336,7 +615,7 @@
 
         <!-- Forensic -->
         <div class="help-section" id="forensic-on">
-          <h2>Forensic Engineering Ontario</h2>
+          <h2 data-i18n="help.section.7.h2">Forensic Engineering Ontario</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/forensic-structural-investigation.html">
               <div class="pill-sm">Investigations</div>
@@ -368,7 +647,7 @@
 
         <!-- Specialty Engineering -->
         <div class="help-section" id="specialty-help">
-          <h2>Specialty Engineering Ontario</h2>
+          <h2 data-i18n="help.section.8.h2">Specialty Engineering Ontario</h2>
           <div class="help-guides-grid">
             <a class="help-guide-item" href="blog/roof-safety-ontario.html">
               <div class="pill-sm">Roof Safety</div>
@@ -378,7 +657,7 @@
             <a class="help-guide-item" href="blog/anchorage-connections-ontario.html">
               <div class="pill-sm">Anchors</div>
               <h4>Post-installed anchor design — CSA A23.3 Annex D guide</h4>
-              <p>Six failure modes, expansion vs. adhesive anchors, pull-out testing (ASTM E488), seismic anchor design, and special inspections.</p>
+              <p>Six failure modes, expansion vs. adhesive anchors, pull-out testing (ASTM E488), seismic anchor design, and installation verification.</p>
             </a>
             <a class="help-guide-item" href="blog/peer-review-ontario.html">
               <div class="pill-sm">Peer Review</div>
@@ -400,13 +679,13 @@
 
         <div class="help-contact-banner">
           <div>
-            <h3>Can't find what you're looking for?</h3>
-            <p>Our licensed P.Eng.s answer all project inquiries within 1–2 business days.</p>
+            <h3 data-i18n="help.banner.h3">Can't find what you're looking for?</h3>
+            <p data-i18n="help.banner.p">Our licensed P.Eng.s answer all project inquiries within 1–2 business days.</p>
           </div>
-          <a href="contact.html">Contact Us →</a>
+          <a href="contact.html" data-i18n="help.banner.cta">Contact Us →</a>
         </div>
 
-        <p style="text-align:center;margin-top:1rem"><a href="faq.html">Visit our full Ontario FAQ →</a> &nbsp;|&nbsp; <a href="blog/index.html">Browse all Ontario articles →</a></p>
+        <p style="text-align:center;margin-top:1rem"><a href="faq.html" data-i18n="help.bottom.faq">Visit our full Ontario FAQ →</a> &nbsp;|&nbsp; <a href="blog/index.html" data-i18n="help.bottom.blog">Browse all Ontario articles →</a></p>
       </div>
     </main>
     <footer class="footer">

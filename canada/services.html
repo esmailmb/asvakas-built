@@ -19,10 +19,12 @@
           <a href="index.html" data-i18n="nav.home">Home</a>
           <a href="about.html" data-i18n="nav.about">About</a>
           <a href="services.html" class="active" data-i18n="nav.services">Services</a>
+          <a href="blog/index.html" data-i18n="nav.engineering">Engineering Systems</a>
           <a href="projects.html" data-i18n="nav.projects">Projects</a>
-          <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+          <a href="help.html" data-i18n="nav.resources">Resources</a>
+          <a href="contact.html" data-i18n="nav.contactShort">Contact</a>
         </nav>
-        <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.35rem; margin-left: auto;">
+        <div class="header-controls">
           <div class="region-picker" id="regionPicker">
             <button class="rp-btn" aria-haspopup="listbox" aria-expanded="false">
               <span class="rp-flag">🇨🇦</span>
@@ -43,8 +45,8 @@
       <section class="svc-intro">
         <div class="container svc-intro-wrap">
           <span class="svc-pill fade-up" data-i18n="svc.intro.pill">Our Services</span>
-          <h1 class="fade-up" style="--delay:0.12s" data-i18n="svc.intro.h1">Everything You Need, Under One Roof</h1>
-          <p class="fade-up" style="--delay:0.24s" data-i18n="svc.intro.sub">Structural design, OBC compliance inspections, temporary works, and more — all delivered by one experienced Canadian engineering team.</p>
+          <h1 class="fade-up" style="--delay:0.12s" data-i18n="svc.intro.h1">Ontario &amp; Canada Structural Services</h1>
+          <p class="fade-up" style="--delay:0.24s" data-i18n="svc.intro.sub">Structural design, OBC permit support, PEO General Review, temporary works, forensic investigation, and existing-building rehabilitation tailored to Ontario projects and broader Canadian conditions.</p>
           <div class="svc-intro-stats fade-up" style="--delay:0.36s">
             <div class="svc-stat"><strong>20+</strong><span data-i18n="stat.years">Years Experience</span></div>
             <div class="svc-stat-divider"></div>
@@ -61,7 +63,7 @@
           <div class="svc-block-header slide-left">
             <span class="svc-cat-tag" data-i18n="svc.s1.cat">01 — Structural Engineering</span>
             <h2 data-i18n="svc.s1.h2">Core Structural<br>Services</h2>
-            <p data-i18n="svc.s1.p">End-to-end structural solutions for new construction, renovation, and consultancy across all building types in Canada.</p>
+            <p data-i18n="svc.s1.p">End-to-end structural solutions for new construction, renovation, and existing-building work across Ontario and Canadian project environments.</p>
           </div>
           <div class="svc-block-grid">
             <article class="svc-detail-card fade-up" style="--delay:0.05s">
@@ -77,7 +79,7 @@
               <div class="sdc-img"><img src="../images/2-structural-design.png" alt="Structural Design" /><span class="sdc-num">02</span></div>
               <div class="sdc-body">
                 <h3 data-i18n="svc.02.h">Structural Design</h3>
-                <p data-i18n="svc.02.p">Wood, brick masonry, steel, and concrete structure design to NBC/OBC standards.</p>
+                <p data-i18n="svc.02.p">Permit-ready structural design for steel, concrete, timber, masonry, and mixed systems under OBC, NBC, and CSA standards.</p>
                 <ul data-i18n="svc.02.li"><li>New build structural packages</li><li>Steel &amp; concrete frame design</li><li>Wood &amp; masonry structures</li><li>Building permit-ready drawings</li></ul>
                 <a href="contact.html" class="sdc-link" data-i18n="svc.req.btn">Request This Service →</a>
               </div>
@@ -86,8 +88,8 @@
               <div class="sdc-img"><img src="../images/3-supervision-consultancy1.png" alt="Supervision" /><span class="sdc-num">03</span></div>
               <div class="sdc-body">
                 <h3 data-i18n="svc.03.h">Supervision &amp; Consultancy</h3>
-                <p data-i18n="svc.03.p">Peer review, supervision, special inspection, assessment and damage evaluation.</p>
-                <ul data-i18n="svc.03.li"><li>Peer review &amp; third-party check</li><li>Construction supervision</li><li>Special &amp; progress inspections</li><li>Damage &amp; condition assessment</li></ul>
+                <p data-i18n="svc.03.p">Peer review, PEO General Review, field observations, consultant coordination, and condition-based engineering advice.</p>
+                <ul data-i18n="svc.03.li"><li>Peer review &amp; third-party check</li><li>Construction supervision</li><li>PEO General Review &amp; field reporting</li><li>Damage &amp; condition assessment</li></ul>
                 <a href="contact.html" class="sdc-link" data-i18n="svc.req.btn">Request This Service →</a>
               </div>
             </article>
@@ -100,8 +102,8 @@
         <div class="container">
           <div class="svc-block-header slide-right">
             <span class="svc-cat-tag" data-i18n="svc.s2.cat">02 — OBC Compliance Inspections</span>
-            <h2 data-i18n="svc.s2.h2">Canadian Code<br>Compliance</h2>
-            <p data-i18n="svc.s2.p">Certified exterior building, parking structure, and sidewalk inspections with complete permit filing packages — keep your building compliant and occupants safe.</p>
+            <h2 data-i18n="svc.s2.h2">Ontario Code<br>Compliance</h2>
+            <p data-i18n="svc.s2.p">Exterior building, parking structure, and sidewalk engineering tied to OBC permit requirements, condition reporting, and Ontario owner obligations for existing buildings.</p>
           </div>
           <div class="svc-block-grid">
             <article class="svc-detail-card fade-up" style="--delay:0.05s">
@@ -389,7 +391,7 @@
           <div class="footer-links-wrap">
             <div class="footer-col"><h5 data-i18n="footer.col1.h">Company</h5><ul><li><a href="index.html" data-i18n="footer.link.home">Home</a></li><li><a href="about.html" data-i18n="footer.link.about">About</a></li><li><a href="services.html" data-i18n="footer.link.services">Services</a></li><li><a href="projects.html" data-i18n="footer.link.projects">Projects</a></li></ul></div>
             <div class="footer-col"><h5 data-i18n="footer.col2.h">Social Media</h5><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">Twitter/X</a></li></ul></div>
-            <div class="footer-col"><h5 data-i18n="footer.col3.h">Support</h5><ul><li><a href="blog/index.html" data-i18n="footer.link.blog">Blog</a></li><li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li><li><a href="blog/index.html" data-i18n="footer.link.help">Help Center</a></li></ul></div>
+            <div class="footer-col"><h5 data-i18n="footer.col3.h">Support</h5><ul><li><a href="blog/index.html" data-i18n="footer.link.blog">Blog</a></li><li><a href="faq.html" data-i18n="footer.link.faq">FAQ</a></li><li><a href="help.html" data-i18n="footer.link.help">Help Center</a></li></ul></div>
           </div>
         </div>
       </div>
