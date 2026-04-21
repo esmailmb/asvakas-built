@@ -129,6 +129,13 @@ if (contactForm) {
   const panel       = dropdown.querySelector(".svc-panel");
   const nativeSel   = document.getElementById("serviceType");
   const opts        = Array.from(dropdown.querySelectorAll(".svc-opt"));
+  const serviceAliases = {
+    "elevator": "elevator-consulting",
+    "elevator-consulting": "elevator-consulting",
+    "elevator-installation": "elevator-consulting",
+    "elevator-modernization": "elevator-consulting",
+    "elevator-structural": "elevator-consulting"
+  };
   let focusedIdx    = -1;
 
   function openPanel() {
@@ -149,15 +156,25 @@ if (contactForm) {
     if (opts[idx]) opts[idx].scrollIntoView({ block: "nearest" });
   }
 
-  function pickOption(opt) {
+  function syncSelection(opt) {
     const val = opt.dataset.value;
     triggerText.textContent = opt.textContent.trim();
     triggerText.classList.remove("svc-placeholder");
     opts.forEach(o => o.setAttribute("aria-selected", "false"));
     opt.setAttribute("aria-selected", "true");
     nativeSel.value = val;
+  }
+
+  function pickOption(opt) {
+    syncSelection(opt);
     nativeSel.dispatchEvent(new Event("change", { bubbles: true }));
     closePanel();
+  }
+
+  function resolveServiceValue(rawValue) {
+    if (!rawValue) return "";
+    const normalized = rawValue.trim().toLowerCase();
+    return serviceAliases[normalized] || normalized;
   }
 
   /* Toggle on trigger click */
@@ -203,6 +220,13 @@ if (contactForm) {
       closePanel();
     }
   });
+
+  const requestedService = resolveServiceValue(new URLSearchParams(window.location.search).get("service"));
+  const initialServiceValue = requestedService || nativeSel.value;
+  if (initialServiceValue) {
+    const presetOpt = opts.find(opt => opt.dataset.value === initialServiceValue);
+    if (presetOpt) syncSelection(presetOpt);
+  }
 })();
 
 /* ── Dynamic service-aware form fields ── */

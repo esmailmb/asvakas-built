@@ -117,6 +117,7 @@
                     <div class="svc-group-label">Specialty Engineering</div>
                     <button type="button" class="svc-opt" role="option" aria-selected="false" data-value="bridge-works">Bridge &amp; Infrastructure Engineering</button>
                     <button type="button" class="svc-opt" role="option" aria-selected="false" data-value="roof-renovation">Roof Renovation / Replacement</button>
+                    <button type="button" class="svc-opt" role="option" aria-selected="false" data-value="elevator-consulting">Elevator Installation &amp; Modernization Structural Consulting</button>
                     <button type="button" class="svc-opt" role="option" aria-selected="false" data-value="specialty-engineering">Specialty Engineering (Anchorage, Formwork)</button>
                   </li>
                   <li class="svc-group">
@@ -144,6 +145,7 @@
                 <option value="specialty-engineering">Specialty Engineering (Anchorage, Formwork)</option>
                 <option value="bridge-works">Bridge &amp; Infrastructure Engineering</option>
                 <option value="roof-renovation">Roof Renovation / Replacement</option>
+                <option value="elevator-consulting">Elevator Installation &amp; Modernization Structural Consulting</option>
                 <option value="forensic">Forensic Investigation / Expert Witness</option>
                 <option value="building-openings">Building Openings / Structural Cuts</option>
                 <option value="facade-renovation">Façade Renovation &amp; Restoration</option>
@@ -559,6 +561,86 @@
                         <option>Yes — not yet done</option>
                         <option>Already completed</option>
                         <option>Not sure</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Elevator Consulting -->
+              <div class="dyn-group" data-group="elevator-consulting">
+                <div class="dyn-group-inner">
+                  <div class="dyn-hint">🛗 <strong>Elevator Installation &amp; Modernization Structural Consulting</strong> - Building-side structural review for elevator installation, modernization, hoistway openings, pit and overhead changes, and DOB-ready coordination.</div>
+                  <label>Building Address*</label>
+                  <input type="text" name="Building-Address" placeholder="e.g. 75 Nassau St, Manhattan, NY 10038" required />
+                  <div class="split-inputs">
+                    <div>
+                      <label>Project Type*</label>
+                      <select name="Elevator-Project-Type" required>
+                        <option value="">Select...</option>
+                        <option>New elevator in existing building</option>
+                        <option>Elevator modernization / replacement</option>
+                        <option>Machine-room-less conversion</option>
+                        <option>New hoistway or shaft modification</option>
+                        <option>Pit deepening / overhead framing review</option>
+                        <option>Support steel / receiving-structure review</option>
+                        <option>Not sure - need guidance</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label>Building Type*</label>
+                      <select name="Building-Type" required>
+                        <option value="">Select...</option>
+                        <option>Residential</option>
+                        <option>Commercial</option>
+                        <option>Mixed-use</option>
+                        <option>Institutional</option>
+                        <option>Industrial</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="split-inputs">
+                    <div>
+                      <label>DOB / Filing Stage</label>
+                      <select name="DOB-Filing-Stage">
+                        <option value="">Select...</option>
+                        <option>Concept / feasibility only</option>
+                        <option>Pre-filing coordination</option>
+                        <option>Filing in progress</option>
+                        <option>Permit issued / construction planning</option>
+                        <option>Construction already underway</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label>Occupied During Work?</label>
+                      <select name="Occupied-During-Work">
+                        <option value="">Select...</option>
+                        <option>Yes - fully occupied</option>
+                        <option>Partially occupied</option>
+                        <option>No - vacant / controlled access</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="split-inputs">
+                    <div>
+                      <label>Existing Drawings Available?</label>
+                      <select name="Existing-Drawings">
+                        <option value="">Select...</option>
+                        <option>Yes - structural and architectural</option>
+                        <option>Partial drawings only</option>
+                        <option>No drawings available</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label>Primary Structural Need</label>
+                      <select name="Primary-Structural-Need">
+                        <option value="">Select...</option>
+                        <option>Hoistway slab / wall openings</option>
+                        <option>Pit slab / wall review</option>
+                        <option>Overhead framing / roof support</option>
+                        <option>Support steel / machine beams</option>
+                        <option>Existing-building assessment</option>
+                        <option>Need help defining the scope</option>
                       </select>
                     </div>
                   </div>
