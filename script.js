@@ -593,6 +593,50 @@ function enhanceBlogArticleLeadImage() {
   }
 }
 
+function normalizeBlogFaqAccordions() {
+  if (!document.body.classList.contains("blog-article-page")) return;
+
+  document.querySelectorAll('section#faq').forEach((section) => {
+    section.classList.add("faq-section");
+  });
+
+  document.querySelectorAll(".faq-list .faq-item").forEach((item) => {
+    const existingQuestion = item.querySelector(":scope > .faq-question");
+    if (existingQuestion) return;
+
+    const heading = item.querySelector(":scope > h3, :scope > h4, :scope > summary");
+    if (!(heading instanceof HTMLElement)) return;
+
+    heading.classList.add("faq-question");
+
+    const answer = document.createElement("div");
+    answer.className = "faq-answer";
+
+    Array.from(item.children)
+      .filter((child) => child !== heading)
+      .forEach((child) => {
+        answer.appendChild(child);
+      });
+
+    item.appendChild(answer);
+
+    const toggleItem = () => {
+      const isOpen = item.classList.toggle("open");
+      heading.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    };
+
+    heading.setAttribute("role", "button");
+    heading.setAttribute("tabindex", "0");
+    heading.setAttribute("aria-expanded", "false");
+    heading.addEventListener("click", toggleItem);
+    heading.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      toggleItem();
+    });
+  });
+}
+
 // ── Scroll Progress Bar ──
 const progressBar = document.createElement("div");
 progressBar.className = "scroll-progress";
@@ -626,6 +670,7 @@ normalizeFooterSocialLinks();
 normalizeFooterBlogLinks();
 enhanceBlogHubCardImages();
 enhanceBlogArticleLeadImage();
+normalizeBlogFaqAccordions();
 window.addEventListener("scroll", onScroll, { passive: true });
 window.addEventListener("resize", () => {
   syncHeaderColumns();

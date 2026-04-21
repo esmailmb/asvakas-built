@@ -384,6 +384,9 @@
 .port-card {
   border-radius: 12px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
   transition: box-shadow 0.25s, transform 0.25s, opacity 0.3s, scale 0.3s;
 }
 .port-card:hover {
@@ -439,12 +442,14 @@
   transform: translateY(0);
 }
 .port-card h4 {
-  margin: 0.8rem 0 0;
+  margin: 0;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.015em;
   color: var(--primary);
-  padding: 0 0.2rem;
+  line-height: 1.35;
+  min-height: 2.7em;
+  padding: 0 0.55rem 0.45rem;
 }
 
 /* ══════════════════════════════════════
@@ -631,6 +636,10 @@
   padding: 0.75rem;
 }
 
+.port-card {
+  padding: 0.95rem;
+}
+
 .fp-img,
 .port-img {
   border-radius: 18px;
@@ -641,8 +650,7 @@
 }
 
 .port-card h4 {
-  padding: 0 0.4rem 0.2rem;
-  margin-top: 1rem;
+  padding: 0 0.6rem 0.35rem;
 }
 
 .filt {

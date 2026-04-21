@@ -52,6 +52,91 @@
   margin: 0 auto;
 }
 
+.blog-article-page .article-hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  padding: 8.5rem 0 4rem;
+  background-color: var(--primary);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.article-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(14, 24, 36, 0.74) 0%, rgba(18, 30, 46, 0.84) 58%, rgba(24, 40, 60, 0.92) 100%),
+    radial-gradient(circle at 18% 18%, rgba(200, 105, 60, 0.34) 0%, rgba(200, 105, 60, 0) 28%),
+    radial-gradient(circle at 88% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 28%);
+  z-index: 0;
+}
+
+.article-hero-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.back-link,
+.article-cat {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.back-link {
+  color: #fff;
+  padding: 0.45rem 0.95rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.back-link:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.article-cat {
+  color: var(--accent);
+  padding: 0.45rem 0.9rem;
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.article-hero h1 {
+  color: #fff;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 0;
+  max-width: 920px;
+  text-wrap: balance;
+}
+
+.article-sub {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1rem, 1.55vw, 1.1rem);
+  line-height: 1.72;
+  margin: 0;
+  max-width: 760px;
+}
+
 /* ── Breadcrumb ── */
 .breadcrumb {
   display: flex;
@@ -285,8 +370,36 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
+
+.article-layout > .article-body {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.article-layout > .article-sidebar,
+.article-layout > .article-toc {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+.article-layout > .article-toc {
+  position: sticky;
+  top: 90px;
+}
+
 @media (max-width: 940px) {
   .article-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .article-layout > .article-body,
+  .article-layout > .article-sidebar,
+  .article-layout > .article-toc {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .article-layout > .article-toc {
+    position: static;
+  }
   .article-sidebar { order: -1; }
 }
 
@@ -294,6 +407,14 @@
   .article-lead-media {
     margin-bottom: 1.6rem;
     border-radius: 16px;
+  }
+
+  .blog-article-page .article-hero {
+    padding: 7.5rem 0 3rem;
+  }
+
+  .article-hero h1 {
+    max-width: 16ch;
   }
 }
 
@@ -334,7 +455,22 @@
   padding: 1.4rem 1.6rem;
   margin: 0 0 2.2rem;
 }
+.article-toc {
+  background: #f8f9fb;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 1.4rem 1.6rem;
+}
 .toc-box h4 {
+  margin: 0 0 0.9rem;
+  font-size: 0.87rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+}
+.article-toc .toc-label {
   margin: 0 0 0.9rem;
   font-size: 0.87rem;
   font-weight: 800;
@@ -349,13 +485,27 @@
   flex-direction: column;
   gap: 0.42rem;
 }
+.article-toc ol {
+  margin: 0;
+  padding-left: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.42rem;
+}
 .toc-box li { font-size: 0.9rem; }
+.article-toc li { font-size: 0.9rem; }
 .toc-box a {
   color: var(--primary);
   text-decoration: none;
   font-weight: 600;
 }
+.article-toc a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
 .toc-box a:hover { color: var(--accent); }
+.article-toc a:hover { color: var(--accent); }
 
 /* ── Article Typography ── */
 .article-body h2 {
@@ -670,6 +820,7 @@
 }
 
 .toc-box,
+.article-toc,
 .sidebar-box {
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 238, 0.88));
