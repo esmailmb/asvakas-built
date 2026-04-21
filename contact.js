@@ -14,9 +14,9 @@ if (contactForm) {
     const submitBtn = document.getElementById("submitBtn");
     const isFrench = document.documentElement.lang === "fr";
     const submitLabels = {
-      sending: isFrench ? "Envoi..." : "Sending...",
-      waking: isFrench ? "Toujours en cours d'envoi..." : "Still sending...",
-      idle: isFrench ? "Envoyer le message ->" : "Send Message ->"
+      sending: isFrench ? "Envoi…" : "Sending…",
+      waking: isFrench ? "Toujours en cours d’envoi…" : "Still sending…",
+      idle: isFrench ? "Envoyer le message →" : "Send Message →"
     };
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -68,7 +68,6 @@ if (contactForm) {
         data["Full Name"] = combinedName;
       }
     }
-
     if (email && email.value.trim()) {
       data[email.name.replace(/-/g, " ")] = email.value.trim();
     }
@@ -105,10 +104,10 @@ if (contactForm) {
     } catch (err) {
       const msg = err.name === "AbortError"
         ? (isFrench
-            ? "La demande a expire. Veuillez reessayer ou nous ecrire directement a info@asvakas.com."
+            ? "La demande a expiré. Veuillez réessayer ou nous écrire directement à info@asvakas.com."
             : "Request timed out. Please try again or email us directly at info@asvakas.com")
         : (isFrench
-            ? "Desole, votre message n'a pas pu etre envoye. Veuillez nous ecrire directement a info@asvakas.com."
+            ? "Désolé, votre message n’a pas pu être envoyé. Veuillez nous écrire directement à info@asvakas.com."
             : "Sorry, your message could not be sent. Please email us directly at info@asvakas.com");
       if (submitBtn) {
         submitBtn.disabled = false;
@@ -134,7 +133,16 @@ if (contactForm) {
     "elevator-consulting": "elevator-consulting",
     "elevator-installation": "elevator-consulting",
     "elevator-modernization": "elevator-consulting",
-    "elevator-structural": "elevator-consulting"
+    "elevator-structural": "elevator-consulting",
+    "structural-openings": "structural-openings-in-existing-buildings",
+    "opening-alterations": "structural-openings-in-existing-buildings",
+    "historic-landmark-openings": "historic-and-landmark-opening-consulting",
+    "landmark-openings": "historic-and-landmark-opening-consulting",
+    "door-window-modifications": "door-and-window-structural-modifications",
+    "storefront-structural": "door-and-window-structural-modifications",
+    "support-framing": "support-framing-hangers-and-anchors",
+    "hangers-anchors": "support-framing-hangers-and-anchors",
+    "support-anchors": "support-framing-hangers-and-anchors"
   };
   let focusedIdx    = -1;
 
