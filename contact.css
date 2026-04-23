@@ -358,6 +358,13 @@
   width: 100%;
 }
 
+.contact-page .captcha-card[hidden],
+.contact-page .recaptcha-slot[hidden],
+.contact-page .captcha-refresh[hidden],
+.contact-page #captchaAnswer[hidden] {
+  display: none !important;
+}
+
 .contact-page .recaptcha-slot > div {
   max-width: 100%;
 }

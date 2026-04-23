@@ -84,17 +84,23 @@ function setCaptchaStatus(message, state) {
   }
 }
 
+function setElementDisplay(element, isVisible, visibleDisplay) {
+  if (!element) return;
+  element.hidden = !isVisible;
+  element.style.display = isVisible ? visibleDisplay : "none";
+}
+
 function setCaptchaMode(mode, labels) {
   const useRecaptcha = mode === "recaptcha";
 
   captchaMode = mode;
   captchaHelp.textContent = useRecaptcha ? labels.recaptchaHelp : labels.imageHelp;
-  imageCaptchaFields.hidden = useRecaptcha;
-  captchaAnswerInput.hidden = useRecaptcha;
+  setElementDisplay(imageCaptchaFields, !useRecaptcha, "grid");
+  setElementDisplay(captchaAnswerInput, !useRecaptcha, "block");
   captchaAnswerInput.required = !useRecaptcha;
   captchaAnswerInput.disabled = useRecaptcha;
-  recaptchaMount.hidden = !useRecaptcha;
-  captchaRefreshBtn.hidden = useRecaptcha;
+  setElementDisplay(recaptchaMount, useRecaptcha, "block");
+  setElementDisplay(captchaRefreshBtn, !useRecaptcha, "inline-flex");
 
   if (useRecaptcha) {
     captchaImage.innerHTML = "";
@@ -243,7 +249,6 @@ async function loadImageCaptchaChallenge(options, submitLabels, captchaLabels) {
 
   setCaptchaMode("image", captchaLabels);
   recaptchaToken = "";
-  captchaRefreshBtn.hidden = false;
   if (recaptchaWidgetId !== null && window.grecaptcha && typeof window.grecaptcha.reset === "function") {
     try {
       window.grecaptcha.reset(recaptchaWidgetId);
