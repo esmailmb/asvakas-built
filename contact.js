@@ -46,6 +46,7 @@ let captchaMode = "image";
 let recaptchaToken = "";
 let recaptchaWidgetId = null;
 let recaptchaScriptPromise = null;
+const recaptchaOnloadCallbackName = "__asvakasRecaptchaOnload";
 
 function getSubmitLabels(isFrench) {
   return {
@@ -93,6 +94,7 @@ function setCaptchaMode(mode, labels) {
   captchaAnswerInput.required = !useRecaptcha;
   captchaAnswerInput.disabled = useRecaptcha;
   recaptchaMount.hidden = !useRecaptcha;
+  captchaRefreshBtn.hidden = useRecaptcha;
 
   if (useRecaptcha) {
     captchaImage.innerHTML = "";
@@ -131,36 +133,47 @@ function loadRecaptchaScript() {
   }
 
   recaptchaScriptPromise = new Promise(function (resolve, reject) {
+    function cleanup() {
+      delete window[recaptchaOnloadCallbackName];
+    }
+
+    function handleError() {
+      cleanup();
+      recaptchaScriptPromise = null;
+      reject(new Error("reCAPTCHA unavailable"));
+    }
+
+    window[recaptchaOnloadCallbackName] = function () {
+      const script = document.querySelector('script[data-recaptcha-script="true"]');
+      if (script) {
+        script.dataset.loaded = "true";
+      }
+      cleanup();
+      if (window.grecaptcha && typeof window.grecaptcha.render === "function") {
+        resolve(window.grecaptcha);
+        return;
+      }
+      recaptchaScriptPromise = null;
+      reject(new Error("reCAPTCHA unavailable"));
+    };
+
     const existing = document.querySelector('script[data-recaptcha-script="true"]');
     if (existing) {
-      existing.addEventListener("load", function () {
-        if (window.grecaptcha) {
-          resolve(window.grecaptcha);
-        } else {
-          reject(new Error("reCAPTCHA unavailable"));
-        }
-      }, { once: true });
-      existing.addEventListener("error", function () {
-        reject(new Error("reCAPTCHA unavailable"));
-      }, { once: true });
+      if (existing.dataset.loaded === "true" && window.grecaptcha && typeof window.grecaptcha.render === "function") {
+        cleanup();
+        resolve(window.grecaptcha);
+        return;
+      }
+      existing.addEventListener("error", handleError, { once: true });
       return;
     }
 
     const script = document.createElement("script");
-    script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+    script.src = "https://www.google.com/recaptcha/api.js?onload=" + recaptchaOnloadCallbackName + "&render=explicit";
     script.async = true;
     script.defer = true;
     script.dataset.recaptchaScript = "true";
-    script.onload = function () {
-      if (window.grecaptcha) {
-        resolve(window.grecaptcha);
-      } else {
-        reject(new Error("reCAPTCHA unavailable"));
-      }
-    };
-    script.onerror = function () {
-      reject(new Error("reCAPTCHA unavailable"));
-    };
+    script.onerror = handleError;
     document.head.appendChild(script);
   });
 
@@ -174,6 +187,7 @@ async function loadRecaptchaChallenge(config, submitLabels, captchaLabels) {
 
   setCaptchaMode("recaptcha", captchaLabels);
   recaptchaToken = "";
+  captchaRefreshBtn.disabled = true;
   submittedAtInput.value = "";
   if (submitBtn) {
     submitBtn.disabled = false;
@@ -208,6 +222,8 @@ async function loadRecaptchaChallenge(config, submitLabels, captchaLabels) {
     }
     return true;
   } catch (_error) {
+    recaptchaToken = "";
+    submittedAtInput.value = "";
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = submitLabels.idle;
@@ -227,6 +243,7 @@ async function loadImageCaptchaChallenge(options, submitLabels, captchaLabels) {
 
   setCaptchaMode("image", captchaLabels);
   recaptchaToken = "";
+  captchaRefreshBtn.hidden = false;
   if (recaptchaWidgetId !== null && window.grecaptcha && typeof window.grecaptcha.reset === "function") {
     try {
       window.grecaptcha.reset(recaptchaWidgetId);
