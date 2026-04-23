@@ -1689,8 +1689,27 @@ p {
 }
 
 @media (max-width: 600px) {
+  .footer-brand,
+  .footer-sub-heading,
+  .footer-sub-text,
+  .footer-subscribe,
+  .footer-links-wrap,
+  .footer-col {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .footer-subscribe {
+    flex-direction: column;
+  }
+
   .footer-links-wrap {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .footer-links-wrap {
+    gap: 1.25rem;
   }
 
   .footer-bottom-inner {

@@ -607,6 +607,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://asvakas.com/canada/blog/ontario-bc-guardrail-roof-safety-guide</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://asvakas.com/canada/blog/ontario-building-permit-process</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -931,6 +937,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://asvakas.com/safety-railings-roof-and-balcony-guardrails</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asvakas.com/rooftop-hvac-and-roof-equipment-structural-support</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://asvakas.com/timber-and-wood-engineering</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -1005,6 +1023,24 @@
   <url>
     <loc>https://asvakas.com/blog/support-framing-hangers-anchors-nyc</loc>
     <lastmod>2026-04-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asvakas.com/blog/nyc-roof-and-balcony-guardrail-filing-guide</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asvakas.com/blog/nyc-rooftop-hvac-dunnage-filing-guide</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://asvakas.com/blog/canada-rooftop-hvac-structural-support-guide</loc>
+    <lastmod>2026-04-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

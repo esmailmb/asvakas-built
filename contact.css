@@ -1247,6 +1247,15 @@
 }
 
 @media (max-width: 900px) {
+  .contact-page .panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-page .panel-left,
+  .contact-page .panel-right {
+    min-width: 0;
+  }
+
   .contact-page .split-inputs,
   .contact-page .dyn-group-inner .split-inputs {
     grid-template-columns: 1fr;
@@ -1259,6 +1268,10 @@
 }
 
 @media (max-width: 760px) {
+  .contact-page .panel-right {
+    padding: 1.5rem;
+  }
+
   .contact-page .faq-answer p {
     padding-left: 1rem;
   }

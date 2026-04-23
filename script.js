@@ -10,6 +10,28 @@ if (motionEnabled) {
   document.body.classList.add("motion-enhanced");
 }
 
+const motionTargets = Array.from(document.querySelectorAll(".fade-up, .slide-left, .slide-right, .slide-up"));
+
+if (motionTargets.length > 0) {
+  if ("IntersectionObserver" in window) {
+    const motionObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px"
+    });
+
+    motionTargets.forEach((el) => motionObserver.observe(el));
+  } else {
+    motionTargets.forEach((el) => el.classList.add("in-view"));
+  }
+}
+
 function setNavOpen(isOpen) {
   const shouldOpen = Boolean(isOpen && mainNav && navToggle);
   mainNav?.classList.toggle("active", shouldOpen);

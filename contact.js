@@ -1,5 +1,16 @@
 /* ── Contact form submission ── */
-const isLocalContactApi = ["localhost", "127.0.0.1"].includes(window.location.hostname) || window.location.protocol === "file:";
+function isPrivatePreviewHost(hostname) {
+  return hostname === "localhost"
+    || hostname === "127.0.0.1"
+    || hostname === "0.0.0.0"
+    || hostname === "[::1]"
+    || /^10\./.test(hostname)
+    || /^192\.168\./.test(hostname)
+    || /^172\.(1[6-9]|2\d|3[0-1])\./.test(hostname)
+    || hostname.endsWith(".local");
+}
+
+const isLocalContactApi = window.location.protocol === "file:" || isPrivatePreviewHost(window.location.hostname);
 const contactApiBaseUrl = isLocalContactApi
   ? "http://localhost:3000"
   : "https://asvakas-backend.onrender.com";

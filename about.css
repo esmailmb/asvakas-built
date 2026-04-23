@@ -734,6 +734,7 @@
   }
 
   .about-stats-grid {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -746,7 +747,7 @@
     border-top: 1px solid var(--border);
   }
 
-  .about-story-inner {
+  .about-story-body {
     grid-template-columns: 1fr;
     gap: 2.4rem;
   }
@@ -754,6 +755,11 @@
   .about-story-image img {
     position: static;
     height: 360px;
+  }
+
+  .about-projects-inner {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
   }
 
   .about-team-grid {
@@ -775,7 +781,8 @@
   }
 
   .about-stats-grid {
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   .about-team-grid {
@@ -798,6 +805,7 @@
 
 .about-hero {
   position: relative;
+  overflow: hidden;
   background:
     radial-gradient(circle at 14% 16%, rgba(200, 105, 60, 0.18) 0%, transparent 28%),
     radial-gradient(circle at 86% 0%, rgba(24, 39, 57, 0.1) 0%, transparent 26%),
@@ -995,12 +1003,43 @@
 }
 
 @media (max-width: 760px) {
+  .about-story-body {
+    gap: 1.7rem;
+  }
+
   .about-story-image img {
-    height: 400px;
+    height: 320px;
   }
 
   .about-stat {
     padding: 1rem;
+  }
+
+  .about-stat strong,
+  .about-stat span {
+    text-align: left;
+  }
+
+  .about-projects-inner {
+    gap: 1.8rem;
+  }
+
+  .about-projects-right {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .about-projects-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-project-card-info {
+    padding: 1.1rem 1.1rem 1.2rem;
+  }
+
+  .about-project-card h4 {
+    font-size: 1.18rem;
   }
 
   .about-mini-cta {
