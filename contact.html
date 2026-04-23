@@ -1465,6 +1465,24 @@
               <label for="message">Additional Details / Message*</label>
               <textarea id="message" name="Message" rows="5" placeholder="Any additional details about your project, timeline, or specific questions..." required></textarea>
 
+              <div class="contact-bot-field" aria-hidden="true">
+                <label for="companyWebsite">Company Website</label>
+                <input type="text" id="companyWebsite" name="Company-Website" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="captcha-block" id="captchaBlock">
+                <label for="captchaAnswer">Security Check*</label>
+                <p class="captcha-help">Enter the code shown below so we can block automated spam submissions.</p>
+                <div class="captcha-card">
+                  <div class="captcha-image" id="captchaImage" role="img" aria-label="Security check image" aria-live="polite"></div>
+                  <button type="button" class="captcha-refresh" id="captchaRefresh">Load New Code</button>
+                </div>
+                <input type="text" id="captchaAnswer" name="Captcha-Answer" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Type the code shown above" required />
+                <p class="captcha-status" id="captchaStatus" aria-live="polite">Loading security check…</p>
+                <input type="hidden" id="captchaToken" name="Captcha-Token" value="" />
+                <input type="hidden" id="submittedAt" name="Submitted-At" value="" />
+              </div>
+
               <button type="submit" class="btn-solid" id="submitBtn">Send Message →</button>
             </form>
 

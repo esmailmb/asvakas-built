@@ -17,18 +17,143 @@ const contactApiBaseUrl = isLocalContactApi
 
 const contactForm = document.getElementById("contactForm");
 const formSuccess = document.getElementById("formSuccess");
+const submitBtn = document.getElementById("submitBtn");
+const captchaImage = document.getElementById("captchaImage");
+const captchaAnswerInput = document.getElementById("captchaAnswer");
+const captchaTokenInput = document.getElementById("captchaToken");
+const captchaRefreshBtn = document.getElementById("captchaRefresh");
+const captchaStatus = document.getElementById("captchaStatus");
+const submittedAtInput = document.getElementById("submittedAt");
+const botTrapInput = document.getElementById("companyWebsite");
+const captchaEnabled = Boolean(
+  contactForm
+  && captchaImage
+  && captchaAnswerInput
+  && captchaTokenInput
+  && captchaRefreshBtn
+  && captchaStatus
+  && submittedAtInput
+);
+let captchaRequest = null;
+
+function getSubmitLabels(isFrench) {
+  return {
+    sending: isFrench ? "Envoi…" : "Sending…",
+    waking: isFrench ? "Toujours en cours d’envoi…" : "Still sending…",
+    idle: isFrench ? "Envoyer le message →" : "Send Message →"
+  };
+}
+
+function getCaptchaLabels(isFrench) {
+  return {
+    loading: isFrench ? "Chargement de la vérification de sécurité…" : "Loading security check…",
+    loadingSlow: isFrench ? "La vérification prend plus de temps que prévu…" : "Security check is still loading…",
+    refreshing: isFrench ? "Actualisation du code de sécurité…" : "Refreshing security code…",
+    ready: isFrench ? "Entrez le code affiché pour continuer." : "Enter the code shown to continue.",
+    unavailable: isFrench ? "La vérification n’a pas pu être chargée. Réessayez ou écrivez-nous à info@asvakas.com." : "Security check could not load. Refresh it or email us at info@asvakas.com.",
+    missing: isFrench ? "Veuillez compléter le code de sécurité avant l’envoi." : "Please complete the security code before sending."
+  };
+}
+
+function setCaptchaStatus(message, state) {
+  if (!captchaStatus) return;
+  captchaStatus.textContent = message;
+  captchaStatus.classList.remove("is-ready", "is-error");
+  if (state === "ready") {
+    captchaStatus.classList.add("is-ready");
+  } else if (state === "error") {
+    captchaStatus.classList.add("is-error");
+  }
+}
+
+async function loadCaptchaChallenge(options) {
+  if (!captchaEnabled) {
+    return false;
+  }
+  if (captchaRequest) {
+    return captchaRequest;
+  }
+
+  const isFrench = document.documentElement.lang === "fr";
+  const submitLabels = getSubmitLabels(isFrench);
+  const captchaLabels = getCaptchaLabels(isFrench);
+
+  if (submitBtn) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = submitLabels.idle;
+  }
+  captchaRefreshBtn.disabled = true;
+  captchaAnswerInput.disabled = true;
+  captchaTokenInput.value = "";
+  captchaAnswerInput.value = "";
+  captchaImage.innerHTML = "";
+  setCaptchaStatus(options && options.refresh ? captchaLabels.refreshing : captchaLabels.loading);
+
+  const slowTimer = setTimeout(function () {
+    setCaptchaStatus(captchaLabels.loadingSlow);
+  }, 8000);
+
+  captchaRequest = fetch(contactApiBaseUrl + "/captcha-challenge", {
+    method: "GET",
+    headers: { "Accept": "application/json" }
+  })
+    .then(async function (res) {
+      const json = await res.json();
+      if (!res.ok || !json.ok || !json.svg || !json.token) {
+        throw new Error(json.error || "Could not load security check.");
+      }
+
+      captchaImage.innerHTML = json.svg;
+      captchaTokenInput.value = json.token;
+      submittedAtInput.value = String(Date.now());
+      captchaAnswerInput.disabled = false;
+      captchaRefreshBtn.disabled = false;
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitLabels.idle;
+      }
+      setCaptchaStatus(captchaLabels.ready, "ready");
+      return true;
+    })
+    .catch(function () {
+      captchaRefreshBtn.disabled = false;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = submitLabels.idle;
+      }
+      setCaptchaStatus(captchaLabels.unavailable, "error");
+      return false;
+    })
+    .finally(function () {
+      clearTimeout(slowTimer);
+      captchaRequest = null;
+    });
+
+  return captchaRequest;
+}
+
+if (captchaEnabled) {
+  submittedAtInput.value = String(Date.now());
+  captchaRefreshBtn.addEventListener("click", function () {
+    loadCaptchaChallenge({ refresh: true });
+  });
+  loadCaptchaChallenge();
+}
 
 if (contactForm) {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const submitBtn = document.getElementById("submitBtn");
     const isFrench = document.documentElement.lang === "fr";
-    const submitLabels = {
-      sending: isFrench ? "Envoi…" : "Sending…",
-      waking: isFrench ? "Toujours en cours d’envoi…" : "Still sending…",
-      idle: isFrench ? "Envoyer le message →" : "Send Message →"
-    };
+    const submitLabels = getSubmitLabels(isFrench);
+    const captchaLabels = getCaptchaLabels(isFrench);
+    if (captchaEnabled && (!captchaTokenInput.value || !captchaAnswerInput.value.trim())) {
+      if (!captchaTokenInput.value) {
+        loadCaptchaChallenge({ refresh: true });
+      }
+      alert(captchaLabels.missing);
+      return;
+    }
     if (submitBtn) {
       submitBtn.disabled = true;
       submitBtn.textContent = submitLabels.sending;
@@ -85,6 +210,12 @@ if (contactForm) {
     if (message && message.value.trim()) {
       data[message.name.replace(/-/g, " ")] = message.value.trim();
     }
+    if (captchaEnabled) {
+      data._captchaToken = captchaTokenInput.value.trim();
+      data._captchaAnswer = captchaAnswerInput.value.trim();
+      data._companyWebsite = botTrapInput ? botTrapInput.value.trim() : "";
+      data._formStartedAt = submittedAtInput.value || String(Date.now());
+    }
 
     try {
       /* Keep the user informed on slower first requests without exposing backend details */
@@ -113,13 +244,19 @@ if (contactForm) {
         throw new Error(json.error || "Submission failed");
       }
     } catch (err) {
+      if (captchaEnabled) {
+        loadCaptchaChallenge({ refresh: true });
+      }
+      const serverMessage = err && err.message ? err.message : "";
       const msg = err.name === "AbortError"
         ? (isFrench
             ? "La demande a expiré. Veuillez réessayer ou nous écrire directement à info@asvakas.com."
             : "Request timed out. Please try again or email us directly at info@asvakas.com")
-        : (isFrench
+        : (serverMessage && /security check|too many requests|invalid email|required/i.test(serverMessage)
+            ? serverMessage
+            : (isFrench
             ? "Désolé, votre message n’a pas pu être envoyé. Veuillez nous écrire directement à info@asvakas.com."
-            : "Sorry, your message could not be sent. Please email us directly at info@asvakas.com");
+            : "Sorry, your message could not be sent. Please email us directly at info@asvakas.com"));
       if (submitBtn) {
         submitBtn.disabled = false;
         submitBtn.textContent = submitLabels.idle;
