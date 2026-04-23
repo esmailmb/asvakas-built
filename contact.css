@@ -313,14 +313,6 @@
   gap: 0.38rem;
 }
 
-.contact-page .contact-bot-field {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
 .contact-page .captcha-block {
   display: flex;
   flex-direction: column;
@@ -359,6 +351,15 @@
   width: 100%;
   max-width: 14rem;
   height: auto;
+}
+
+.contact-page .recaptcha-slot {
+  min-height: 4.9rem;
+  width: 100%;
+}
+
+.contact-page .recaptcha-slot > div {
+  max-width: 100%;
 }
 
 .contact-page .captcha-refresh {
@@ -515,6 +516,10 @@
 
   .contact-page .captcha-refresh {
     width: 100%;
+  }
+
+  .contact-page .recaptcha-slot {
+    overflow-x: auto;
   }
 }
 

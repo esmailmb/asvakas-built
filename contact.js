@@ -18,23 +18,34 @@ const contactApiBaseUrl = isLocalContactApi
 const contactForm = document.getElementById("contactForm");
 const formSuccess = document.getElementById("formSuccess");
 const submitBtn = document.getElementById("submitBtn");
+const captchaBlock = document.getElementById("captchaBlock");
+const captchaHelp = document.getElementById("captchaHelp");
 const captchaImage = document.getElementById("captchaImage");
+const imageCaptchaFields = document.getElementById("imageCaptchaFields");
 const captchaAnswerInput = document.getElementById("captchaAnswer");
 const captchaTokenInput = document.getElementById("captchaToken");
 const captchaRefreshBtn = document.getElementById("captchaRefresh");
+const recaptchaMount = document.getElementById("recaptchaMount");
 const captchaStatus = document.getElementById("captchaStatus");
 const submittedAtInput = document.getElementById("submittedAt");
-const botTrapInput = document.getElementById("companyWebsite");
 const captchaEnabled = Boolean(
   contactForm
+  && captchaBlock
+  && captchaHelp
+  && imageCaptchaFields
   && captchaImage
   && captchaAnswerInput
   && captchaTokenInput
   && captchaRefreshBtn
+  && recaptchaMount
   && captchaStatus
   && submittedAtInput
 );
 let captchaRequest = null;
+let captchaMode = "image";
+let recaptchaToken = "";
+let recaptchaWidgetId = null;
+let recaptchaScriptPromise = null;
 
 function getSubmitLabels(isFrench) {
   return {
@@ -49,9 +60,15 @@ function getCaptchaLabels(isFrench) {
     loading: isFrench ? "Chargement de la vérification de sécurité…" : "Loading security check…",
     loadingSlow: isFrench ? "La vérification prend plus de temps que prévu…" : "Security check is still loading…",
     refreshing: isFrench ? "Actualisation du code de sécurité…" : "Refreshing security code…",
-    ready: isFrench ? "Entrez le code affiché pour continuer." : "Enter the code shown to continue.",
-    unavailable: isFrench ? "La vérification n’a pas pu être chargée. Réessayez ou écrivez-nous à info@asvakas.com." : "Security check could not load. Refresh it or email us at info@asvakas.com.",
-    missing: isFrench ? "Veuillez compléter le code de sécurité avant l’envoi." : "Please complete the security code before sending."
+    imageHelp: isFrench ? "Entrez le code affiché ci-dessous pour bloquer les envois automatisés." : "Enter the code shown below so we can block automated spam submissions.",
+    imageReady: isFrench ? "Entrez le code affiché pour continuer." : "Enter the code shown to continue.",
+    imageUnavailable: isFrench ? "La vérification n’a pas pu être chargée. Réessayez ou écrivez-nous à info@asvakas.com." : "Security check could not load. Refresh it or email us at info@asvakas.com.",
+    imageMissing: isFrench ? "Veuillez compléter le code de sécurité avant l’envoi." : "Please complete the security code before sending.",
+    recaptchaHelp: isFrench ? "Complétez la vérification Google ci-dessous pour bloquer les envois automatisés." : "Complete the Google security check below so we can block automated spam submissions.",
+    recaptchaPrompt: isFrench ? "Complétez la vérification Google pour continuer." : "Complete the Google security check to continue.",
+    recaptchaVerified: isFrench ? "Vérification Google effectuée." : "Google security check completed.",
+    recaptchaUnavailable: isFrench ? "La vérification Google n’a pas pu être chargée. Réessayez ou écrivez-nous à info@asvakas.com." : "Google security check could not load. Refresh it or email us at info@asvakas.com.",
+    recaptchaMissing: isFrench ? "Veuillez compléter la vérification Google avant l’envoi." : "Please complete the Google security check before sending."
   };
 }
 
@@ -66,7 +83,141 @@ function setCaptchaStatus(message, state) {
   }
 }
 
-async function loadCaptchaChallenge(options) {
+function setCaptchaMode(mode, labels) {
+  const useRecaptcha = mode === "recaptcha";
+
+  captchaMode = mode;
+  captchaHelp.textContent = useRecaptcha ? labels.recaptchaHelp : labels.imageHelp;
+  imageCaptchaFields.hidden = useRecaptcha;
+  captchaAnswerInput.hidden = useRecaptcha;
+  captchaAnswerInput.required = !useRecaptcha;
+  captchaAnswerInput.disabled = useRecaptcha;
+  recaptchaMount.hidden = !useRecaptcha;
+
+  if (useRecaptcha) {
+    captchaImage.innerHTML = "";
+    captchaTokenInput.value = "";
+    captchaAnswerInput.value = "";
+    captchaRefreshBtn.disabled = true;
+  } else {
+    recaptchaToken = "";
+  }
+}
+
+async function loadCaptchaConfig() {
+  const res = await fetch(contactApiBaseUrl + "/captcha-config", {
+    method: "GET",
+    headers: { "Accept": "application/json" }
+  });
+
+  if (res.status === 404) {
+    return { ok: true, provider: "image" };
+  }
+
+  const json = await res.json();
+  if (!res.ok || !json.ok || !json.provider) {
+    throw new Error(json.error || "Could not load security check configuration.");
+  }
+
+  return json;
+}
+
+function loadRecaptchaScript() {
+  if (window.grecaptcha && typeof window.grecaptcha.render === "function") {
+    return Promise.resolve(window.grecaptcha);
+  }
+  if (recaptchaScriptPromise) {
+    return recaptchaScriptPromise;
+  }
+
+  recaptchaScriptPromise = new Promise(function (resolve, reject) {
+    const existing = document.querySelector('script[data-recaptcha-script="true"]');
+    if (existing) {
+      existing.addEventListener("load", function () {
+        if (window.grecaptcha) {
+          resolve(window.grecaptcha);
+        } else {
+          reject(new Error("reCAPTCHA unavailable"));
+        }
+      }, { once: true });
+      existing.addEventListener("error", function () {
+        reject(new Error("reCAPTCHA unavailable"));
+      }, { once: true });
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js?render=explicit";
+    script.async = true;
+    script.defer = true;
+    script.dataset.recaptchaScript = "true";
+    script.onload = function () {
+      if (window.grecaptcha) {
+        resolve(window.grecaptcha);
+      } else {
+        reject(new Error("reCAPTCHA unavailable"));
+      }
+    };
+    script.onerror = function () {
+      reject(new Error("reCAPTCHA unavailable"));
+    };
+    document.head.appendChild(script);
+  });
+
+  return recaptchaScriptPromise;
+}
+
+async function loadRecaptchaChallenge(config, submitLabels, captchaLabels) {
+  if (!captchaEnabled) {
+    return false;
+  }
+
+  setCaptchaMode("recaptcha", captchaLabels);
+  recaptchaToken = "";
+  submittedAtInput.value = "";
+  if (submitBtn) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = submitLabels.idle;
+  }
+  setCaptchaStatus(captchaLabels.recaptchaPrompt);
+
+  try {
+    const grecaptcha = await loadRecaptchaScript();
+    if (recaptchaWidgetId === null) {
+      recaptchaMount.innerHTML = "";
+      recaptchaWidgetId = grecaptcha.render(recaptchaMount, {
+        sitekey: config.siteKey,
+        callback: function (token) {
+          recaptchaToken = token;
+          submittedAtInput.value = String(Date.now());
+          setCaptchaStatus(captchaLabels.recaptchaVerified, "ready");
+        },
+        "expired-callback": function () {
+          recaptchaToken = "";
+          submittedAtInput.value = "";
+          setCaptchaStatus(captchaLabels.recaptchaPrompt);
+        },
+        "error-callback": function () {
+          recaptchaToken = "";
+          submittedAtInput.value = "";
+          setCaptchaStatus(captchaLabels.recaptchaUnavailable, "error");
+        }
+      });
+    } else {
+      grecaptcha.reset(recaptchaWidgetId);
+    }
+    return true;
+  } catch (_error) {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = submitLabels.idle;
+    }
+    setCaptchaStatus(captchaLabels.recaptchaUnavailable, "error");
+    return false;
+  }
+}
+
+async function loadImageCaptchaChallenge(options, submitLabels, captchaLabels) {
   if (!captchaEnabled) {
     return false;
   }
@@ -74,9 +225,15 @@ async function loadCaptchaChallenge(options) {
     return captchaRequest;
   }
 
-  const isFrench = document.documentElement.lang === "fr";
-  const submitLabels = getSubmitLabels(isFrench);
-  const captchaLabels = getCaptchaLabels(isFrench);
+  setCaptchaMode("image", captchaLabels);
+  recaptchaToken = "";
+  if (recaptchaWidgetId !== null && window.grecaptcha && typeof window.grecaptcha.reset === "function") {
+    try {
+      window.grecaptcha.reset(recaptchaWidgetId);
+    } catch (_error) {
+      // Ignore widget reset issues and continue with image captcha.
+    }
+  }
 
   if (submitBtn) {
     submitBtn.disabled = true;
@@ -112,7 +269,7 @@ async function loadCaptchaChallenge(options) {
         submitBtn.disabled = false;
         submitBtn.textContent = submitLabels.idle;
       }
-      setCaptchaStatus(captchaLabels.ready, "ready");
+      setCaptchaStatus(captchaLabels.imageReady, "ready");
       return true;
     })
     .catch(function () {
@@ -121,7 +278,7 @@ async function loadCaptchaChallenge(options) {
         submitBtn.disabled = true;
         submitBtn.textContent = submitLabels.idle;
       }
-      setCaptchaStatus(captchaLabels.unavailable, "error");
+      setCaptchaStatus(captchaLabels.imageUnavailable, "error");
       return false;
     })
     .finally(function () {
@@ -132,12 +289,33 @@ async function loadCaptchaChallenge(options) {
   return captchaRequest;
 }
 
+async function initializeCaptcha(options) {
+  if (!captchaEnabled) {
+    return false;
+  }
+
+  const isFrench = document.documentElement.lang === "fr";
+  const submitLabels = getSubmitLabels(isFrench);
+  const captchaLabels = getCaptchaLabels(isFrench);
+
+  try {
+    const config = await loadCaptchaConfig();
+    if (config.provider === "recaptcha" && config.siteKey) {
+      return loadRecaptchaChallenge(config, submitLabels, captchaLabels);
+    }
+  } catch (_error) {
+    // Fall back to the local image captcha if Google config is unavailable.
+  }
+
+  return loadImageCaptchaChallenge(options, submitLabels, captchaLabels);
+}
+
 if (captchaEnabled) {
   submittedAtInput.value = String(Date.now());
   captchaRefreshBtn.addEventListener("click", function () {
-    loadCaptchaChallenge({ refresh: true });
+    initializeCaptcha({ refresh: true });
   });
-  loadCaptchaChallenge();
+  initializeCaptcha();
 }
 
 if (contactForm) {
@@ -147,12 +325,21 @@ if (contactForm) {
     const isFrench = document.documentElement.lang === "fr";
     const submitLabels = getSubmitLabels(isFrench);
     const captchaLabels = getCaptchaLabels(isFrench);
-    if (captchaEnabled && (!captchaTokenInput.value || !captchaAnswerInput.value.trim())) {
-      if (!captchaTokenInput.value) {
-        loadCaptchaChallenge({ refresh: true });
+    if (captchaEnabled) {
+      const hasImageCaptcha = captchaMode === "image";
+      const hasRecaptcha = captchaMode === "recaptcha";
+
+      if (hasRecaptcha && !recaptchaToken) {
+        alert(captchaLabels.recaptchaMissing);
+        return;
       }
-      alert(captchaLabels.missing);
-      return;
+      if (hasImageCaptcha && (!captchaTokenInput.value || !captchaAnswerInput.value.trim())) {
+        if (!captchaTokenInput.value) {
+          initializeCaptcha({ refresh: true });
+        }
+        alert(captchaLabels.imageMissing);
+        return;
+      }
     }
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -211,10 +398,13 @@ if (contactForm) {
       data[message.name.replace(/-/g, " ")] = message.value.trim();
     }
     if (captchaEnabled) {
-      data._captchaToken = captchaTokenInput.value.trim();
-      data._captchaAnswer = captchaAnswerInput.value.trim();
-      data._companyWebsite = botTrapInput ? botTrapInput.value.trim() : "";
       data._formStartedAt = submittedAtInput.value || String(Date.now());
+      if (captchaMode === "recaptcha") {
+        data._recaptchaToken = recaptchaToken;
+      } else {
+        data._captchaToken = captchaTokenInput.value.trim();
+        data._captchaAnswer = captchaAnswerInput.value.trim();
+      }
     }
 
     try {
@@ -245,14 +435,14 @@ if (contactForm) {
       }
     } catch (err) {
       if (captchaEnabled) {
-        loadCaptchaChallenge({ refresh: true });
+        initializeCaptcha({ refresh: true });
       }
       const serverMessage = err && err.message ? err.message : "";
       const msg = err.name === "AbortError"
         ? (isFrench
             ? "La demande a expiré. Veuillez réessayer ou nous écrire directement à info@asvakas.com."
             : "Request timed out. Please try again or email us directly at info@asvakas.com")
-        : (serverMessage && /security check|too many requests|invalid email|required/i.test(serverMessage)
+        : (serverMessage && /security check|google security|too many requests|invalid email|required/i.test(serverMessage)
             ? serverMessage
             : (isFrench
             ? "Désolé, votre message n’a pas pu être envoyé. Veuillez nous écrire directement à info@asvakas.com."
