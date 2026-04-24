@@ -161,8 +161,15 @@
     const data = REGIONS[region];
 
     // Update button display
-    document.querySelectorAll(".rp-flag").forEach(el => el.textContent = data.flag);
-    document.querySelectorAll(".rp-label").forEach(el => el.textContent = data.label);
+    document.querySelectorAll(".rp-flag").forEach(el => {
+      el.textContent = "";
+      el.style.display = "none";
+      el.setAttribute("aria-hidden", "true");
+    });
+    document.querySelectorAll(".rp-label").forEach(el => {
+      el.textContent = data.label;
+      el.style.display = "inline";
+    });
 
     // Mark active option
     document.querySelectorAll(".rp-option").forEach(el => {

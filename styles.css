@@ -2153,7 +2153,7 @@ p {
   font-weight: 500;
   color: #fff;
   min-height: 44px;
-  padding: 0.36rem 0.9rem 0.36rem 0.66rem;
+  padding: 0.36rem 0.9rem;
   line-height: 1;
   letter-spacing: 0.01em;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
@@ -2194,8 +2194,7 @@ p {
 .rp-flag {
   font-size: 1.25rem;
   line-height: 1;
-  display: flex;
-  align-items: center;
+  display: none;
 }
 
 .rp-label {
@@ -2207,17 +2206,6 @@ p {
   opacity: 0.7;
   transition: transform 0.22s ease;
   margin-left: 0.1rem;
-}
-
-@media (min-width: 1025px) {
-  .rp-btn {
-    gap: 0.35rem;
-    padding-left: 0.9rem;
-  }
-
-  .rp-flag {
-    display: none;
-  }
 }
 
 .rp-btn[aria-expanded="true"] .rp-arrow {
@@ -3230,7 +3218,7 @@ body {
   }
 
   .rp-btn {
-    padding: 0.34rem 0.78rem 0.34rem 0.6rem;
+    padding: 0.34rem 0.78rem;
   }
 }
 
@@ -3259,7 +3247,7 @@ body {
 
   .rp-btn {
     min-height: 42px;
-    padding: 0.34rem 0.78rem 0.34rem 0.6rem;
+    padding: 0.34rem 0.78rem;
   }
 
   body.nav-open {
@@ -3371,11 +3359,11 @@ body {
 
   .rp-btn {
     gap: 0.38rem;
-    padding: 0.32rem 0.62rem 0.32rem 0.5rem;
+    padding: 0.32rem 0.62rem;
   }
 
   .rp-label {
-    display: none;
+    display: inline;
   }
 
   .rp-flag {
