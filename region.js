@@ -166,6 +166,10 @@
 
     // Mark active option
     document.querySelectorAll(".rp-option").forEach(el => {
+      const optionData = REGIONS[el.dataset.region];
+      if (optionData) {
+        el.textContent = optionData.label;
+      }
       el.classList.toggle("active", el.dataset.region === region);
     });
 

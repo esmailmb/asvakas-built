@@ -2209,6 +2209,17 @@ p {
   margin-left: 0.1rem;
 }
 
+@media (min-width: 1025px) {
+  .rp-btn {
+    gap: 0.35rem;
+    padding-left: 0.9rem;
+  }
+
+  .rp-flag {
+    display: none;
+  }
+}
+
 .rp-btn[aria-expanded="true"] .rp-arrow {
   transform: rotate(180deg);
 }
